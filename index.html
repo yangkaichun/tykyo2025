@@ -4,347 +4,671 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>日本親子探索之旅：東京、大阪、京都、奈良</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Calm Harmony (Stone, Teal, White) -->
-    <!-- Application Structure Plan: A single-page, vertical timeline application. A sticky header with tab navigation allows users to jump to any of the 11 days. Each day is a section containing chronological event cards. This structure is intuitive for a time-based report like an itinerary, allowing for quick reference and detailed exploration. Key interactions include tab-based navigation and modals for viewing detailed information, including embedded maps and now, detailed transportation guides. -->
-    <!-- Visualization & Content Choices: The primary visualization is a timeline-like card layout. Goal: Inform/Organize. Method: Structured HTML/CSS cards. Interaction: Click to open a modal. Justification: Clear and scannable. Modals now contain a dedicated "Transportation Guide" section for every travel event, using ordered lists for clarity. This enhances the practical usability of the itinerary. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Inter', 'Noto Sans TC', sans-serif;
-            background-color: #f5f5f4; /* stone-100 */
+            background-color: #f8fafc;
         }
-        .nav-button {
-            transition: all 0.3s ease;
+        .gradient-header {
+            background: linear-gradient(120deg, #5e72e4 0%, #825ee4 100%);
         }
-        .nav-button.active {
-            background-color: #0d9488; /* teal-600 */
-            color: white;
-            font-weight: 600;
+        .card {
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease-in-out;
         }
-        .modal-backdrop {
-            transition: opacity 0.3s ease;
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
         }
-        .modal-content {
-            transition: transform 0.3s ease;
-        }
-        .map-container {
+        .timeline-line {
             position: relative;
-            overflow: hidden;
-            width: 100%;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
-            border-radius: 0.5rem;
+            padding-left: 3rem; 
         }
-        .map-container iframe {
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2.5rem;
+        }
+        .timeline-item:not(:last-child)::before {
+            content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
+            left: -1.5rem; 
+            top: 1.2rem;
+            bottom: -1rem;
+            width: 3px;
+            background: linear-gradient(to bottom, #8995e0, #a88be0);
+            border-radius: 2px;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -2.2rem;
+            top: 0.2rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 0 4px #e9ecef;
+            z-index: 10;
+        }
+        .timeline-dot-inner {
+            width: 2rem;
+            height: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .link-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            margin-top: 0.5rem;
+        }
+        .btn-website {
+            background-color: #eef2ff;
+            color: #4338ca;
+        }
+        .btn-website:hover {
+            background-color: #e0e7ff;
+        }
+        .btn-map {
+            background-color: #f0fdf4;
+            color: #166534;
+        }
+        .btn-map:hover {
+            background-color: #dcfce7;
+        }
+        .btn-ticket {
+            background-color: #fffbeb;
+            color: #b45309;
+        }
+        .btn-ticket:hover {
+            background-color: #fef3c7;
         }
     </style>
 </head>
-<body class="bg-stone-100 text-stone-800">
+<body class="min-h-screen">
 
-    <div id="app-container" class="max-w-7xl mx-auto">
-
-        <header class="text-center py-8 px-4">
-            <h1 class="text-4xl font-bold text-teal-700 tracking-tight">日本親子探索之旅</h1>
-            <p class="mt-2 text-lg text-stone-600">東京・大阪・京都・奈良 | 2025年7月14日 - 7月24日</p>
+    <div class="max-w-4xl mx-auto px-4 py-8 md:py-12">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <div class="gradient-header text-white p-8 rounded-2xl shadow-lg">
+                <h1 class="text-4xl md:text-5xl font-bold mb-3">🇯🇵 日本親子探索之旅</h1>
+                <p class="text-xl md:text-2xl opacity-90">東京・大阪・京都・奈良</p>
+                <p class="text-md md:text-lg mt-2 opacity-80">2025年7月14日 - 7月24日 | 11天精彩行程</p>
+            </div>
         </header>
 
-        <section id="overview" class="p-4 sm:p-6 bg-white rounded-2xl shadow-lg mb-8">
-             <h2 class="text-2xl font-bold text-teal-700 mb-4 border-b-2 border-teal-200 pb-2">旅程總覽與核心策略</h2>
-             <div class="prose max-w-none text-stone-700">
-                <h3 class="text-xl font-semibold text-stone-800">核心交通建議</h3>
-                <p><strong>IC卡是您的最佳夥伴</strong>：您的行程橫跨多種交通系統（JR、地鐵、私鐵），為了無縫接軌，強烈建議您與家人全程使用<strong>Suica</strong>或<strong>Pasmo</strong>等交通IC卡，隨刷隨進，免去購票煩惱。您可以將實體卡片加到手機的Apple Wallet中，更加方便。</p>
-                <h3 class="text-xl font-semibold text-stone-800 mt-4">核心移動策略：車站置物櫃</h3>
-                <p>本次行程不採用行李宅配服務，我們將以「**大型車站置物櫃**」為核心策略，實現輕裝旅行。</p>
-                <ul>
-                    <li><strong>執行日</strong>：將在 **7/17 (東京車站)** 與 **7/21 (京都車站)** 兩個移動日執行此方案。</li>
-                    <li><strong>貼心提醒</strong>：大型置物櫃數量有限，請務必提早至車站寄放。建議使用 IC卡支付，方便又快速。</li>
-                </ul>
-             </div>
-        </section>
+        <!-- Main Timeline -->
+        <div class="timeline-line">
 
-        <nav id="day-nav" class="sticky top-0 z-10 bg-stone-100/80 backdrop-blur-md py-3 overflow-x-auto whitespace-nowrap shadow-sm mb-8">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div id="nav-buttons-container" class="flex space-x-2">
+            <!-- Day 1: 7/14 (一) -->
+            <div class="timeline-item">
+                <div class="timeline-dot"><div class="w-8 h-8 rounded-full timeline-dot-inner flex items-center justify-center font-bold">1</div></div>
+                <div class="card p-6 md:p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-1">Day 1: 啟程東京，進駐上野基地</h2>
+                    <p class="text-gray-500 mb-6">7月14日 (一) | 東京</p>
+                    <p class="text-gray-700 mb-6 border-l-4 border-indigo-200 pl-4"><strong>本日行程企劃：</strong>我們的冒險從飛往東京開始！抵達後，我們將搭乘最快速的Skyliner列車直達市中心，迅速入住上野的飯店。今晚的任務是安頓下來，感受東京初夜的氣息，為接下來滿滿的精彩旅程養精蓄銳。</p>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">✈️</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">搭乘酷航 TR870 班機 (15:30)</h3>
+                                <p class="text-gray-600">從桃園國際機場 (TPE) 第一航廈出發，預計 19:55 抵達東京成田機場 (NRT) 第一航廈。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🚆</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">兌換並搭乘京成Skyliner (21:00-22:00)</h3>
+                                <p class="text-gray-600 mb-2">抵達後辦理入境，前往京成電鐵櫃檯，使用 <span class="font-bold text-indigo-600">Skyliner Discount Ticket</span> 憑證兌換實體票券。搭乘Skyliner直達「京成上野站」。<br><i class="fas fa-train mr-1"></i>交通約45分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.keisei.co.jp/keisei/tetudou/skyliner/tc/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🏨</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">入住上野皇冠山丘高級酒店 (22:30)</h3>
+                                <p class="text-gray-600 mb-2">出站後步行至飯店辦理入住。 Agoda訂單: 1621352843。<br><span class="font-semibold text-green-600">此住宿包含早餐。</span><br><i class="fas fa-walking mr-1"></i>步行約5分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://breezbay-group.com/hch-ueno/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/3G52rTeFpWnXfAwo6" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
 
-        <main id="itinerary-container" class="px-4">
-        </main>
-
-    </div>
-
-    <div id="modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
-        <div id="modal-backdrop" class="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div id="modal-content" class="bg-white rounded-2xl shadow-xl w-11/12 max-w-2xl mx-auto z-10 transform scale-95 max-h-[90vh] overflow-y-auto">
-            <div id="modal-body" class="p-6">
+            <!-- Day 2: 7/15 (二) -->
+            <div class="timeline-item">
+                <div class="timeline-dot"><div class="w-8 h-8 rounded-full timeline-dot-inner flex items-center justify-center font-bold">2</div></div>
+                <div class="card p-6 md:p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-1">Day 2: 魔法與科學的奇幻一日</h2>
+                    <p class="text-gray-500 mb-6">7月15日 (二) | 東京</p>
+                     <p class="text-gray-700 mb-6 border-l-4 border-indigo-200 pl-4"><strong>本日行程企劃：</strong>今天將是一場遊走於現實與奇幻的旅程。在飯店享用早餐後，我們將在國立科學博物館探索地球的奧秘與恐龍的雄偉；下午，我們將化身巫師，潛入哈利波特的魔法世界，親身體驗電影中的經典場景。</p>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🏛️</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">國立科學博物館 (09:00 - 11:00)</h3>
+                                <p class="text-gray-600 mb-2">步行穿過上野公園即可抵達。本日為日本國定假日「海之日」，人潮可能較多。<br><i class="fas fa-walking mr-1"></i>步行約10分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.kahaku.go.jp/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/LFXSGNLSMuGz622a6" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                    <a href="https://www.klook.com/zh-TW/activity/16936-national-museum-nature-science-tokyo/" target="_blank" class="link-button btn-ticket"><i class="fas fa-ticket-alt mr-2"></i>預訂門票</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🧙‍♂️</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">東京哈利波特影城 (12:30入場)</h3>
+                                <p class="text-gray-600 mb-2">從JR「上野站」搭乘<span class="font-bold">山手線</span>至「池袋站」，轉乘<span class="font-bold">西武池袋線</span>至「豐島園站」。使用 Klook 預訂的電子票入場 (訂單號: HPT550318)。<br><i class="fas fa-train mr-1"></i>交通約35分鐘 + <i class="fas fa-walking mr-1"></i>步行5分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.wbstudiotour.jp/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/Fv9CF2cK68CShMjt6" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="bg-stone-50 px-6 py-3 rounded-b-2xl text-right sticky bottom-0">
-                <button id="modal-close-button" class="px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition">關閉</button>
+            
+            <!-- Day 3: 7/16 (三) -->
+            <div class="timeline-item">
+                <div class="timeline-dot"><div class="w-8 h-8 rounded-full timeline-dot-inner flex items-center justify-center font-bold">3</div></div>
+                <div class="card p-6 md:p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-1">Day 3: 沉浸式藝術與雲端漫步</h2>
+                    <p class="text-gray-500 mb-6">7月16日 (三) | 東京</p>
+                     <p class="text-gray-700 mb-6 border-l-4 border-indigo-200 pl-4"><strong>本日行程企劃：</strong>在飯店享用早餐後，我們將展開一趟「藝術與高度」的探索。上午，我們將在 teamLab Planets 中赤腳走入夢幻的光影與水中世界；下午，我們將登上東京的制高點——晴空塔，從白天到日落，將壯麗的東京全景盡收眼底。</p>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🎨</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">teamLab Planets TOKYO (10:30 - 13:00)</h3>
+                                <p class="text-gray-600 mb-2">從JR「上野站」搭乘<span class="font-bold">山手線</span>至「有樂町站」，轉乘<span class="font-bold">東京Metro有樂町線</span>至「豐洲站」。使用 Klook 預訂的套票入場。<br><i class="fas fa-train mr-1"></i>交通約30分鐘 + <i class="fas fa-walking mr-1"></i>步行10分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.teamlab.art/jp/planets/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/EjnQG1ZJd2bXwH5q8" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🍣</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">午餐：豐洲市場 (13:00 - 14:30)</h3>
+                                <p class="text-gray-600 mb-2">步行至 teamLab 旁的豐洲市場，品嚐最新鮮的壽司與海鮮丼。<br><i class="fas fa-walking mr-1"></i>步行約5分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.toyosu-market.or.jp/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/95LVvHhWpU4p2n9w5" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🗼</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">東京晴空塔 (16:00入場)</h3>
+                                <p class="text-gray-600 mb-2">從<span class="font-bold">東京Metro有樂町線</span>「豐洲站」搭至「永田町站」，轉乘<span class="font-bold">半藏門線</span>直達「押上站」。<span class="font-bold text-red-600">務必在16:00前</span>至4樓售票處憑套票憑證兌換實體票券。<br><i class="fas fa-train mr-1"></i>交通約30分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.tokyo-skytree.jp/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/iJX3aN2xJ2c3Co1q8" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 4: 7/17 (四) -->
+            <div class="timeline-item">
+                <div class="timeline-dot"><div class="w-8 h-8 rounded-full timeline-dot-inner flex items-center justify-center font-bold">4</div></div>
+                <div class="card p-6 md:p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-1">Day 4: 東京動漫美食一日遊 & 清爽夜行</h2>
+                    <p class="text-gray-500 mb-6">7月17日 (四) | 東京 → 大阪</p>
+                    <p class="text-gray-700 mb-6 border-l-4 border-indigo-200 pl-4"><strong>本日行程企劃：</strong>在飯店享用完早餐後，我們將以「輕裝旅行」為核心，把大行李寄放在東京車站，輕鬆探索車站一番街的動漫世界。晚上，在體驗道地的日式公共澡堂「錢湯」洗去疲憊後，我們將舒適地搭上夜間巴士，一覺醒來就抵達大阪！</p>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🧳</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">退房 & 行李移動 (10:00 - 11:00)</h3>
+                                <p class="text-gray-600 mb-2">10:00於飯店退房後，搭乘JR山手線前往「東京車站」，在八重洲側找到大型置物櫃寄放行李。<br><i class="fas fa-train mr-1"></i>交通約10分鐘 + <i class="fas fa-walking mr-1"></i>找尋置物櫃約20分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.tokyoinfo.com/guide/station/lavatory_coinlocker.html" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>置物櫃資訊</a>
+                                    <a href="https://maps.app.goo.gl/s9H6psa2gPvyvg1s8" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🍜</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">東京車站一番街 (11:00 - 14:00)</h3>
+                                <p class="text-gray-600 mb-2">寄放行李後，直達地下一樓的「東京動漫人物街」尋寶，並在隔壁的「東京拉麵街」享用午餐。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.tokyoeki-1bangai.co.jp/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">👾</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">寶可夢中心DX & 咖啡廳 (14:00 - 16:30)</h3>
+                                <p class="text-gray-600 mb-2">從東京車站八重洲口步行至日本橋高島屋S.C.東館，朝聖寶可夢旗艦店。<br><i class="fas fa-walking mr-1"></i>步行約10分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.pokemon.co.jp/shop/pokecen/tokyodx/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/f7o4bN8FhK5D1G4J9" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">♨️</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">公共澡堂梳洗：湊湯 (18:30 - 20:00)</h3>
+                                <p class="text-gray-600 mb-2">從JR「東京車站」搭乘<span class="font-bold">京葉線</span>至「八丁堀站」(1站)。在搭乘夜車前洗去疲憊。<br><i class="fas fa-train mr-1"></i>交通約5分鐘 + <i class="fas fa-walking mr-1"></i>步行5分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://minatoyu.jp/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/B9q78q2xT8c7dE1R7" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🚌</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">搭乘 WILLER EXPRESS 夜間巴士 (21:40)</h3>
+                                <p class="text-gray-600 mb-2">返回東京車站取行李，前往<span class="font-bold">巴士總站東京八重洲</span> (東京中城八重洲B2)。班次 WK151，座位 1D, 2C, 2D。預計隔日 07:15 抵達日本環球影城。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://willer-travel.com/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/vJsuPxdLVWk5T1TQ6" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 5: 7/18 (五) -->
+            <div class="timeline-item">
+                <div class="timeline-dot"><div class="w-8 h-8 rounded-full timeline-dot-inner flex items-center justify-center font-bold">5</div></div>
+                <div class="card p-6 md:p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-1">Day 5: USJ全日狂歡</h2>
+                    <p class="text-gray-500 mb-6">7月18日 (五) | 大阪</p>
+                    <p class="text-gray-700 mb-6 border-l-4 border-indigo-200 pl-4"><strong>本日行程企劃：</strong>關西篇的序幕，將由一整天的無限歡樂拉開！巴士將直接帶我們抵達夢想之地——日本環球影城。今天唯一要做的，就是盡情玩樂，釋放所有能量！<br><span class="font-semibold text-red-600">此日住宿未含早餐</span>，建議在USJ外的CityWalk用餐。</p>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🎢</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">日本環球影城 (USJ) 全日暢玩</h3>
+                                <p class="text-gray-600 mb-2">07:15巴士直達。使用 Klook 預訂的電子票入園。<span class="font-bold text-red-600">超級任天堂世界™</span>需透過官方APP抽取「區域入場號碼券」，建議一入園就馬上操作。</p>
+                                 <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.usj.co.jp/web/ja/jp" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/9mY2i5WqpBfS2V5y9" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🏨</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">入住大阪地區飯店</h3>
+                                <p class="text-gray-600">閉園後，從JR「環球影城站」搭乘<span class="font-bold">夢咲線</span>至「西九條站」，轉車前往您預訂的飯店 (Agoda訂單: 1615945887)。<br><i class="fas fa-train mr-1"></i>交通約15-30分鐘。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 6: 7/19 (六) UPDATED -->
+            <div class="timeline-item">
+                <div class="timeline-dot"><div class="w-8 h-8 rounded-full timeline-dot-inner flex items-center justify-center font-bold">6</div></div>
+                <div class="card p-6 md:p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-1">Day 6: 大阪海港與美食之旅</h2>
+                    <p class="text-gray-500 mb-6">7月19日 (六) | 大阪</p>
+                    <p class="text-gray-700 mb-6 border-l-4 border-indigo-200 pl-4"><strong>本日行程企劃：</strong>今天將深入探索大阪的兩大標誌。上午，我們將在海遊館與巨大的鯨鯊和繽紛的海洋生物相遇；下午，我們將登上宏偉的大阪城天守閣，感受戰國時代的歷史氣息。晚上則入住熱鬧的難波地區，為接下來的旅程建立新據點。</p>
+                    <div class="space-y-6">
+                         <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🍳</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">早餐推薦：やよい軒 (Yayoiken)</h3>
+                                <p class="text-gray-600 mb-2">BON Hostel 附近有許多分店，可體驗道地的日式定食早餐。<br><i class="fas fa-walking mr-1"></i>步行約10-15分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.yayoiken.com/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/95d8L448K9gVjCqM7" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖(難波店)</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🐠</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">大阪海遊館 (10:00 - 10:15 入場)</h3>
+                                <p class="text-gray-600 mb-2">搭乘<span class="font-bold">大阪Metro中央線</span>至「大阪港站」。<span class="font-bold text-red-600">請務必在預約的10:00-10:15時段內入場。</span><br><i class="fas fa-train mr-1"></i>交通約30分鐘 + <i class="fas fa-walking mr-1"></i>步行5分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.kaiyukan.com/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/R3v896CbpKzVb1fL8" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🏯</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">大阪城天守閣</h3>
+                                <p class="text-gray-600 mb-2">搭乘<span class="font-bold">大阪Metro中央線</span>至「森之宮站」。<br><i class="fas fa-train mr-1"></i>交通約15分鐘 + <i class="fas fa-walking mr-1"></i>步行15分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.osakacastle.net/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/bM5XyTCfE5m2B2349" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                     <a href="https://www.klook.com/zh-TW/activity/2205-osaka-castle-ticket/" target="_blank" class="link-button btn-ticket"><i class="fas fa-ticket-alt mr-2"></i>預訂門票</a>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🏨</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">入住大阪邦旅舍 (BON Hostel) (16:00後)</h3>
+                                <p class="text-gray-600 mb-2">Agoda訂單: 1616456787。地址：大阪市浪速区敷津東3-1-3。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.bon-hostel.com/bon-hostel-osaka/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/U2zBv51jM7f917fZA" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 7: 7/20 (日) -->
+            <div class="timeline-item">
+                <div class="timeline-dot"><div class="w-8 h-8 rounded-full timeline-dot-inner flex items-center justify-center font-bold">7</div></div>
+                <div class="card p-6 md:p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-1">Day 7: 穿越時空！京都電影與武士魂</h2>
+                    <p class="text-gray-500 mb-6">7月20日 (日) | 京都</p>
+                    <p class="text-gray-700 mb-6 border-l-4 border-indigo-200 pl-4"><strong>本日行程企劃：</strong>我們將暫別大阪，前往古都京都。在東映太秦映畫村，我們將走進日本時代劇的片場；在武士與忍者博物館，我們更能親手觸摸歷史，體驗武士的盔甲與忍者的武器！<br><span class="font-semibold text-red-600">此日住宿未含早餐</span>。</p>
+                    <div class="space-y-6">
+                         <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">☕</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">早餐推薦：INODA COFFEE (イノダコーヒ)</h3>
+                                <p class="text-gray-600 mb-2">退房後，前往京都車站地下街Porta，品嚐京都最有名的老字號咖啡店早餐。<br><i class="fas fa-train mr-1"></i>大阪至京都交通約30-40分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.inoda-coffee.co.jp/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/z28p6s52M4Jd9tFk7" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖(Porta店)</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🎬</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">東映太秦映畫村</h3>
+                                <p class="text-gray-600 mb-2">從「京都車站」搭乘<span class="font-bold">JR嵯峨野線</span>至「太秦站」。<br><i class="fas fa-train mr-1"></i>交通約16分鐘 + <i class="fas fa-walking mr-1"></i>步行5分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.toei-eigamura.com/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/gD989J3FzY1A97159" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                    <a href="https://www.klook.com/zh-TW/activity/2330-toei-uzumasa-eigamura-studio-park-ticket-kyoto/" target="_blank" class="link-button btn-ticket"><i class="fas fa-ticket-alt mr-2"></i>預訂門票</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">⚔️</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">武士與忍者博物館</h3>
+                                <p class="text-gray-600 mb-2">返回京都市中心，體驗武士文化。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://mai-ko.com/samurai-ninja-museum-kyoto/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/5u4S7nB4JjNq713f6" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                    <a href="https://www.klook.com/zh-TW/activity/22885-samurai-ninja-museum-experience-kyoto/" target="_blank" class="link-button btn-ticket"><i class="fas fa-ticket-alt mr-2"></i>預訂門票</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🏨</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">入住京都東寺羅伊西爾飯店 (15:00後)</h3>
+                                <p class="text-gray-600 mb-2">Agoda訂單: 1618112475。地址：京都市南区西九条蔵王町31-1。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.solarehotels.com/hotel/kyoto/loisir-hotel-kyoto-toji/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/kXhW92n33K5c44Wc8" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 8: 7/21 (一) UPDATED -->
+            <div class="timeline-item">
+                <div class="timeline-dot"><div class="w-8 h-8 rounded-full timeline-dot-inner flex items-center justify-center font-bold">8</div></div>
+                <div class="card p-6 md:p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-1">Day 8: 古都黃昏深度漫遊</h2>
+                    <p class="text-gray-500 mb-6">7月21日 (一) | 京都 → 東京</p>
+                    <p class="text-gray-700 mb-6 border-l-4 border-indigo-200 pl-4"><strong>本日行程企劃：</strong>今天將是趟療癒心靈的自然之旅。我們將拜訪奈良的可愛「神鹿」，親手餵食鹿仙貝，並參觀宏偉的東大寺。傍晚返回京都後，我們將深入這座古都的夜晚魅力：在車站品嚐拉麵、夜遊燈火通明的祇園、登上京都塔欣賞夜景，最後在塔下的澡堂洗去一身疲憊，清爽地搭上夜間巴士！</p>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🦌</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">奈良公園 & 東大寺 (12:00 - 16:30)</h3>
+                                <p class="text-gray-600 mb-2">11:00於飯店退房並將行李寄放京都車站後，搭乘<span class="font-bold">JR奈良線(みやこ路快速)</span>至「奈良站」。<br><i class="fas fa-train mr-1"></i>交通約45分鐘 + <i class="fas fa-walking mr-1"></i>步行20分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.todaiji.or.jp/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/g6vC925M4N3wLgACA" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🍜</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">晚餐：京都拉麵小路 (17:30 - 18:30)</h3>
+                                <p class="text-gray-600 mb-2">返回京都車站，前往車站大樓10樓的拉麵小路，這裡匯集了日本各地的知名拉麵店。<br><i class="fas fa-train mr-1"></i>交通約45分鐘。</p>
+                                 <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.kyoto-ramen-koji.com/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/358Gf6eT1V5aLefd8" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🏮</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">夜遊祇園 & 花見小路 (19:00 - 20:30)</h3>
+                                <p class="text-gray-600 mb-2">從京都車站搭乘市營巴士（100號或206號）至「祇園」站。漫步在石板路上，欣賞傳統茶屋的燈籠，感受古都的夜間風情。<br><i class="fas fa-bus mr-1"></i>交通約20分鐘。</p>
+                                 <div class="flex flex-wrap gap-2">
+                                    <a href="https://maps.app.goo.gl/Gqg4D6oU4fB22oUo8" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">♨️</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">京都塔大浴場～YUU～ (21:00 - 22:15)</h3>
+                                <p class="text-gray-600 mb-2">返回京都車站，前往對面的京都塔地下3樓。在搭乘夜巴前，享受公共澡堂的樂趣，徹底放鬆。<br><i class="fas fa-bus mr-1"></i>交通約20分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.keihanhotels-resorts.co.jp/kyoto-tower/floorguide/spa.html" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/hUf5S13Vq9Y6mY6V9" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🚌</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">搭乘 SAKURA觀光巴士 (23:00)</h3>
+                                <p class="text-gray-600 mb-2">取回行李，前往<span class="font-bold">JR京都站八条口巴士乘降處</span>集合(22:50)。班次 Milky Way 114，預約號 1018155575。預計隔日05:50抵達池袋。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.489.fm/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/9P8LzJ1LwWv2qFqP6" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 9: 7/22 (二) -->
+            <div class="timeline-item">
+                <div class="timeline-dot"><div class="w-8 h-8 rounded-full timeline-dot-inner flex items-center justify-center font-bold">9</div></div>
+                <div class="card p-6 md:p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-1">Day 9: 動漫聖地巡禮</h2>
+                    <p class="text-gray-500 mb-6">7月22日 (二) | 東京</p>
+                    <p class="text-gray-700 mb-6 border-l-4 border-indigo-200 pl-4"><strong>本日行程企劃：</strong>清晨抵達東京後，我們將直奔兩大動漫遊戲聖地。在池袋太陽城，我們要攻略寶可夢中心；在秋葉原，我們將沉浸在電玩與模型的世界中。這將是滿足所有動漫迷與遊戲迷夢想的一天！<br><span class="font-semibold text-red-600">此日住宿未含早餐</span>。</p>
+                     <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">☕</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">早餐推薦：コメダ珈琲店 (Komeda's Coffee)</h3>
+                                <p class="text-gray-600 mb-2">巴士抵達池袋後，前往這家名古屋風格的咖啡店，體驗點飲料就送厚片吐司的「Morning Service」特色早餐。<br><i class="fas fa-walking mr-1"></i>步行約10分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="http://www.komeda.co.jp/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/qV2kE9Vp9Z5x9vYf9" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖(池袋西口店)</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">👾</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">池袋太陽城探險</h3>
+                                <p class="text-gray-600 mb-2">寄放行李，主攻太陽城內的寶可夢中心MEGA TOKYO與NAMJATOWN。<br><i class="fas fa-walking mr-1"></i>步行約10分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://sunshinecity.jp/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/eB45d2tH5K8B4s4s8" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🏨</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">入住上野格子飯店及青年旅館 (16:00後)</h3>
+                                <p class="text-gray-600 mb-2">從JR「池袋站」搭乘<span class="font-bold">山手線</span>至「上野站」。Agoda訂單: 1621075710。<br><i class="fas fa-train mr-1"></i>交通約17分鐘。</p>
+                                 <div class="flex flex-wrap gap-2">
+                                    <a href="https://grids-hostel.com/hostels/ueno/ja/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/35fQW6d3e8j54K1A7" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🎮</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">秋葉原電器街</h3>
+                                <p class="text-gray-600 mb-2">從JR「上野站」搭乘<span class="font-bold">山手線</span>或<span class="font-bold">京濱東北線</span>至「秋葉原站」。<br><i class="fas fa-train mr-1"></i>交通約4分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://akihabara-guide.com/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/hGfsxstB7E58G6xL7" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 10: 7/23 (三) -->
+            <div class="timeline-item">
+                <div class="timeline-dot"><div class="w-8 h-8 rounded-full timeline-dot-inner flex items-center justify-center font-bold">10</div></div>
+                <div class="card p-6 md:p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-1">Day 10: 經典與潮流的碰撞</h2>
+                    <p class="text-gray-500 mb-6">7月23日 (三) | 東京</p>
+                    <p class="text-gray-700 mb-6 border-l-4 border-indigo-200 pl-4"><strong>本日行程企劃：</strong>今天將是趟穿梭於東京經典與現代的精彩旅程。上午，我們要登上代表東京的懷舊地標——東京鐵塔；下午，我們將轉往世界最時尚的街區之一——澀谷，站上360度露天展望台「SHIBUYA SKY」，並朝聖任天堂官方商店，感受最前衛的東京魅力！</p>
+                    <div class="space-y-6">
+                        <!-- Activity -->
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🗼</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">東京鐵塔 (10:00 - 12:00)</h3>
+                                <p class="text-gray-600 mb-2">從<span class="font-bold">東京Metro日比谷線</span>「上野站」搭至「神谷町站」。<br><i class="fas fa-train mr-1"></i>交通約20分鐘 + <i class="fas fa-walking mr-1"></i>步行7分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.tokyotower.co.jp/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/uXyY6Q4qWw9Z7zBf8" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                    <a href="https://www.klook.com/zh-TW/activity/1684-tokyo-tower-ticket-tokyo/" target="_blank" class="link-button btn-ticket"><i class="fas fa-ticket-alt mr-2"></i>預訂門票</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Activity -->
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🏙️</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">前進澀谷 & SHIBUYA SKY (13:00 - 16:00)</h3>
+                                <p class="text-gray-600 mb-2">從<span class="font-bold">都營大江戶線</span>「赤羽橋站」搭至「青山一丁目站」，轉乘<span class="font-bold">東京Metro銀座線</span>至「澀谷站」。登上SHIBUYA SCRAMBLE SQUARE頂樓的露天展望台，鳥瞰十字路口與東京市景。<br><i class="fas fa-train mr-1"></i>交通約15分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.shibuya-scramble-square.com/sky/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/q4nUQHB1sRde41sF8" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                    <a href="https://www.klook.com/zh-TW/activity/37255-shibuya-sky-ticket-tokyo/" target="_blank" class="link-button btn-ticket"><i class="fas fa-ticket-alt mr-2"></i>預訂門票</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Activity -->
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🍄</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">任天堂/寶可夢中心朝聖 (16:00 - 18:00)</h3>
+                                <p class="text-gray-600 mb-2">步行至澀谷PARCO百貨6樓，這裡是任天堂與寶可夢粉絲的終極聖地！<br><i class="fas fa-walking mr-1"></i>步行約10分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.nintendo.co.jp/officialstore/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/q38oH9qK8jV2Pz958" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                </div>
+                            </div>
+                        </div>
+                         <!-- Activity -->
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🌃</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">澀谷晚餐 & 返回上野 (18:00後)</h3>
+                                <p class="text-gray-600 mb-2">在澀谷享用晚餐後，從<span class="font-bold">JR「澀谷站」</span>搭乘<span class="font-bold">山手線</span>直達「上野站」返回飯店。<br><i class="fas fa-train mr-1"></i>交通約25分鐘。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 11: 7/24 (四) -->
+            <div class="timeline-item">
+                <div class="timeline-dot"><div class="w-8 h-8 rounded-full timeline-dot-inner flex items-center justify-center font-bold">11</div></div>
+                <div class="card p-6 md:p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-1">Day 11: 上野最終巡禮 & 滿載歸途</h2>
+                    <p class="text-gray-500 mb-6">7月24日 (四) | 東京 → 台灣</p>
+                    <p class="text-gray-700 mb-6 border-l-4 border-indigo-200 pl-4"><strong>本日行程企劃：</strong>旅程的最後一天，我們將深度探索我們的基地——上野。上午在歷史悠久的上野動物園與可愛的動物們道別，下午則在充滿活力的阿美橫丁進行最後的伴手禮衝刺。傍晚，我們將帶著滿滿的戰利品與美好的回憶，從容地前往機場，為這趟旅程劃下完美句點。</p>
+                     <div class="space-y-6">
+                        <!-- Activity -->
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🐼</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">上野動物園 (10:00 - 13:00)</h3>
+                                <p class="text-gray-600 mb-2">11:00前於飯店退房並寄放行李。步行前往上野公園內的動物園，探望可愛的熊貓和其他動物。<br><i class="fas fa-walking mr-1"></i>步行約10分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.tokyo-zoo.net/zoo/ueno/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/rG9B35TRwP8mKWx57" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                    <a href="https://www.klook.com/zh-TW/activity/70085-ueno-zoo-ticket-tokyo/" target="_blank" class="link-button btn-ticket"><i class="fas fa-ticket-alt mr-2"></i>預訂門票</a>
+                                </div>
+                            </div>
+                        </div>
+                         <!-- Activity -->
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">🛍️</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">午餐 & 阿美橫丁採購 (13:00 - 17:30)</h3>
+                                <p class="text-gray-600 mb-2">在上野站周邊享用午餐後，前往阿美橫丁進行最後的藥妝、零食採購。<br><i class="fas fa-walking mr-1"></i>步行約5分鐘。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.ameyoko.net/" target="_blank" class="link-button btn-website"><i class="fas fa-globe-asia mr-2"></i>官網</a>
+                                    <a href="https://maps.app.goo.gl/9hWdwtm6Fh1h3K746" target="_blank" class="link-button btn-map"><i class="fas fa-map-marked-alt mr-2"></i>地圖</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Activity -->
+                        <div class="flex items-start space-x-4">
+                            <div class="text-2xl pt-1">✈️</div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">前往機場 & 搭機返台 (18:00 出發)</h3>
+                                <p class="text-gray-600">返回飯店取行李，從「京成上野站」搭乘<span class="font-bold">京成Skyliner</span>前往<span class="font-bold">成田機場第一航廈</span>，準備搭乘21:10的酷航 TR871 班機返台。<br><i class="fas fa-train mr-1"></i>交通約45分鐘。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-
-    <script>
-        const itineraryData = [
-            {
-                day: 1, date: "7月14日 (日)", title: "啟程與抵達", city: "東京",
-                events: [
-                    { time: "12:00", icon: "✈️", title: "從林口出發前往機場", description: "從A9林口站搭乘桃園機場捷運至A12機場第一航廈站。", details: { type: "transport", text: "班機為15:30起飛，建議提早出發，預留充足時間辦理登機手續。", transport: ["搭乘桃園機場捷運普通車或直達車，約15分鐘即可抵達第一航廈。"], gmapLink: "https://maps.app.goo.gl/9q3i4G1fV3Z7Y2gC8", gmapEmbed:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.541459048187!2d121.37039937602334!3d25.01569477782811!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a818c4c68831%3A0x67646a78d7459052!2z5qGD5ZyS5o6o6YGTIChBOTnlhLrmkYIp!5e0!3m2!1szh-TW!2stw!4v1718854817578!5m2!1szh-TW!2stw" } },
-                    { time: "21:00", icon: "🚆", title: "從機場前往上野", description: "搭乘京成電鐵Skyliner前往市區。", details: { type: "transport", text: "Skyliner是從成田機場到上野最快速舒適的交通方式。", transport: ["在機場B1的「京成電鐵售票櫃檯」兌換預訂的Skyliner實體票並劃位。", "搭乘Skyliner，約41分鐘即可直達終點站<b>京成上野站</b>。", "出站後，步行約5-7分鐘即可抵達飯店。"], gmapLink: "https://maps.app.goo.gl/kM3h1R6F8J7n5P9G9", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.757827807755!2d139.7719601762494!3d35.70763562266851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188e9508823269%3A0x684c98e75a3424d6!2z5Lqs5oiQ5LiK6YeO6aeF!5e0!3m2!1szh-TW!2stw!4v1718860265147!5m2!1szh-TW!2stw"}},
-                    { time: "22:30", icon: "🏨", title: "入住上野皇冠山丘高級酒店", description: "抵達京成上野站後，步行前往飯店辦理入住。", details: { type: "info", text: "地址: 東京都台東区上野2-13-1", image: "https://i.imgur.com/L1n7X4P.jpg", gmapLink: "https://maps.app.goo.gl/3G52rTeFpWnXfAwo6", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.6943231952246!2d139.776906!3d35.7091391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188e9f5cf9ea1b%3A0x3467963b0df998c0!2sHotel%20Crown%20Hills%20Ueno%20Premier!5e0!3m2!1szh-TW!2stw!4v1718854973347!5m2!1szh-TW!2stw" } }
-                ]
-            },
-            {
-                day: 2, date: "7月15日 (一)", title: "魔法與科學", city: "東京",
-                events: [
-                    { time: "09:00", icon: "🏛️", title: "國立科學博物館", description: "從飯店步行前往，位於上野公園內。", details: { type: "info", text: "距離JR上野站公園出口步行約5分鐘。官網: https://www.kahaku.go.jp/english/", image: "https://i.imgur.com/9w3hJ4g.jpg", gmapLink: "https://maps.app.goo.gl/8v35q1X2j8KqZkM47", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.8160456578076!2d139.7745749762492!3d35.70617342267421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188e9454acb633%3A0x3f187a5649b5025!2z5ZyL56uL56eR5a245Y2a54mp6IKy!5e0!3m2!1szh-TW!2stw!4v1718853580554!5m2!1szh-TW!2stw" } },
-                    { time: "11:00", icon: "➡️", title: "前往哈利波特影城", description: "從上野搭乘電車前往豐島園站。", details: {type: "transport", text:"總車程約35-40分鐘。", transport:[ "從<b>JR上野站</b>搭乘<b>JR山手線</b> (往池袋/新宿方向)。", "在<b>JR池袋站</b>下車 (車程約16分鐘)。", "跟隨站內「西武線」指示牌轉乘<b>西武豐島線</b>。", "在終點站<b>豐島園站</b>下車 (車程約17分鐘)，即可抵達。" ], gmapLink: "https://maps.app.goo.gl/pM7K9L6rFqY5sH3S8", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d51842.17061719736!2d139.6631215443725!3d35.726581172605335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e3!4m5!1s0x60188e9508823269%3A0x684c98e75a3424d6!2z5Lqs5oiQ5LiK6YeO6aeF!3m2!1d35.707636!2d139.77196!4m5!1s0x6018edf292d73867%3A0x85ceba2d7e05669b!2z5p2x5Lqs6I-v57SN5YWE5byf5Z0I5Yip5r0i54m55b2x5Z-0!3m2!1d35.745187!2d139.645705!5e0!3m2!1szh-TW!2stw!4v1718864755866!5m2!1szh-TW!2stw"} },
-                    { time: "12:30", icon: "🎟️", title: "東京哈利波特影城", description: "12:30入場。身歷其境探索電影幕後，完整體驗約需3-4小時。", details: { type: "info", text: "午餐建議在影城內的餐廳解決，完全沉浸在魔法世界中。", image: "https://i.imgur.com/yNf2a6e.jpg", gmapLink: "https://maps.app.goo.gl/Fv9CF2cK68CShMjt6", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.2285313411417!2d139.6435159762511!3d35.74518732645761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018edf292d73867%3A0x85ceba2d7e05669b!2z5p2x5Lqs6I-v57SN5YWE5byf5Z0I5Yip5r0i54m55b2x5Z-0!5e0!3m2!1szh-TW!2stw!4v1718853488737!5m2!1szh-TW!2stw" } }
-                ]
-            },
-            {
-                day: 3, date: "7月16日 (二)", title: "新舊東京的交匯", city: "東京",
-                events: [
-                    { time: "09:30", icon: "➡️", title: "前往淺草", description: "從上野搭乘地鐵前往淺草。", details: {type: "transport", text:"參拜淺草觀音寺，漫步於仲見世商店街。", transport:["從<b>東京Metro上野站 (G16)</b> 搭乘<b>銀座線</b> (往淺草方向)。", "在終點站<b>淺草站 (G19)</b> 下車 (車程約5分鐘)。"], gmapLink: "https://maps.app.goo.gl/9q9wN2T5cQ2X7YgR7", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.815553195286!2d139.79471887624922!3d35.70618582267431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ec1a4463df1%3A0x7c0d7ce229b103e3!2z5rWF6I235a-2!5e0!3m2!1szh-TW!2stw!4v1718853639918!5m2!1szh-TW!2stw" } },
-                    { time: "13:00", icon: "➡️", title: "前往晴空塔", description: "從淺草前往晴空塔，可搭車或步行。", details: {type: "transport", text:"登上350m的天望甲板與450m的天望迴廊，360度俯瞰東京全景。", transport:["<b>【電車】</b>從<b>東武淺草站</b>搭乘<b>東武晴空塔線</b>，一站即達<b>東京晴空塔站</b> (約3分鐘)。", "<b>【步行】</b>沿隅田川步行約20分鐘，可欣賞沿途風景與晴空塔合影。"], image: "https://i.imgur.com/uVwFjMh.jpg", gmapLink: "https://maps.app.goo.gl/fC1c2gYc9j5GvNqG8", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.654889593207!2d139.8082301762495!3d35.7100670225793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed0d12f9adf%3A0x7d1d4fb31f43f72a!2z5p2x5Lqs5pmL56m25aGU!5e0!3m2!1szh-TW!2stw!4v1718853698017!5m2!1szh-TW!2stw" }},
-                    { time: "16:00", icon: "👾", title: "寶可夢中心 晴空塔店", description: "位於晴空塔底層的「東京晴空街道」商場東館4樓。", details: { type: "info", text: "這裡販售許多晴空塔限定商品，是寶可夢迷的朝聖地。官網: https://www.pokemon.co.jp/shop/pokecen/skytreetown/", image: "https://i.imgur.com/5c8g9fL.jpg", gmapLink: "https://maps.app.goo.gl/fC1c2gYc9j5GvNqG8", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.654889593207!2d139.8082301762495!3d35.7100670225793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed0d12f9adf%3A0x7d1d4fb31f43f72a!2z5p2x5Lqs5pmL56m25aGU!5e0!3m2!1szh-TW!2stw!4v1718853698017!5m2!1szh-TW!2stw"}}
-                ]
-            },
-            {
-                day: 4, date: "7月17日 (三)", title: "東京轉場，夜行關西", city: "東京",
-                events: [
-                    { time: "09:00", icon: "➡️", title: "前往東京車站", description: "從上野搭乘JR前往東京車站，寄放行李。", details: {type: "transport", text:"東京車站內大型置物櫃眾多，推薦在B1層的丸之內地下中央口或總武線地下月台聯絡通道尋找。", transport:["從<b>JR上野站</b>搭乘<b>JR山手線</b> 或 <b>JR京濱東北線</b> (往東京/品川方向)。", "約5-8分鐘即可抵達<b>東京車站</b>。"], gmapLink: "https://maps.app.goo.gl/8h7a2kX7B8m6b8sY7", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6481.716382022883!2d139.7621438935791!3d35.680456000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bfbd89f700b%3A0x277c49ba34ed38!2z5p2x5Lqs6aeF!5e0!3m2!1szh-TW!2stw!4v1718855146860!5m2!1szh-TW!2stw"}},
-                    { time: "11:00", icon: "🛍️", title: "東京車站一番街探索", description: "在車站地下的「東京動漫人物街」與「東京拉麵街」探索。", details: { type: "info", text: "午餐可在拉麵街解決，選擇一家排隊名店挑戰看看！", gmapLink: "https://maps.app.goo.gl/B9Z2J6vK9p5m5h7G7", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.838531278187!2d139.7656606762483!3d35.68102142279269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bf9a896843f%3A0x8e12953244853a51!2z5p2x5Lqs6aeF5LiA55Wl6KGX!5e0!3m2!1szh-TW!2stw!4v1718858850625!5m2!1szh-TW!2stw"} },
-                    { time: "18:00", icon: "🛁", title: "錢湯體驗：湊湯", description: "從東京車站搭車前往「湊湯」，洗去疲憊，為夜巴做準備。", details: { type: "transport", text: "湊湯是現代風格的設計師錢湯。地址: 東京都中央区湊1-6-2", transport:["從<b>JR東京車站</b>搭乘<b>JR京葉線</b> (往蘇我方向)。", "下一站即是<b>八丁堀站</b> (車程約2分鐘)。", "出站後步行約5分鐘即可抵達湊湯。"], gmapLink: "https://maps.app.goo.gl/5qj2kQ4wY7e3V6tP8", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.442192115115!2d139.7791837762477!3d35.6662459725955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018896388901869%3A0x897253285535f49!2z5湊æ-¯!5e0!3m2!1szh-TW!2stw!4v1718853982191!5m2!1szh-TW!2stw" } },
-                    { time: "21:00", icon: "🚌", title: "搭乘夜間巴士", description: "返回東京車站取行李，前往位於東京中城八重洲地下二樓的巴士總站。21:40搭乘WILLER EXPRESS前往大阪。", details: { type: "info", text: "巴士站點：Bus Terminal Tokyo Yaesu", gmapLink: "https://maps.app.goo.gl/vJsuPxdLVWk5T1TQ6", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.8808565625513!2d139.76711790523797!3d35.67993555529624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b0dfb40b7ed%3A0xecaac23581109dfc!2z5p2x5Lqs5Lit5Z-05YWr6YeN5rSy!5e0!3m2!1szh-TW!2stw!4v1718853821869!5m2!1szh-TW!2stw" } }
-                ]
-            },
-            {
-                day: 5, date: "7月18日 (四)", title: "USJ全日狂歡", city: "大阪",
-                events: [
-                    { time: "07:15", icon: "🎢", title: "日本環球影城", description: "巴士抵達USJ，先在園區外寄放行李並享用早餐。", details: { type: "info", text: "USJ入口外及JR站均設有大型置物櫃。", gmapLink: "https://maps.app.goo.gl/mEwEa7Q5p8yA6eR97", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.3833566666665!2d135.432333376211!3d34.6703333729291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e0d5a7d65495%3A0x1c8136371891b93!2z5pel5p2x55Cq55CG5b2x5Z-0!5e0!3m2!1szh-TW!2stw!4v1718855325881!5m2!1szh-TW!2stw" } },
-                    { time: "19:00", icon: "🏨", title: "入住大阪公園前線酒店", description: "遊玩結束後，入住USJ正對面的飯店。", details: {type: "info", text: "The Park Front Hotel at Universal Studios Japan™，步行至園區僅需1分鐘。", gmapLink: "https://maps.app.goo.gl/tUcnQ8v2E4p4ZzHPA", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.411651811561!2d135.43440627621102!3d34.66961447292945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e0d5e160e1d1%3A0xd3f27f05e04a7c13!2z5pel5p2x55Cq55CG5b2x5Z-05YWs5ZyS5YmN57ea6YGT5bqX!5e0!3m2!1szh-TW!2stw!4v1718855395254!5m2!1szh-TW!2stw"}},
-                    { time: "20:00", icon: "🐙", title: "晚餐：章魚燒博物館", description: "在Universal CityWalk的「大阪章魚燒博物館(TAKOPA)」一次品嚐多家名店的章魚燒。", details: { type: "info", text: "位於飯店與車站之間，步行即可抵達。", gmapLink: "https://maps.app.goo.gl/tQk1zM8kS2G5Yj5r5", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.442973167448!2d135.43615587621095!3d34.66883237293005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e0d503254553%3A0xe5a864d06a457a41!2sUniversal%20CityWalk%20Osaka!5e0!3m2!1szh-TW!2stw!4v1718855474343!5m2!1szh-TW!2stw" }}
-                ]
-            },
-            {
-                day: 6, date: "7月19日 (五)", title: "大阪海港與美食", city: "大阪",
-                events: [
-                    { time: "09:30", icon: "➡️", title: "前往大阪海遊館", description: "從USJ區域搭乘電車前往海遊館。", details: { type: "transport", text:"參觀世界最大級別的水族館，與鯨鯊相遇。", transport:[ "從<b>JR環球影城站</b>搭乘<b>JR夢咲線</b>至<b>西九條站</b>。", "在西九條站轉乘<b>阪神難波線</b>至<b>九條站</b>。", "再轉乘<b>Osaka Metro中央線</b>至<b>大阪港站</b> (車程約30-35分鐘)。", "出站後步行約5分鐘即可抵達。"], image: "https://i.imgur.com/YxV8a9s.jpg", gmapLink: "https://maps.app.goo.gl/7N9P4Vz4sX5YwX9Y8", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.251941659902!2d135.42674987621028!3d34.64850727293774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e702e8e91e77%3A0x26955a58a69a4051!2z5aSn6Ziq5rWc6YGT6aCt!5e0!3m2!1szh-TW!2stw!4v1718854084050!5m2!1szh-TW!2stw" }},
-                    { time: "14:30", icon: "➡️", title: "前往大阪城", description: "從海遊館區域搭乘地鐵前往大阪城。", details: { type: "transport", text:"參觀大阪的歷史象徵，宏偉的天守閣。", transport:["從<b>大阪港站</b>搭乘<b>Osaka Metro中央線</b>。", "在<b>谷町四丁目站</b>下車 (車程約15分鐘)。", "出站後步行約15-20分鐘即可抵達天守閣。"], image: "https://i.imgur.com/uQ8tV8t.jpg", gmapLink: "https://maps.app.goo.gl/R5e8qJ6vY6S3f9G69", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3280.933333333333!2d135.526666676211!3d34.6816666729246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e71665972403%3A0x23a372134553255a!2z5aSn6Ziq5Z-O!5e0!3m2!1szh-TW!2stw!4v1718854153926!5m2!1szh-TW!2stw" } },
-                    { time: "18:00", icon: "➡️", title: "前往道頓堀", description: "入住新飯店後，前往道頓堀，沉浸在霓虹燈海中。", details: { type: "transport", text: "從大阪城搭地鐵前往難波站。", transport:["從<b>谷町四丁目站</b>搭乘<b>Osaka Metro谷町線</b>或<b>中央線</b>轉<b>御堂筋線</b>。", "在<b>難波站</b>下車，出站即是道頓堀區域。"], gmapLink: "https://maps.app.goo.gl/eGAmh2o9Qj7f9pXf7", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.3833566666665!2d135.500833376211!3d34.6703333729291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e7144ab91e31%3A0x49a9525455642263!2z6YGT6aCt5a-2!5e0!3m2!1szh-TW!2stw!4v1718854316987!5m2!1szh-TW!2stw" }}
-                ]
-            },
-            {
-                day: 7, date: "7月20日 (六)", title: "京都電影與武士魂", city: "京都",
-                events: [
-                    { time: "09:00", icon: "➡️", title: "從大阪移動至京都", description: "從大阪搭乘JR前往京都，先至飯店寄放行李。", details:{type:"transport", text:"JR新快速列車是最便捷的選擇。", transport:[ "從您飯店附近的車站搭乘<b>Osaka Metro御堂筋線</b>至<b>梅田站</b>。", "步行至<b>JR大阪站</b>。", "搭乘<b>JR京都線新快速</b>列車，約29分鐘直達<b>JR京都站</b>。" ], gmapLink:"https://maps.app.goo.gl/dJ7B6K8qFp9wN3yH9", gmapEmbed:"https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d104595.39912534571!2d135.5786417758764!3d34.84534720993078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e3!4m5!1s0x6000e68d95e3a70b%3A0xf9559f7707a759e4!2z5aSn6Ziq6aeF!3m2!1d34.7024854!2d135.4959506!4m5!1s0x600108ae91357e63%3A0x19999741031c19b4!2z5Lqs6YO96aeF!3m2!1d34.985849!2d135.758767!5e0!3m2!1szh-TW!2stw!4v1718865103043!5m2!1szh-TW!2stw"}},
-                    { time: "10:30", icon: "➡️", title: "前往東映太秦映畫村", description: "從京都車站搭乘JR前往。", details: { type: "transport", text: "體驗日本時代劇的世界。", transport:["在<b>JR京都站</b>的31-33號月台搭乘<b>JR嵯峨野線 (山陰本線)</b>。", "在<b>太秦站</b>下車 (車程約16分鐘)。", "出站後步行約5分鐘即可抵達。"], image: "https://i.imgur.com/2U2j2oF.jpg", gmapLink: "https://maps.app.goo.gl/Wq4i4R7wA8q9Zk2G6", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3268.049333333333!2d135.706666676223!3d35.00583337281666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6001078700000001%3A0x9755a2e37339b30!2z5p2x5Lqs5aSq5aSq5pys5L-d5p2x5Lqs5p2x5Lqs!5e0!3m2!1szh-TW!2stw!4v1718854398765!5m2!1szh-TW!2stw" } },
-                    { time: "15:00", icon: "➡️", title: "前往武士與忍者博物館", description: "從映畫村搭乘電車前往市區。", details: { type: "transport", text: "互動式體驗，穿戴武士盔甲、學習劍術、投擲手裏劍。", transport:[ "從<b>JR太秦站</b>搭乘<b>JR嵯峨野線</b>返回<b>二條站</b>。", "在二條站轉乘<b>京都市營地下鐵東西線</b>。", "在<b>京都市役所前站</b>下車，步行約5-7分鐘即可抵達。"], image: "https://i.imgur.com/fJgY5hW.jpg", gmapLink: "https://maps.app.goo.gl/bW5p2i6kL9Qj8s7F6", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3268.077673587844!2d135.7656118762232!3d35.00508547281692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6001088d083818e1%3A0xe54d6e962b92f703!2z5q2m5aOr44Go5bK56ICF5Y2a54mp6IKyKGZyb20gKYleY2suaW5mbyk!5e0!3m2!1szh-TW!2stw!4v1718859187315!5m2!1szh-TW!2stw" }}
-                ]
-            },
-            {
-                day: 8, date: "7月21日 (日)", title: "奈良神鹿與夜歸", city: "京都/奈良",
-                events: [
-                    { time: "08:30", icon: "🧳", title: "退房 & 行李寄放", description: "辦理退房，前往京都車站，將大件行李存入大型置物櫃。", details:{type:"info", text:"八条口附近有充足的大型置物櫃。", gmapLink:"https://maps.app.goo.gl/uR4P7tN3mQ3rY5sDA", gmapEmbed:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3268.63600994968!2d135.7584166762228!3d34.99046797281105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x600108ae91357e63%3A0x19999741031c19b4!2z5Lqs6YO96aeF!5e0!3m2!1szh-TW!2stw!4v1718865243167!5m2!1szh-TW!2stw"}},
-                    { time: "09:30", icon: "➡️", title: "前往奈良", description: "從京都車站搭乘近鐵電車前往奈良。", details: {type:"transport", text:"近鐵奈良站比JR奈良站更靠近奈良公園核心景區。", transport:["從京都車站的近鐵月台搭乘<b>近鐵京都線(急行)</b>列車。", "約45-50分鐘即可直達<b>近鐵奈良站</b>。"], gmapLink:"https://maps.app.goo.gl/9D4JpX7M7N2rF7pA6", gmapEmbed:"https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d104710.43577317737!2d135.7275727931652!3d34.83296053337962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e3!4m5!1s0x600108ae91357e63%3A0x19999741031c19b4!2z5Lqs6YO96aeF!3m2!1d34.985849!2d135.758767!4m5!1s0x6001398000000001%3A0x9755a2e37339b30!2z5Lqs6YO96LGG6Imv6aeF!3m2!1d34.681667!2d135.836667!5e0!3m2!1szh-TW!2stw!4v1718865324707!5m2!1szh-TW!2stw"}},
-                    { time: "10:30", icon: "🌳", title: "奈良公園 & 東大寺", description: "與溫馴的鹿群互動，參觀宏偉的東大寺大佛殿。", details: { type: "info", text: "可以購買鹿仙貝餵食鹿群，但請注意安全。", image: "https://i.imgur.com/nZ2X3yH.jpg", gmapLink: "https://maps.app.goo.gl/cT7p4J7h5X6YwX9Y6", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3268.049333333333!2d135.836666676223!3d34.68166667281666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6001398000000001%3A0x9755a2e37339b30!2z5aWI6Imv5YWs5ZyS!5e0!3m2!1szh-TW!2stw!4v1718854398765!5m2!1szh-TW!2stw" }},
-                    { time: "16:00", icon: "🛁", title: "返回京都 & 錢湯體驗", description: "返回京都車站，前往車站附近的「大正湯」沐浴。", details: { type: "transport", text: "大正湯是夜巴乘客的好夥伴，距離八条口僅4分鐘步行路程。", transport:["從<b>近鐵奈良站</b>搭乘<b>近鐵京都線(急行)</b>返回<b>京都車站</b>。"], gmapLink: "https://maps.app.goo.gl/L9R7hXjE4v8G3Xm86", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3268.618635836262!2d135.7570857762228!3d34.99092497281084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x600108ae91357e63%3A0x19999741031c19b4!2z5aSn5q2p5rmv!5e0!3m2!1szh-TW!2stw!4v1718855660601!5m2!1szh-TW!2stw" } },
-                    { time: "22:30", icon: "🚌", title: "搭乘夜間巴士", description: "取回行李，前往京都站八条口巴士乘降場。23:00搭乘SAKURA觀光巴士返回東京。", details: { type: "info", text: "乘車地點：JR京都站 八条口觀光巴士乘降處(Avanti前)", gmapLink: "https://maps.app.goo.gl/53X5h7vW8zY5kM478", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3268.63600994968!2d135.7584166762228!3d34.99046797281105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x600108ae89b0351d%3A0x3344b36c4f46844f!2zS1lPVE8gQVZBTlRJ!5e0!3m2!1szh-TW!2stw!4v1718855734346!5m2!1szh-TW!2stw" } }
-                ]
-            },
-            {
-                day: 9, date: "7月22日 (一)", title: "動漫聖地巡禮", city: "東京",
-                events: [
-                    { time: "06:00", icon: "➡️", title: "從池袋前往上野", description: "巴士抵達池袋後，先搭JR山手線至上野，前往飯店寄放行李。", details:{type:"transport", text:"巴士抵達點為池袋太陽城文化會館。", transport:["從<b>JR池袋站</b>搭乘<b>JR山手線</b> (往上野/東京方向)。", "約16分鐘即可抵達<b>JR上野站</b>。"], gmapLink: "https://maps.app.goo.gl/u5K8wZ9Y6X7vS3f9G", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.3666666666667!2d139.718333376249!3d35.7175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d67c52a057d%3A0x6b7728362678855a!2z5aSq6Zm95Z-O!5e0!3m2!1szh-TW!2stw!4v1718854398765!5m2!1szh-TW!2stw" }},
-                    { time: "10:00", icon: "➡️", title: "前往池袋太陽城", description: "從上野再次搭車前往池袋，主攻寶可夢中心MEGA TOKYO與NAMJATOWN。", details: { type: "transport", text: "午餐可在太陽城內的餐廳解決。", transport:["從<b>JR上野站</b>搭乘<b>JR山手線</b> (往池袋/新宿方向)。", "約16分鐘即可抵達<b>JR池袋站</b>。", "從車站東口步行約8分鐘可達太陽城。"], image: "https://i.imgur.com/5c8g9fL.jpg", gmapLink: "https://maps.app.goo.gl/u5K8wZ9Y6X7vS3f9G", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.3666666666667!2d139.718333376249!3d35.7175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d67c52a057d%3A0x6b7728362678855a!2z5aSq6Zm95Z-O!5e0!3m2!1szh-TW!2stw!4v1718854398765!5m2!1szh-TW!2stw" } },
-                    { time: "16:30", icon: "➡️", title: "前往秋葉原", description: "從上野搭車前往動漫與電玩天堂。", details: { type: "transport", text: "體驗大型電玩中心、扭蛋會館。", transport:["從<b>JR上野站</b>搭乘<b>JR山手線</b>或<b>JR京濱東北線</b> (往東京/品川方向)。", "約4分鐘即可抵達<b>秋葉原站</b>。"], gmapLink: "https://maps.app.goo.gl/yL9X8wV6zX7vS3f9G", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.2666666666667!2d139.771666676249!3d35.695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c1d00000001%3A0x9755a2e37339b30!2z56eB6JGJ5Y6f6Zu75ZCI6KGX!5e0!3m2!1szh-TW!2stw!4v1718854398765!5m2!1szh-TW!2stw" }}
-                ]
-            },
-            {
-                day: 10, date: "7月23日 (二)", title: "經典高塔與寶可夢", city: "東京",
-                 events: [
-                    { time: "10:00", icon: "➡️", title: "前往東京鐵塔", description: "從上野搭乘地鐵前往東京鐵塔。", details: { type: "transport", text: "前往東京的經典地標，欣賞城市風光。", transport:[ "從<b>上野站 (H18)</b>搭乘<b>東京Metro日比谷線</b>。", "在<b>神谷町站 (H05)</b>下車 (車程約18分鐘)。", "從1號出口步行約7分鐘即可抵達。"], image: "https://i.imgur.com/kP1pC9t.jpg", gmapLink: "https://maps.app.goo.gl/jL3Z9wY5X6YwX9Y6", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.6666666666667!2d139.745!3d35.65833337259666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b0d00000001%3A0x9755a2e37339b30!2z5p2x5Lqs6YGL5aGU!5e0!3m2!1szh-TW!2stw!4v1718854398765!5m2!1szh-TW!2stw" } },
-                    { time: "14:00", icon: "👾", title: "寶可夢卡牌站 東京鐵塔店", description: "位於東京鐵塔Foot Town一樓，步行即可。", details: { type: "info", text: "雖然規模不大，但可以找到一些卡牌相關商品，並可能參與對戰活動。", gmapLink: "https://maps.app.goo.gl/jL3Z9wY5X6YwX9Y6", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.6666666666667!2d139.745!3d35.65833337259666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b0d00000001%3A0x9755a2e37339b30!2z5p2x5Lqs6YGL5aGU!5e0!3m2!1szh-TW!2stw!4v1718854398765!5m2!1szh-TW!2stw" }},
-                    { time: "16:00", icon: "🌳", title: "芝公園散步", description: "在東京鐵塔旁的芝公園悠閒散步，這裡是拍攝鐵塔全景的最佳地點之一。", details: { type: "info", text: "從東京鐵塔步行即可抵達，是日本最古老的公園之一。", gmapLink: "https://maps.app.goo.gl/bH4N2o9Qj7f9pXf7", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.6666666666667!2d139.748333376248!3d35.65833337259666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b0d00000001%3A0x9755a2e37339b30!2z6Iqx5YWs5ZyS!5e0!3m2!1szh-TW!2stw!4v1718854398765!5m2!1szh-TW!2stw" } }
-                ]
-            },
-            {
-                day: 11, date: "7月24日 (三)", title: "最後巡禮與歸途", city: "東京",
-                events: [
-                    { time: "10:00", icon: "🛍️", title: "阿美橫丁採購", description: "退房後將行李寄放在上野車站置物櫃。在阿美橫丁進行最後的藥妝、零食採購。", details: { type: "info", text: "從飯店步行即可抵達，是感受在地市場氛圍、購買伴手禮的好地方。", gmapLink: "https://maps.app.goo.gl/L9nZ8wV6zX7vS3f9G", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.0!2d139.771666676249!3d35.70333337258333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c1d00000001%3A0x9755a2e37339b30!2z6Zi_576O5qiq5LiT!5e0!3m2!1szh-TW!2stw!4v1718854398765!5m2!1szh-TW!2stw" }},
-                    { time: "16:30", icon: "➡️", title: "前往成田機場", description: "返回上野車站取行李，從京成上野站搭乘Skyliner前往機場。", details: {type:"transport", text:"Skyliner是最快最舒適的選擇，準備搭機返家。", transport:["從<b>京成上野站</b>搭乘<b>Skyliner</b>。", "約44分鐘即可直達成田機場第一航廈。"], gmapLink: "https://maps.app.goo.gl/kM3h1R6F8J7n5P9G9", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.757827807755!2d139.7719601762494!3d35.70763562266851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188e9508823269%3A0x684c98e75a3424d6!2z5Lqs5oiQ5LiK6YeO6aeF!5e0!3m2!1szh-TW!2stw!4v1718860265147!5m2!1szh-TW!2stw"}},
-                    { time: "21:10", icon: "🛫", title: "搭乘酷航TR871返航", description: "辦理登機手續，滿載美好回憶返回台灣。", details: {type:"info", text:"班機於成田機場第一航廈起飛。", gmapLink: "https://maps.app.goo.gl/TjV1UuYt9wXv4eKx5", gmapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3230.468205421528!2d140.3838568762594!3d35.93510532454687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6022f183b1e3286d%3A0x242498e8338b1d9!2z5oiQ55Sw55u46ZmdIOeUouS4i-W6lyAxIOaWh-aWsA!5e0!3m2!1szh-TW!2stw!4v1718854897262!5m2!1szh-TW!2stw"}}
-                ]
-            }
-        ];
-
-        const app = {
-            init() {
-                this.renderNav();
-                this.renderItinerary();
-                this.setupEventListeners();
-                this.observeSections();
-            },
-            renderNav() {
-                const navContainer = document.getElementById('nav-buttons-container');
-                navContainer.innerHTML = itineraryData.map(day => `
-                    <button data-day="${day.day}" class="nav-button px-4 py-2 text-sm font-medium text-stone-600 bg-white rounded-full shadow-sm hover:bg-teal-500 hover:text-white">
-                        Day ${day.day}
-                    </button>
-                `).join('');
-            },
-            renderItinerary() {
-                const itineraryContainer = document.getElementById('itinerary-container');
-                itineraryContainer.innerHTML = itineraryData.map(day => `
-                    <section id="day-${day.day}" class="mb-12">
-                        <h2 class="text-3xl font-bold text-stone-800 mb-1 sticky top-20 bg-stone-100/80 backdrop-blur-sm py-2 z-0">Day ${day.day}: ${day.title}</h2>
-                        <p class="text-lg text-teal-600 font-semibold mb-6">${day.date} - ${day.city}</p>
-                        <div class="space-y-4">
-                            ${day.events.map(event => this.createEventCard(event)).join('')}
-                        </div>
-                    </section>
-                `).join('');
-            },
-            createEventCard(event) {
-                const hasDetails = event.details && (event.details.text || (event.details.options && event.details.options.length > 0) || event.details.gmapLink || (event.details.transport && event.details.transport.length > 0) );
-                return `
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300 ${hasDetails ? 'cursor-pointer' : ''}" ${hasDetails ? `onclick="app.openModal(this)"` : ''}
-                         data-title="${event.title}" 
-                         data-description="${event.description}"
-                         data-details='${JSON.stringify(event.details || {})}'>
-                        <div class="flex items-center p-4">
-                            <div class="flex-shrink-0 w-20 text-center">
-                                <p class="text-2xl">${event.icon}</p>
-                                <p class="text-sm font-semibold text-stone-700 mt-1">${event.time}</p>
-                            </div>
-                            <div class="ml-4 flex-grow">
-                                <h3 class="text-lg font-bold text-stone-800">${event.title}</h3>
-                                <p class="text-stone-600 mt-1">${event.description}</p>
-                            </div>
-                            ${hasDetails ? `
-                            <div class="ml-4 flex-shrink-0">
-                                <svg class="w-6 h-6 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            </div>` : ''}
-                        </div>
-                    </div>
-                `;
-            },
-            openModal(element) {
-                const title = element.dataset.title;
-                const description = element.dataset.description;
-                const details = JSON.parse(element.dataset.details);
-                const modal = document.getElementById('modal');
-                const modalBody = document.getElementById('modal-body');
-
-                let detailsHtml = `
-                    <h3 class="text-2xl font-bold text-teal-700 mb-2">${title}</h3>
-                    <p class="text-stone-600 mb-4">${description}</p>
-                `;
-
-                if (details.image) {
-                    detailsHtml += `<img src="${details.image}" alt="${title}" class="w-full h-auto max-h-64 object-cover rounded-lg mb-4">`;
-                }
-                
-                if (details.text) {
-                    detailsHtml += `<div class="prose max-w-none text-stone-700 mb-4">${details.text.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, '<a href="$1" target="_blank" class="text-teal-600 hover:underline">$1</a>')}</div>`;
-                }
-
-                if (details.transport && details.transport.length > 0) {
-                    detailsHtml += '<h4 class="text-lg font-semibold mt-4 mb-2 text-stone-800">交通指南</h4><ol class="list-decimal list-inside space-y-2 text-stone-700 mb-4">';
-                    details.transport.forEach(step => {
-                        detailsHtml += `<li>${step}</li>`;
-                    });
-                    detailsHtml += '</ol>';
-                }
-
-                if (details.type === 'food' && details.options) {
-                    detailsHtml += '<h4 class="text-lg font-semibold mt-4 mb-2 text-stone-800">推薦餐廳：</h4><ul class="space-y-2 mb-4">';
-                    details.options.forEach(opt => {
-                        detailsHtml += `
-                            <li class="flex items-center">
-                                <span class="text-teal-600 mr-2">🍜</span>
-                                <a href="${opt.link}" target="_blank" class="text-blue-600 hover:underline">${opt.name}</a>
-                                ${opt.gmapLink ? `<a href="${opt.gmapLink}" target="_blank" class="ml-2 text-xs text-stone-500 hover:text-teal-600">(地圖)</a>` : ''}
-                            </li>`;
-                    });
-                    detailsHtml += '</ul>';
-                }
-
-                if (details.gmapEmbed) {
-                    detailsHtml += `
-                        <div class="mt-4">
-                            <h4 class="text-lg font-semibold mb-2 text-stone-800">地圖位置</h4>
-                            <div class="map-container">
-                                <iframe src="${details.gmapEmbed}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                            </div>
-                            <a href="${details.gmapLink}" target="_blank" class="inline-block mt-2 text-sm text-teal-600 hover:underline">在 Google 地圖中開啟 &rarr;</a>
-                        </div>
-                    `;
-                }
-
-                modalBody.innerHTML = detailsHtml;
-                modal.classList.remove('hidden');
-                document.body.classList.add('overflow-hidden');
-                
-                setTimeout(() => {
-                    document.getElementById('modal-backdrop').classList.remove('opacity-0');
-                    document.getElementById('modal-content').classList.remove('scale-95');
-                }, 10);
-            },
-            closeModal() {
-                const modal = document.getElementById('modal');
-                document.getElementById('modal-backdrop').classList.add('opacity-0');
-                document.getElementById('modal-content').classList.add('scale-95');
-                
-                setTimeout(() => {
-                    modal.classList.add('hidden');
-                    document.body.classList.remove('overflow-hidden');
-                }, 300);
-            },
-            setupEventListeners() {
-                document.getElementById('modal-close-button').addEventListener('click', this.closeModal);
-                document.getElementById('modal-backdrop').addEventListener('click', this.closeModal);
-                document.getElementById('nav-buttons-container').addEventListener('click', (e) => {
-                    if (e.target.tagName === 'BUTTON') {
-                        const day = e.target.dataset.day;
-                        document.getElementById(`day-${day}`).scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            },
-            observeSections() {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const day = entry.target.id.split('-')[1];
-                            const navButton = document.querySelector(`.nav-button[data-day='${day}']`);
-                            document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
-                            navButton.classList.add('active');
-                            navButton.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                        }
-                    });
-                }, { rootMargin: '-40% 0px -60% 0px' });
-
-                document.querySelectorAll('section[id^="day-"]').forEach(section => {
-                    observer.observe(section);
-                });
-            }
-        };
-
-        document.addEventListener('DOMContentLoaded', () => {
-            app.init();
-        });
-    </script>
 </body>
 </html>
