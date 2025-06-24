@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🇯🇵 日本親子探索之旅 2025 - 東京・大阪・京都・奈良 11天精彩行程</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .timeline-item {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        .timeline-item:nth-child(odd) {
+            animation-delay: 0.2s;
+        }
+        .timeline-item:nth-child(even) {
+            animation-delay: 0.4s;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .photo-item img {
+            transition: transform 0.3s ease;
+        }
+        .photo-item:hover img {
+            transform: scale(1.1);
+        }
+        .weather-widget {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+        }
+        .map-container {
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl font-bold mb-4">🇯🇵 日本親子探索之旅</h1>
+            <p class="text-2xl mb-2">東京・大阪・京都・奈良</p>
+            <p class="text-xl opacity-90">2025年7月14日 - 7月24日 | 11天精彩行程</p>
+            <div class="mt-8 flex justify-center space-x-4">
+                <div class="bg-white bg-opacity-20 rounded-lg px-4 py-2">
+                    <i class="fas fa-calendar-alt mr-2"></i>11天
+                </div>
+                <div class="bg-white bg-opacity-20 rounded-lg px-4 py-2">
+                    <i class="fas fa-map-marker-alt mr-2"></i>4城市
+                </div>
+                <div class="bg-white bg-opacity-20 rounded-lg px-4 py-2">
+                    <i class="fas fa-users mr-2"></i>親子旅遊
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="sticky-nav border-b">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-center space-x-6 py-4">
+                <a href="#day1" class="text-blue-600 hover:text-blue-800 font-medium">Day 1-2</a>
+                <a href="#day3" class="text-blue-600 hover:text-blue-800 font-medium">Day 3-4</a>
+                <a href="#day5" class="text-blue-600 hover:text-blue-800 font-medium">Day 5-6</a>
+                <a href="#day7" class="text-blue-600 hover:text-blue-800 font-medium">Day 7-8</a>
+                <a href="#day9" class="text-blue-600 hover:text-blue-800 font-medium">Day 9-11</a>
+                <a href="#weather" class="text-blue-600 hover:text-blue-800 font-medium">天氣</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Weather Widget -->
+    <div id="weather" class="container mx-auto px-4 py-8">
+        <div class="weather-widget text-white rounded-lg p-6 mb-8">
+            <h3 class="text-2xl font-bold mb-4"><i class="fas fa-cloud-sun mr-2"></i>7月份天氣預報</h3>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="text-center">
+                    <div class="text-lg font-semibold">東京</div>
+                    <div class="text-3xl my-2">🌤️</div>
+                    <div class="text-sm">28-32°C</div>
+                    <div class="text-xs opacity-75">多雲時晴</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-lg font-semibold">大阪</div>
+                    <div class="text-3xl my-2">☀️</div>
+                    <div class="text-sm">30-35°C</div>
+                    <div class="text-xs opacity-75">晴朗炎熱</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-lg font-semibold">京都</div>
+                    <div class="text-3xl my-2">🌦️</div>
+                    <div class="text-sm">29-34°C</div>
+                    <div class="text-xs opacity-75">午後雷陣雨</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-lg font-semibold">奈良</div>
+                    <div class="text-3xl my-2">🌤️</div>
+                    <div class="text-sm">28-33°C</div>
+                    <div class="text-xs opacity-75">多雲</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day 1-2: Tokyo Start -->
+    <section id="day1" class="container mx-auto px-4 py-8">
+        <div class="timeline-item">
+            <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">Day 1-2: 啟程東京，魔法與科學</h2>
+            
+            <!-- Day 1 -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-8 card-hover">
+                <div class="flex items-center mb-4">
+                    <div class="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4">1</div>
+                    <h3 class="text-2xl font-bold text-gray-800">7月14日 (一) - 啟程東京，進駐上野基地</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-blue-600"><i class="fas fa-plane mr-2"></i>成田機場抵達</h4>
+                        <p class="text-gray-700 mb-4">搭乘酷航 TR870 班機 (15:30) 從桃園出發，19:55 抵達東京成田機場第一航廈</p>
+                        
+                        <div class="photo-gallery mb-4">
+                            <div class="photo-item">
+                                <img src="https://img.bobblog.tw/2019/tokyo/transport/fuji-train/narita-airport-1.jpg" alt="成田機場第一航廈" class="w-full h-32 object-cover">
+                            </div>
+                            <div class="photo-item">
+                                <img src="https://d1grca2t3zpuug.cloudfront.net/2022/08/naridainport01.jpg" alt="成田機場入境大廳" class="w-full h-32 object-cover">
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-100 p-3 rounded mb-4">
+                            <h5 class="font-semibold text-gray-800">📍 成田機場位置</h5>
+                            <p class="text-sm text-gray-600">千葉縣成田市古込1-1</p>
+                            <div class="map-container mt-2">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.4544!2d140.38695!3d35.76416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6022f1c4a0c8eced%3A0x2bb9e2f3e3b7b3a!2sNarita%20International%20Airport!5e0!3m2!1sen!2sjp!4v1652345678901!5m2!1sen!2sjp" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-green-600"><i class="fas fa-train mr-2"></i>京成Skyliner快速抵達</h4>
+                        <p class="text-gray-700 mb-4">搭乘Skyliner直達京成上野站，交通時間約45分鐘</p>
+                        
+                        <div class="photo-gallery mb-4">
+                            <div class="photo-item">
+                                <img src="https://www.keisei.co.jp/keisei/tetudou/skyliner/us/assets/images/skyliner/index/photo_cabin.jpg" alt="Skyliner內部" class="w-full h-32 object-cover">
+                            </div>
+                            <div class="photo-item">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Keisei_Skyliner_interior.jpg" alt="Skyliner座位" class="w-full h-32 object-cover">
+                            </div>
+                        </div>
+                        
+                        <h4 class="text-xl font-semibold mb-3 text-purple-600"><i class="fas fa-hotel mr-2"></i>上野皇冠山丘高級酒店</h4>
+                        <div class="photo-gallery mb-4">
+                            <div class="photo-item">
+                                <img src="https://natasha-traveler.tw/wp-content/uploads/2025/01/Hotel-Crown-Hills-Ueno-Premier-02.jpg" alt="上野皇冠山丘酒店外觀" class="w-full h-32 object-cover">
+                            </div>
+                            <div class="photo-item">
+                                <img src="https://natasha-traveler.tw/wp-content/uploads/2025/01/Hotel-Crown-Hills-Ueno-Premier-24.jpg" alt="酒店房間景觀" class="w-full h-32 object-cover">
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-100 p-3 rounded">
+                            <h5 class="font-semibold text-gray-800">📍 酒店位置</h5>
+                            <p class="text-sm text-gray-600">東京都台東區東上野2-14-26</p>
+                            <p class="text-xs text-green-600 mt-1">✅ 包含早餐 | Agoda訂單: 1621352843</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 2 -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-8 card-hover">
+                <div class="flex items-center mb-4">
+                    <div class="bg-green-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4">2</div>
+                    <h3 class="text-2xl font-bold text-gray-800">7月15日 (二) - 魔法與科學的奇幻一日</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-blue-600"><i class="fas fa-microscope mr-2"></i>國立科學博物館</h4>
+                        <p class="text-gray-700 mb-4">上午 09:00 - 11:00，探索地球奧秘與恐龍化石</p>
+                        
+                        <div class="photo-gallery mb-4">
+                            <div class="photo-item">
+                                <img src="https://tw.wamazing.com/media/wp-content/uploads/sites/4/2019/08/kokuritsukagaku-hakubutsukan_41484053_M.jpg" alt="國立科學博物館外觀" class="w-full h-32 object-cover">
+                            </div>
+                            <div class="photo-item">
+                                <img src="https://www.gotokyo.org/en/spot/140/images/140_0177_8_1400x1100.jpg" alt="博物館內部展示" class="w-full h-32 object-cover">
+                            </div>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-3 rounded mb-4">
+                            <h5 class="font-semibold text-blue-800">📍 博物館位置</h5>
+                            <p class="text-sm text-blue-600">台東區上野公園7-20</p>
+                            <p class="text-xs text-orange-600 mt-1">⚠️ 海之日國定假日，人潮較多</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-purple-600"><i class="fas fa-magic mr-2"></i>東京哈利波特影城</h4>
+                        <p class="text-gray-700 mb-4">12:30入場，體驗魔法世界的奇幻場景</p>
+                        
+                        <div class="photo-gallery mb-4">
+                            <div class="photo-item">
+                                <img src="https://lovetogo.tw/202401-tokyo/harry-potter/photo/20240204-1224-7557.jpg" alt="哈利波特影城入口" class="w-full h-32 object-cover">
+                            </div>
+                            <div class="photo-item">
+                                <img src="https://static.gltjp.com/glt/data/article/21000/20324/20230714_020517_034bd752_w1920.webp" alt="魔法場景" class="w-full h-32 object-cover">
+                            </div>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-3 rounded">
+                            <h5 class="font-semibold text-purple-800">📍 交通路線</h5>
+                            <p class="text-sm text-purple-600">JR上野站 → 山手線 → 池袋站 → 西武池袋線 → 豐島園站</p>
+                            <p class="text-xs text-green-600 mt-1">🎫 Klook預訂 訂單號: HPT550318</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 3-4: Art & Tokyo Station -->
+    <section id="day3" class="container mx-auto px-4 py-8">
+        <div class="timeline-item">
+            <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">Day 3-4: 沉浸式藝術與動漫美食</h2>
+            
+            <!-- Day 3 -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-8 card-hover">
+                <div class="flex items-center mb-4">
+                    <div class="bg-pink-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4">3</div>
+                    <h3 class="text-2xl font-bold text-gray-800">7月16日 (三) - 沉浸式藝術與雲端漫步</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-pink-600"><i class="fas fa-palette mr-2"></i>teamLab Planets TOKYO</h4>
+                        <p class="text-gray-700 mb-4">10:30 - 13:00 赤腳走入夢幻光影與水中世界</p>
+                        
+                        <div class="photo-gallery mb-4">
+                            <div class="photo-item">
+                                <img src="https://photos.smugmug.com/Tokyo/n-S6Q5Pp/TeamLab-Planets-in-Toyosu/i-42kMzdM/0/MxmFsvCp53M9Hj3KWvXxM5hhcJ9ZHqrhPwdJnjMXZ/L/TT_Planets_12-L.jpg" alt="teamLab入口" class="w-full h-32 object-cover">
+                            </div>
+                            <div class="photo-item">
+                                <img src="https://www.kanpai-japan.com/sites/default/files/uploads/2020/08/tokyo-teamlab-planets-15.jpg" alt="光影藝術" class="w-full h-32 object-cover">
+                            </div>
+                        </div>
+                        
+                        <div class="bg-pink-50 p-3 rounded mb-4">
+                            <h5 class="font-semibold text-pink-800">📍 豐洲位置</h5>
+                            <p class="text-sm text-pink-600">JR上野站 → 有樂町線 → 豐洲站</p>
+                        </div>
+                        
+                        <h4 class="text-xl font-semibold mb-3 text-orange-600"><i class="fas fa-fish mr-2"></i>豐洲市場午餐</h4>
+                        <div class="photo-gallery mb-4">
+                            <div class="photo-item">
+                                <img src="https://mimihan.tw/wp-content/uploads/20181208173105_58.jpg" alt="豐洲市場" class="w-full h-32 object-cover">
+                            </div>
+                            <div class="photo-item">
+                                <img src="https://mimihan.tw/wp-content/uploads/20190925195041_83.jpg" alt="大和壽司" class="w-full h-32 object-cover">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-blue-600"><i class="fas fa-broadcast-tower mr-2"></i>東京晴空塔</h4>
+                        <p class="text-gray-700 mb-4">16:00入場，從白天到日落的東京全景</p>
+                        
+                        <div class="photo-gallery mb-4">
+                            <div class="photo-item">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Tokyo_Skytree_2023.jpg" alt="東京晴空塔" class="w-full h-32 object-cover">
+                            </div>
+                            <div class="photo-item">
+                                <img src="https://blog-static.kkday.com/zh-tw/blog/wp-content/uploads/Japan_Tokyo_Tokyo-Sky-Tree_Ashutterstock_405927199.jpg" alt="晴空塔景觀" class="w-full h-32 object-cover">
+                            </div>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-3 rounded">
+                            <h5 class="font-semibold text-blue-800">📍 押上位置</h5>
+                            <p class="text-sm text-blue-600">豐洲站 → 有樂町線 → 永田町站 → 半藏門線 → 押上站</p>
+                            <p class="text-xs text-red-600 mt-1">⚠️ 須在16:00前至4樓售票處兌換票券</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 4 -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-8 card-hover">
+                <div class="flex items-center mb-4">
+                    <div class="bg-yellow-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4">4</div>
+                    <h3 class="text-2xl font-bold text-gray-800">7月17日 (四) - 東京動漫美食一日遊 & 清爽夜行</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-red-600"><i class="fas fa-subway mr-2"></i>東京車站一番街</h4>
+                        <p class="text-gray-700 mb-4">11:00 - 14:00 動漫人物街尋寶 + 拉麵街午餐</p>
+                        
+                        <div class="photo-gallery mb-4">
+                            <div class="photo-item">
+                                <img src="https://d1grca2t3zpuug.cloudfront.net/2023/11/ramenstreet-20.jpg" alt="東京拉麵街" class="w-full h-32 object-cover">
+                            </div>
+                            <div class="photo-item">
+                                <img src="https://linshibi.com/wp-content/uploads/2015/06/messageImage_1707892118989-scaled-e1707892158567.jpg" alt="拉麵街美食" class="w-full h-32 object-cover">
+                            </div>
+                        </div>
+                        
+                        <h4 class="text-xl font-semibold mb-3 text-yellow-600"><i class="fas fa-gamepad mr-2"></i>寶可夢中心DX</h4>
+                        <div class="photo-gallery mb-4">
+                            <div class="photo-item">
+                                <img src="https://yukigo.tw/wp-content/uploads/2023/09/%E5%AF%B6%E5%8F%AF%E5%A4%A2%E4%B8%AD%E5%BF%83%E6%9D%B1%E4%BA%ACDX%E6%97%A5%E6%9C%AC%E6%A9%8BPokemon-Center-TOKYO-DX.jpg" alt="寶可夢中心" class="w-full h-32 object-cover">
+                            </div>
+                            <div class="photo-item">
+                                <img src="https://platinumaps.blob.core.windows.net/assets/2022/05/31/22/49/39/7e4c43dd-dba9-4b60-a8fb-9df91cbc0052.jpg" alt="寶可夢商品" class="w-full h-32 object-cover">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 rounded-lg mb-4">
+                            <h4 class="text-xl font-semibold mb-2"><i class="fas fa-bus mr-2"></i>夜間巴士前往大阪</h4>
+                            <p class="text-sm opacity-90">21:40 WILLER EXPRESS 夜間巴士</p>
+                            <p class="text-sm opacity-90">班次 WK151，座位 1D, 2C, 2D</p>
+                            <p class="text-sm opacity-90">隔日 07:15 抵達日本環球影城</p>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-3 rounded">
+                            <h5 class="font-semibold text-yellow-800">💡 搭車前準備</h5>
+                            <p class="text-sm text-yellow-600">18:30-20:00 湊湯公共澡堂梳洗</p>
+                            <p class="text-xs text-gray-600 mt-1">JR東京站 → 京葉線 → 八丁堀站</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 5-6: Osaka USJ & Sightseeing -->
+    <section id="day5" class="container mx-auto px-4 py-8">
+        <div class="timeline-item">
+            <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">Day 5-6: 大阪環球影城與海港探險</h2>
+            
+            <!-- Day 5 -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-8 card-hover">
+                <div class="flex items-center mb-4">
+                    <div class="bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4">5</div>
+                    <h3 class="text-2xl font-bold text-gray-800">7月18日 (五) - USJ全日狂歡</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-red-600"><i class="fas fa-magic mr-2"></i>日本環球影城</h4>
+                        <p class="text-gray-700 mb-4">07:15巴士直達，全日暢玩各大園區</p>
+                        
+                        <div class="photo-gallery mb-4">
+                            <div class="photo-item">
+                                <img src="https://static.gltjp.com/glt/data/article/21000/20776/20240824_220450_afb9e858_w1920.webp" alt="USJ入口" class="w-full h-32 object-cover">
+                            </div>
+                            <div class="photo-item">
+                                <img src="https://d1grca2t3zpuug.cloudfront.net/2024/05/665694b29a1c0-870x695.webp" alt="USJ園區" class="w-full h-32 object-cover">
+                            </div>
+                        </div>
+                        
+                        <div class="bg-red-50 p-3 rounded mb-4">
+                            <h5 class="font-semibold text-red-800">🎯 重點攻略</h5>
+                            <p class="text-sm text-red-600">• 一入園就用官方APP抽取超級任天堂世界™入場券</p>
+                            <p class="text-sm text-red-600">• 建議購買快速通關券節省排隊時間</p>
+                            <p class="text-sm text-red-600">• CityWalk有多樣餐廳選擇</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white p-4 rounded-lg mb-4">
+                            <h4 class="text-xl font-semibold mb-2"><i class="fas fa-hotel mr-2"></i>大阪住宿</h4>
+                            <p class="text-sm opacity-90">閉園後前往預訂飯店</p>
+                            <p class="text-sm opacity-90">Agoda訂單: 1615945887</p>
+                        </div>
+                        
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.3841!2d135.4326!3d34.6658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e0d083d5e25d%3A0x3605dbc2fde00df9!2sUniversal%20Studios%20Japan!5e0!3m2!1sen!2sjp!4v1652345678901!5m2!1sen!2sjp" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 6 -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-8 card-hover">
+                <div class="flex items-center mb-4">
+                    <div class="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4">6</div>
+                    <h3 class="text-2xl font-bold text-gray-800">7月19日 (六) - 大阪海港與美食之旅</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-blue-600"><i class="fas fa-fish mr-2"></i>大阪海遊館</h4>
+                        <p class="text-gray-700 mb-4">10:00-10:15 預約入場，與鯨鯊相遇</p>
+                        
+                        <div class="photo-gallery mb-4">
+                            <div class="photo-item">
+                                <img src="https://osaka-info.jp/spot/images/14c243d3ce6cd216d14558e77e0bde13d41ec265.jpg" alt="海遊館外觀" class="w-full h-32 object-cover">
+                            </div>
+                            <div class="photo-item">
+                                <img src="https://static.gltjp.com/glt/data/directory/12000/11619/20210715_080106_234889c3_w1920.webp" alt="海遊館內部" class="w-full h-32 object-cover">
+                            </div>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-3 rounded mb-4">
+                            <h5 class="font-semibold text-blue-800">📍 大阪港位置</h5>
+                            <p class="text-sm text-blue-600">大阪Metro中央線 → 大阪港站</p>
+                            <p class="text-xs text-red-600 mt-1">⏰ 務必在預約時段內入場</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-yellow-600"><i class="fas fa-castle mr-2"></i>大阪城天守閣</h4>
+                        <p class="text-gray-700 mb-4">感受戰國時代的歷史氣息</p>
+                        
+                        <div class="photo-gallery mb-4">
+                            <div class="photo-item">
+                                <img src="https://static.gltjp.com/glt/data/article/21000/20379/20230822_133006_d7f6b39c_w1920.webp" alt="大阪城天守閣" class="w-full h-32 object-cover">
+                            </div>
+                            <div class="photo-item">
+                                <img src="https://d1grca2t3zpuug.cloudfront.net/2024/12/676e35e46fa13-870x500.webp" alt="大阪城景觀" class="w-full h-32 object-cover">
+                            </div>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-3 rounded mb-4">
+                            <h5 class="font-semibold text-yellow-800">📍 森之宮位置</h5>
+                            <p class="text-sm text-yellow-600">大阪Metro中央線 → 森之宮站</p>
+                        </div>
+                        
+                        <div class="bg-green-50 p-3 rounded">
+                            <h5 class="font-semibold text-green-800"><i class="fas fa-bed mr-2"></i>大阪邦旅舍入住</h5>
+                            <p class="text-sm text-green-600">16:00後 BON Hostel 入住</p>
+                            <p class="text-xs text-gray-600">Agoda訂單: 1616456787</p>
+                            <p class="text-xs text-gray-600">大阪市浪速区敷津東3-1-3</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 7-8: Kyoto Culture -->
+    <section id="day7" class="container mx-auto px-4 py-8">
+        <div class="timeline-item">
+            <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">Day 7-8: 京都古都文化與奈良小鹿</h2>
+            
+            <!-- Day 7 -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-8 card-hover">
+                <div class="flex items-center mb-4">
+                    <div class="bg-purple-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4">7</div>
+                    <h3 class="text-2xl font-bold text-gray-800">7月20日 (日) - 穿越時空！京都電影與武士魂</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-purple-600"><i class="fas fa-film mr-2"></i>東映太秦映畫村</h4>
+                        <p class="text-gray-700 mb-4">走進日本時代劇的片場，體驗江戶風情</p>
+                        
+                        <div class="photo-gallery mb-4">
+                            <div class="photo-item">
+                                <img src="https://travelababies.com/wp-content/uploads/2017/10/00632.jpg" alt="東映太秦映畫村入口" class="w-full h-32 object-cover">
+                            </div>
+                            <div class="photo-item">
+                                <img src="https://resources.matcha-jp.com/resize/480x2000/2017/07/13-30984.webp" alt="江戶街景" class="w-full h-32 object-cover">
+                            </div>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-3 rounded mb-4">
+                            <h5 class="font-semibold text-purple-800">📍 太秦位置</h5>
+                            <p class="text-sm text-purple-600">JR京都站 → 嵯峨野線 → 太秦站</p>
+                            <p class="text-xs text-gray-600 mt-1">交通時間約16分鐘 + 步行5分鐘</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="bg-gradient-to-r from-orange-500 to-red-500 text-white p-4 rounded-lg mb-4">
+                            <h4 class="text-xl font-semibold mb-2"><i class="fas fa-hotel mr-2"></i>京都東寺羅伊西爾飯店</h4>
+                            <p class="text-sm opacity-90">15:00後入住</p>
+                            <p class="text-sm opacity-90">Agoda訂單: 1618112475</p>
+                            <p class="text-sm opacity-90">京都市南区西九条蔵王町31-1</p>
+                        </div>
+                        
+                        <div class="bg-orange-50 p-3 rounded">
+                            <h5 class="font-semibold text-orange-800">☕ 早餐推薦</h5>
+                            <p class="text-sm text-orange-600">INODA COFFEE (イノダコーヒ)</p>
+                            <p class="text-xs text-gray-600">京都車站地下街Porta - 京都最有名的老字號咖啡店</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 8 -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-8 card-hover">
+                <div class="flex items-center mb-4">
+                    <div class="bg-green-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4">8</div>
+                    <h3 class="text-2xl font-bold text-gray-800">7月21日 (一) - 古都黃昏深度漫遊</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-brown-600"><i class="fas fa-tree mr-2" style="color: #8B4513;"></i>奈良公園 & 東大寺</h4>
+                        <p class="text-gray-700 mb-4">12:00-16:30 與神鹿親密接觸，參觀宏偉的東大寺</p>
+                        
+                        <div class="photo-gallery mb-4">
+                            <div class="photo-item">
+                                <img src="https://i.epochtimes.com/assets/uploads/2022/11/id13860843-e1204291e109623bce80d6f8e47aa6f1.jpg" alt="奈良公園餵鹿" class="w-full h-32 object-cover">
+                            </div>
+                            <div class="photo-item">
+                                <img src="https://travel.rakuten.co.jp/mytrip/sites/mytrip/files/migration_article_images/howto/narakoen-guide-9.jpg" alt="奈良小鹿" class="w-full h-32 object-cover">
+                            </div>
+                        </div>
+                        
+                        <div class="bg-green-50 p-3 rounded mb-4">
+                            <h5 class="font-semibold text-green-800">📍 奈良交通</h5>
+                            <p class="text-sm text-green-600">JR京都站 → 奈良線(みやこ路快速) → JR奈良站</p>
+                            <p class="text-xs text-gray-600 mt-1">交通約45分鐘 + 步行20分鐘至公園</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-red-600"><i class="fas fa-torii-gate mr-2"></i>京都夜遊行程</h4>
+                        
+                        <div class="space-y-3">
+                            <div class="bg-red-50 p-3 rounded">
+                                <h5 class="font-semibold text-red-800">🍜 京都拉麵小路 (17:30-18:30)</h5>
+                                <p class="text-sm text-red-600">京都車站大樓10樓，匯集日本各地知名拉麵店</p>
+                            </div>
+                            
+                            <div class="bg-purple-50 p-3 rounded">
+                                <h5 class="font-semibold text-purple-800">🏮 夜遊祇園 & 花見小路 (19:00-20:30)</h5>
+                                <p class="text-sm text-purple-600">搭乘市營巴士100號或206號至祇園站</p>
+                                <p class="text-xs text-gray-600">漫步石板路，欣賞傳統茶屋燈籠</p>
+                            </div>
+                            
+                            <div class="bg-blue-50 p-3 rounded">
+                                <h5 class="font-semibold text-blue-800">♨️ 京都塔大浴場～YUU～ (21:00-22:15)</h5>
+                                <p class="text-sm text-blue-600">京都塔地下3樓，搭夜巴前的完美放鬆</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-4 rounded-lg mt-4">
+                            <h4 class="text-xl font-semibold mb-2"><i class="fas fa-bus mr-2"></i>SAKURA觀光巴士 (23:00)</h4>
+                            <p class="text-sm opacity-90">JR京都站八条口巴士乘降處集合(22:50)</p>
+                            <p class="text-sm opacity-90">班次 Milky Way 114，預約號 1018155575</p>
+                            <p class="text-sm opacity-90">隔日05:50抵達池袋</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 9-11: Tokyo Final -->
+    <section id="day9" class="container mx-auto px-4 py-8">
+        <div class="timeline-item">
+            <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">Day 9-11: 東京動漫聖地與完美歸途</h2>
+            
+            <!-- Day 9 -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-8 card-hover">
+                <div class="flex items-center mb-4">
+                    <div class="bg-indigo-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4">9</div>
+                    <h3 class="text-2xl font-bold text-gray-800">7月22日 (二) - 動漫聖地巡禮</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-yellow-600"><i class="fas fa-sun mr-2"></i>池袋太陽城</h4>
+                        <p class="text-gray-700 mb-4">清晨抵達後，攻略寶可夢中心MEGA TOKYO與NAMJATOWN</p>
+                        
+                        <div class="photo-gallery mb-4">
+                            <div class="photo-item">
+                                <img src="https://d1grca2t3zpuug.cloudfront.net/2025/05/sunshinecity01-800x500.webp" alt="池袋太陽城" class="w-full h-32 object-cover">
+                            </div>
+                            <div class="photo-item">
+                                <img src="https://bobbyfun.tw/wp-content/uploads/2024/06/20240502215811_0_6d6322.jpg" alt="太陽城內部" class="w-full h-32 object-cover">
+                            </div>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-3 rounded mb-4">
+                            <h5 class="font-semibold text-yellow-800">☕ 早餐推薦</h5>
+                            <p class="text-sm text-yellow-600">コメダ珈琲店 (Komeda's Coffee)</p>
+                            <p class="text-xs text-gray-600">名古屋風格咖啡店，點飲料送厚片吐司的Morning Service</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-green-600"><i class="fas fa-gamepad mr-2"></i>秋葉原電器街</h4>
+                        <p class="text-gray-700 mb-4">下午入住上野格子飯店後，前往動漫電玩聖地</p>
+                        
+                        <div class="bg-green-50 p-3 rounded mb-4">
+                            <h5 class="font-semibold text-green-800"><i class="fas fa-hotel mr-2"></i>上野格子飯店</h5>
+                            <p class="text-sm text-green-600">16:00後入住</p>
+                            <p class="text-xs text-gray-600">Agoda訂單: 1621075710</p>
+                            <p class="text-xs text-gray-600">JR池袋站 → 山手線 → 上野站 (17分鐘)</p>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-3 rounded">
+                            <h5 class="font-semibold text-blue-800">📍 秋葉原交通</h5>
+                            <p class="text-sm text-blue-600">JR上野站 → 山手線/京濱東北線 → 秋葉原站</p>
+                            <p class="text-xs text-gray-600">交通時間僅4分鐘</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 10 -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-8 card-hover">
+                <div class="flex items-center mb-4">
+                    <div class="bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4">10</div>
+                    <h3 class="text-2xl font-bold text-gray-800">7月23日 (三) - 經典與潮流的碰撞</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-red-600"><i class="fas fa-broadcast-tower mr-2"></i>東京鐵塔</h4>
+                        <p class="text-gray-700 mb-4">10:00-12:00 登上代表東京的懷舊地標</p>
+                        
+                        <div class="bg-red-50 p-3 rounded mb-4">
+                            <h5 class="font-semibold text-red-800">📍 神谷町交通</h5>
+                            <p class="text-sm text-red-600">東京Metro日比谷線上野站 → 神谷町站</p>
+                            <p class="text-xs text-gray-600">交通約20分鐘 + 步行7分鐘</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-purple-600"><i class="fas fa-city mr-2"></i>澀谷 & SHIBUYA SKY</h4>
+                        <p class="text-gray-700 mb-4">13:00-16:00 360度露天展望台鳥瞰十字路口</p>
+                        
+                        <div class="photo-gallery mb-4">
+                            <div class="photo-item">
+                                <img src="https://wp-odai.wamazing.com/media/wp-content/uploads/sites/2/2020/07/shibuyaskyphotospots_02.jpg.webp" alt="SHIBUYA SKY" class="w-full h-32 object-cover">
+                            </div>
+                            <div class="photo-item">
+                                <img src="https://static.gltjp.com/glt/data/directory/12000/11036/20200609_085525_e2c2a6c7_w640.webp" alt="澀谷十字路口" class="w-full h-32 object-cover">
+                            </div>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-3 rounded">
+                            <h5 class="font-semibold text-purple-800">🛍️ 任天堂/寶可夢中心朝聖</h5>
+                            <p class="text-sm text-purple-600">16:00-18:00 澀谷PARCO百貨6樓</p>
+                            <p class="text-xs text-gray-600">任天堂與寶可夢粉絲的終極聖地</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 11 -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-8 card-hover">
+                <div class="flex items-center mb-4">
+                    <div class="bg-orange-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4">11</div>
+                    <h3 class="text-2xl font-bold text-gray-800">7月24日 (四) - 上野最終巡禮 & 滿載歸途</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-green-600"><i class="fas fa-paw mr-2"></i>上野動物園</h4>
+                        <p class="text-gray-700 mb-4">11:00-13:00 與可愛的熊貓道別</p>
+                        
+                        <div class="photo-gallery mb-4">
+                            <div class="photo-item">
+                                <img src="https://zh.cn.nikkei.com/images/2021/12/1213/1213-02-L.jpg" alt="上野動物園熊貓" class="w-full h-32 object-cover">
+                            </div>
+                            <div class="photo-item">
+                                <img src="https://content.fun-japan.jp/renewal-prod/cms/articles/content/de1b8c72623ae99e0fa11b82edc4ed4d72ca4f19_2024-05-16-02-12-55.jpg" alt="動物園" class="w-full h-32 object-cover">
+                            </div>
+                        </div>
+                        
+                        <h4 class="text-xl font-semibold mb-3 text-blue-600"><i class="fas fa-shopping-bag mr-2"></i>阿美橫丁採購</h4>
+                        <div class="photo-gallery mb-4">
+                            <div class="photo-item">
+                                <img src="https://d1grca2t3zpuug.cloudfront.net/2022/12/uenoameyokocho03.jpg" alt="阿美橫丁" class="w-full h-32 object-cover">
+                            </div>
+                            <div class="photo-item">
+                                <img src="https://resources.matcha-jp.com/resize/720x2000/2018/05/15-54056.webp" alt="阿美橫丁購物" class="w-full h-32 object-cover">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="space-y-3">
+                            <div class="bg-orange-50 p-3 rounded">
+                                <h5 class="font-semibold text-orange-800">♨️ 錢湯體驗：寿湯 (16:30-18:00)</h5>
+                                <p class="text-sm text-orange-600">上野地區有名的錢湯，洗去旅途疲憊</p>
+                                <p class="text-xs text-gray-600">步行約15分鐘</p>
+                            </div>
+                            
+                            <div class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 rounded-lg">
+                                <h4 class="text-xl font-semibold mb-2"><i class="fas fa-plane mr-2"></i>返台班機</h4>
+                                <p class="text-sm opacity-90">18:30出發前往成田機場</p>
+                                <p class="text-sm opacity-90">京成上野站 → Skyliner → 成田機場 (45分鐘)</p>
+                                <p class="text-sm opacity-90">21:10 酷航 TR871 班機返台</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-100 p-3 rounded mt-4">
+                            <h5 class="font-semibold text-gray-800">📋 退房提醒</h5>
+                            <p class="text-sm text-gray-600">11:00前退房，行李寄放JR上野站置物櫃</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Map Section -->
+    <section class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-3xl font-bold text-center mb-6 text-gray-800"><i class="fas fa-map-marked-alt mr-2"></i>旅程路線地圖</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-blue-600">東京區域地圖</h3>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d207616.86!2d139.6917!3d35.6895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b857628235d%3A0xcdd8aef709a2b520!2sTokyo%2C%20Japan!5e0!3m2!1sen!2sjp!4v1652345678901!5m2!1sen!2sjp" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-red-600">關西區域地圖</h3>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d419095.5!2d135.5023!3d34.6937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e6553406e2e1%3A0xc55bc16ee46a2fe7!2sOsaka%2C%20Japan!5e0!3m2!1sen!2sjp!4v1652345678901!5m2!1sen!2sjp" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transportation Guide -->
+    <section class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-3xl font-bold text-center mb-6 text-gray-800"><i class="fas fa-route mr-2"></i>交通路線指南</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-blue-50 p-4 rounded-lg text-center">
+                    <i class="fas fa-plane text-3xl text-blue-600 mb-2"></i>
+                    <h4 class="font-semibold text-blue-800">航班</h4>
+                    <p class="text-sm text-blue-600">酷航 TR870/871</p>
+                    <p class="text-xs text-gray-600">桃園 ⇄ 成田</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg text-center">
+                    <i class="fas fa-train text-3xl text-green-600 mb-2"></i>
+                    <h4 class="font-semibold text-green-800">Skyliner</h4>
+                    <p class="text-sm text-green-600">成田機場快線</p>
+                    <p class="text-xs text-gray-600">45分鐘直達市區</p>
+                </div>
+                <div class="bg-purple-50 p-4 rounded-lg text-center">
+                    <i class="fas fa-bus text-3xl text-purple-600 mb-2"></i>
+                    <h4 class="font-semibold text-purple-800">夜間巴士</h4>
+                    <p class="text-sm text-purple-600">WILLER/SAKURA</p>
+                    <p class="text-xs text-gray-600">東京⇄大阪⇄京都</p>
+                </div>
+                <div class="bg-orange-50 p-4 rounded-lg text-center">
+                    <i class="fas fa-subway text-3xl text-orange-600 mb-2"></i>
+                    <h4 class="font-semibold text-orange-800">地鐵</h4>
+                    <p class="text-sm text-orange-600">JR/Metro</p>
+                    <p class="text-xs text-gray-600">市內交通主力</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget & Tips -->
+    <section class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-2xl font-bold mb-4 text-green-600"><i class="fas fa-yen-sign mr-2"></i>預算參考</h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center p-2 bg-gray-50 rounded">
+                        <span class="text-gray-700">住宿費用</span>
+                        <span class="font-semibold text-green-600">¥80,000</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2 bg-gray-50 rounded">
+                        <span class="text-gray-700">交通費用</span>
+                        <span class="font-semibold text-blue-600">¥35,000</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2 bg-gray-50 rounded">
+                        <span class="text-gray-700">餐飲費用</span>
+                        <span class="font-semibold text-orange-600">¥60,000</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2 bg-gray-50 rounded">
+                        <span class="text-gray-700">門票費用</span>
+                        <span class="font-semibold text-purple-600">¥45,000</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2 bg-green-100 rounded border-2 border-green-300">
+                        <span class="text-gray-800 font-semibold">總計預算</span>
+                        <span class="font-bold text-green-700 text-lg">¥220,000</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-2xl font-bold mb-4 text-blue-600"><i class="fas fa-lightbulb mr-2"></i>旅遊小貼士</h3>
+                <div class="space-y-3">
+                    <div class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                        <p class="text-sm text-gray-700">建議購買JR Pass或地鐵一日券節省交通費</p>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                        <p class="text-sm text-gray-700">夏季日本炎熱，記得攜帶防曬用品和充足水分</p>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                        <p class="text-sm text-gray-700">預先下載Google翻譯和地圖APP</p>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                        <p class="text-sm text-gray-700">熱門景點建議提前預約或購買快速通關券</p>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                        <p class="text-sm text-gray-700">準備現金，部分店家不接受信用卡</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-8 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold mb-4">🇯🇵 日本親子探索之旅 2025</h3>
+            <p class="text-lg opacity-90 mb-4">11天精彩行程，滿載美好回憶</p>
+            <div class="flex justify-center space-x-6 text-sm opacity-75">
+                <span><i class="fas fa-calendar-alt mr-1"></i>2025.07.14 - 07.24</span>
+                <span><i class="fas fa-map-marker-alt mr-1"></i>東京・大阪・京都・奈良</span>
+                <span><i class="fas fa-users mr-1"></i>親子旅遊</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Photo gallery click to enlarge
+        document.querySelectorAll('.photo-item img').forEach(img => {
+            img.addEventListener('click', function() {
+                const modal = document.createElement('div');
+                modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50';
+                modal.innerHTML = `
+                    <div class="relative max-w-4xl max-h-full p-4">
+                        <img src="${this.src}" alt="${this.alt}" class="max-w-full max-h-full object-contain">
+                        <button class="absolute top-2 right-2 text-white text-2xl bg-black bg-opacity-50 rounded-full w-8 h-8 flex items-center justify-center hover:bg-opacity-75">×</button>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+                
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal || e.target.tagName === 'BUTTON') {
+                        document.body.removeChild(modal);
+                    }
+                });
+            });
+        });
+
+        // Timeline animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Weather animation
+        const weatherEmojis = ['☀️', '🌤️', '⛅', '🌦️', '🌧️'];
+        let currentWeatherIndex = 0;
+
+        setInterval(() => {
+            const weatherElements = document.querySelectorAll('.weather-widget .text-3xl');
+            weatherElements.forEach((element, index) => {
+                if (Math.random() > 0.8) {
+                    const randomEmoji = weatherEmojis[Math.floor(Math.random() * weatherEmojis.length)];
+                    element.textContent = randomEmoji;
+                    setTimeout(() => {
+                        element.textContent = ['🌤️', '☀️', '🌦️', '🌤️'][index];
+                    }, 2000);
+                }
+            });
+        }, 5000);
+    </script>
+</body>
+</html>
