@@ -951,7 +951,7 @@
                         <h3 class="font-bold text-lg text-gray-700">${event.time}：${event.title}</h3>
                         <p class="text-gray-600 mt-1">${event.description}</p>
                         ${event.image_comment || ''}
-                        <img src="https://placehold.co/800x400/ced4da/6c757d?text=${encodeURIComponent(event.alt)}" class="mt-4 rounded-lg shadow-sm w-full" alt="${event.alt}">
+                       img src="${event.image_comment}" class="mt-4 rounded-lg shadow-sm w-full" alt="${event.alt}">
                         ${linksHtml}
                     </div>
                 `;
