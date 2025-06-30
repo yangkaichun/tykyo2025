@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="src/tykyo.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -64,6 +65,13 @@
         .btn-web:hover {
             background-color: #5a6268;
         }
+        .prose ul {
+            padding-left: 1.5rem;
+            list-style-position: outside;
+        }
+        .prose li::marker {
+            color: #FF8C42;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -79,7 +87,19 @@
 
         <div class="bg-white rounded-xl shadow-md p-6 md:p-8 mb-6 prose max-w-none">
             <h2 class="text-2xl font-bold text-gray-800 border-b pb-2 mb-4">行程概要</h2>
-            <p>此行程為您闔家量身打造，融合了東京的現代摩登、大阪的熱情活力與京都的古典雅致。行程包含兩次獨特的夜間巴士體驗，不僅節省交通與住宿成本，更能讓旅途無縫銜接。從哈利波特的魔法世界、未來感的數位藝術，到與奈良小鹿的親密接觸及箱根的壯麗自然風光，每一天都充滿了探索與發現的樂趣。</p>
+            <ul class="list-disc space-y-3">
+                <li><strong>第一天：抵達東京，初探上野</strong> - 傍晚抵達東京成田機場(19:55)，搭乘Skyliner(21:30)迅速前往上野，並於深夜前(22:30)入住飯店，為旅程安穩揭幕。</li>
+                <li><strong>第二天：哈利波特的魔法世界</strong> - 上午(10:30)悠閒出發，搭乘地鐵前往豐島園，中午(12:30)準時進入哈利波特影城，享受長達5小時的沉浸式魔法體驗。</li>
+                <li><strong>第三天：數位藝術與雲端漫步</strong> - 上午(11:00)在豐洲teamLab感受未來藝術，午後(14:30)轉往東京晴空塔，從白天逛到傍晚(18:00)，並攻略寶可夢中心。</li>
+                <li><strong>第四天：台場的巨神與星夜的旅程</strong> - 上午(10:00)退房後，將行李寄放於東京車站，隨後前往台場(12:00-17:00)探索；傍晚(19:30)體驗錢湯後，無縫接軌夜間巴士(21:40)前往大阪。</li>
+                <li><strong>第五天：環球影城制霸日</strong> - 清晨(07:15)抵達大阪USJ，寄放行李後立即入園(08:30)，展開從開園到閉園的制霸挑戰，最大化遊玩時間。</li>
+                <li><strong>第六天：大阪深度探索</strong> - 上午(11:00)搭乘渡輪前往海遊館，下午(15:30)入住難波旅店後，依序探訪大阪生活今昔館及天神橋筋商店街，夜晚(19:00後)則深入電電城與道頓堀。</li>
+                <li><strong>第七天：古都奈良尋鹿，夜遊祇園</strong> - 上午(10:00)從大阪出發前往京都，寄放行李後，中午(12:00)即前往奈良與鹿群互動；傍晚(17:00後)返回京都，深入祇園感受古都夜魅力。</li>
+                <li><strong>第八天：漫步古都坂道，再次夜行</strong> - 上午(10:00)開始，全日深度漫遊清水寺及周邊的二年坂、三年坂；傍晚在京都車站用餐、體驗錢湯(21:00)後，搭乘夜巴(23:00)返回東京。</li>
+                <li><strong>第九天：池袋陽光日與上野歸營</strong> - 清晨(05:50)抵達池袋，早餐後直攻太陽城(09:00-15:00)；下午(16:00)返回上野入住，傍晚在阿美橫丁輕鬆享受美食。</li>
+                <li><strong>第十天：箱根環山纜海一日遠征</strong> - 早晨(07:30)從上野出發，於新宿搭乘浪漫特快(08:40)前往箱根，依序體驗登山電車、纜車、海賊船等交通工具，環遊大涌谷與箱根神社等核心景點。</li>
+                <li><strong>第十一天：上野最終巡禮與歸途前的洗禮</strong> - 上午(10:00)展開最後的購物行程，午後(14:00)漫步上野公園；傍晚(16:00)以錢湯洗滌旅途疲憊，隨後搭乘Skyliner(18:30)前往機場，搭機(21:10)返家。</li>
+            </ul>
         </div>
 
         <main id="itinerary-accordion" class="space-y-4">
@@ -695,7 +715,7 @@
                 const icon = header.querySelector('svg');
                 
                 if (header.classList.contains('active')) {
-                    content.style.maxHeight = content.scrollHeight + 'px';
+                    content.style.maxHeight = content.scrollHeight + 50 + 'px'; // Add some buffer
                     content.style.paddingTop = '1.25rem';
                     content.style.paddingBottom = '1.25rem';
                     icon.style.transform = 'rotate(180deg)';
