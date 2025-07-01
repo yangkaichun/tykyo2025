@@ -1,788 +1,561 @@
-
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>日本之行</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="icon" href="src/tykyo2025.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>2025 日本關東關西11日行程</title>
     <style>
-        body {
-            font-family: 'Noto Sans TC', sans-serif;
-            background-color: #F8F9FA;
-            color: #343A40;
-        }
-        .accordion-content {
-            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out, opacity 0.5s ease-in-out;
-            overflow: hidden;
-            max-height: 0;
-            opacity: 0;
-        }
-        .accordion-header.active + .accordion-content {
-            opacity: 1;
-        }
-        .day-tag {
-            background: linear-gradient(135deg, #FF8C42, #FF5C5C);
-        }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 10px;
-            bottom: 10px;
-            width: 4px;
-            background-color: #E9ECEF;
-            border-radius: 2px;
-        }
-        .timeline-dot {
-            position: absolute;
-            left: 12px;
-            top: 10px;
-            height: 20px;
-            width: 20px;
-            background-color: #FF8C42;
-            border: 4px solid #FFFFFF;
-            border-radius: 9999px;
-            z-index: 10;
-            box-shadow: 0 0 10px rgba(255, 140, 66, 0.5);
-        }
-        .btn-map {
-            background-color: #4285F4;
-            color: white;
-            transition: background-color 0.3s;
-        }
-        .btn-map:hover {
-            background-color: #357ae8;
-        }
-        .btn-web {
-            background-color: #6C757D;
-            color: white;
-            transition: background-color 0.3s;
-        }
-        .btn-web:hover {
-            background-color: #5a6268;
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f8f9fa; margin: 0; padding: 20px; }
+       .container { max-width: 900px; margin: auto; background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+       .day-block { border-left: 4px solid #007bff; padding-left: 20px; margin-bottom: 40px; }
+       .day-header { border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
+       .day-title { font-size: 2em; font-weight: bold; color: #0056b3; }
+       .day-date { font-size: 1.1em; color: #6c757d; }
+       .event { display: flex; align-items: flex-start; margin-bottom: 25px; }
+       .event-time { flex: 0 0 120px; font-weight: bold; color: #17a2b8; font-size: 1.1em; }
+       .event-details { flex: 1; }
+       .event-title { font-size: 1.4em; font-weight: 600; margin: 0 0 5px 0; }
+       .event-description { margin: 0 0 10px 0; }
+       .event-media { width: 100%; max-width: 400px; border-radius: 6px; margin-bottom: 10px; }
+       .event-links a { display: inline-block; margin-right: 10px; padding: 5px 10px; background-color: #e9ecef; color: #495057; text-decoration: none; border-radius: 4px; font-size: 0.9em; transition: background-color 0.2s; }
+       .event-links a:hover { background-color: #ced4da; }
+       .guide-section { background-color: #eef7ff; padding: 20px; border-radius: 8px; margin-bottom: 30px; border: 1px solid #cce5ff; }
+       .guide-section h2 { font-size: 1.8em; color: #004085; border-bottom: 2px solid #b8daff; padding-bottom: 8px; margin-top: 0; }
+       .guide-section h3 { font-size: 1.4em; color: #005cbf; margin-top: 20px; }
+       .guide-section p { font-size: 1.1em; }
+        @media (max-width: 768px) {
+           .event { flex-direction: column; }
+           .event-time { margin-bottom: 10px; }
         }
     </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <div class="container mx-auto max-w-4xl p-4 sm:p-6 md:p-8">
+<div class="guide-section">
+    <h2>您的2025日本遠征隊：優化版行程指南</h2>
+    <p>這是一份根據您的原始計畫進行專業優化後的行程指南。我們保留了您選擇的核心景點，並透過調整交通方式、行李策略與每日動線，旨在為您打造一趟更順暢、更輕鬆、體驗價值更高的旅程。</p>
 
-        <header class="text-center mb-10">
-            <h1 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FF8C42] to-[#FF5C5C]">
-                楊先生闔家日本之行
-            </h1>
-            <p class="text-lg text-gray-600 mt-3">關東至關西・2025夏季深度體驗</p>
-        </header>
+    <h3>第一天：抵達東京，初探上野 (2025/07/14, 週一)</h3>
+    <p>下午3點30分，您將從家鄉啟程，搭乘酷航TR870班機，預計於晚間7點55分降落東京成田機場。抵達後，請從容辦理入境手續。我們的目標是在晚間9點30分搭上舒適快捷的Skyliner，它將帶您直達市中心的京成上野站。約莫晚間10點15分，您將抵達上野，步行片刻即可到達下榻的「上野皇冠山丘高級酒店」辦理入住，為接下來的旅程儲備精力。</p>
 
-        <div class="bg-white rounded-xl shadow-md p-6 md:p-8 mb-6">
-            <h2 class="text-2xl font-bold text-gray-800 border-b pb-2 mb-4">行程概要</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full text-sm text-left text-gray-600">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-                        <tr>
-                            <th scope="col" class="px-6 py-3 rounded-l-lg">天數</th>
-                            <th scope="col" class="px-6 py-3">主題</th>
-                            <th scope="col" class="px-6 py-3 rounded-r-lg">行程簡述</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="bg-white border-b">
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">第一天</td>
-                            <td class="px-6 py-4">抵達東京，初探上野</td>
-                            <td class="px-6 py-4">傍晚抵達東京成田機場(19:55)，搭乘Skyliner(21:30)迅速前往上野，並於深夜前(22:30)入住飯店，為旅程安穩揭幕。</td>
-                        </tr>
-                        <tr class="bg-gray-50 border-b">
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">第二天</td>
-                            <td class="px-6 py-4">哈利波特的魔法世界</td>
-                            <td class="px-6 py-4">上午(10:30)悠閒出發，搭乘地鐵前往豐島園，中午(12:30)準時進入哈利波特影城，享受長達5小時的沉浸式魔法體驗。</td>
-                        </tr>
-                        <tr class="bg-white border-b">
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">第三天</td>
-                            <td class="px-6 py-4">數位藝術與雲端漫步</td>
-                            <td class="px-6 py-4">上午(11:00)在豐洲teamLab感受未來藝術，午後(14:30)轉往東京晴空塔，從白天逛到傍晚(18:00)，並攻略寶可夢中心。</td>
-                        </tr>
-                        <tr class="bg-gray-50 border-b">
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">第四天</td>
-                            <td class="px-6 py-4">台場的巨神與星夜的旅程</td>
-                            <td class="px-6 py-4">上午(10:00)退房後，將行李寄放於東京車站，隨後前往台場(12:00-17:00)探索；傍晚(19:30)體驗錢湯後，無縫接軌夜間巴士(21:40)前往大阪。</td>
-                        </tr>
-                        <tr class="bg-white border-b">
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">第五天</td>
-                            <td class="px-6 py-4">環球影城制霸日</td>
-                            <td class="px-6 py-4">清晨(07:15)抵達大阪USJ，寄放行李後立即入園(08:30)，展開從開園到閉園的制霸挑戰，最大化遊玩時間。</td>
-                        </tr>
-                        <tr class="bg-gray-50 border-b">
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">第六天</td>
-                            <td class="px-6 py-4">大阪深度探索</td>
-                            <td class="px-6 py-4">上午(11:00)搭乘渡輪前往海遊館，下午(15:30)入住難波旅店後，依序探訪大阪生活今昔館及天神橋筋商店街，夜晚(19:00後)則深入電電城與道頓堀。</td>
-                        </tr>
-                        <tr class="bg-white border-b">
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">第七天</td>
-                            <td class="px-6 py-4">古都奈良尋鹿，夜遊祇園</td>
-                            <td class="px-6 py-4">上午(10:00)從大阪出發前往京都，寄放行李後，中午(12:00)即前往奈良與鹿群互動；傍晚(17:00後)返回京都，深入祇園感受古都夜魅力。</td>
-                        </tr>
-                        <tr class="bg-gray-50 border-b">
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">第八天</td>
-                            <td class="px-6 py-4">漫步古都坂道，再次夜行</td>
-                            <td class="px-6 py-4">上午(10:00)開始，全日深度漫遊清水寺及周邊的二年坂、三年坂；傍晚在京都車站用餐、體驗錢湯(21:00)後，搭乘夜巴(23:00)返回東京。</td>
-                        </tr>
-                        <tr class="bg-white border-b">
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">第九天</td>
-                            <td class="px-6 py-4">池袋陽光日與上野歸營</td>
-                            <td class="px-6 py-4">清晨(05:50)抵達池袋，早餐後直攻太陽城(09:00-15:00)；下午(16:00)返回上野入住，傍晚在阿美橫丁輕鬆享受美食。</td>
-                        </tr>
-                        <tr class="bg-gray-50 border-b">
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">第十天</td>
-                            <td class="px-6 py-4">箱根環山纜海一日遠征</td>
-                            <td class="px-6 py-4">早晨(07:30)從上野出發，於新宿搭乘浪漫特快(08:40)前往箱根，依序體驗登山電車、纜車、海賊船等交通工具，環遊大涌谷與箱根神社等核心景點。</td>
-                        </tr>
-                        <tr class="bg-white">
-                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">第十一天</td>
-                            <td class="px-6 py-4">上野最終巡禮與歸途</td>
-                            <td class="px-6 py-4">上午(10:00)展開最後的購物行程，午後(14:00)漫步上野公園；傍晚(16:00)以錢湯洗滌旅途疲憊，隨後搭乘Skyliner(18:30)前往機場，搭機(21:10)返家。</td>
-                        </tr>
-                    </tbody>
-                </table>
+    <h3>第二天：哈利波特的魔法世界與池袋的次元脈動 (2025/07/15, 週二)</h3>
+    <p>今天，魔法世界的大門將為您敞開。建議您提早出發，於上午9點30分前抵達「東京華納兄弟哈利波特影城」。提早入場能讓您在人潮相對稀少的早晨，盡情拍攝大廣間等經典場景，享受更沉浸的遊覽體驗。預計在此停留約4至5小時。下午約2點結束魔法之旅後，搭乘西武池袋線，輕鬆前往僅幾站之遙的池袋。這裡不僅是動漫迷的聖地，更是充滿活力的商業中心。您可以在太陽城（Sunshine City）的寶可夢中心與陽光水族館度過一個悠閒的下午，將原計畫第九天的行程提前整合，讓整體節奏更為流暢。</p>
+
+    <h3>第三天：數位藝術與雲端漫步 (2025/07/16, 週三)</h3>
+    <p>上午，我們將前往豐洲，體驗teamLab Planets TOKYO的奇幻魅力。赤腳走入水中，與光影藝術融為一體，這將是一場難忘的感官盛宴。午餐可在鄰近的豐洲LaLaport購物中心解決。下午的重頭戲是東京的象徵——晴空塔。建議預約下午4點左右的門票，這樣您便能從350公尺的天望甲板與450公尺的天望迴廊，完整欣賞東京從白晝、黃昏到璀璨夜景的壯麗變換。最後，別忘了到位於晴空街道的寶可夢中心，與傳說中的「烈空坐」合影留念，為這一天畫下完美句點。</p>
+
+    <h3>第四天：告別東京，奔向大阪 (2025/07/17, 週四)</h3>
+    <p>今天是在東京的最後一個上午，也是移動日。早晨，請在飯店櫃檯辦理「Takuhaibin」（宅配便）服務，將您的大件行李直接寄往明天在大阪下榻的飯店。這項服務將徹底解放您的雙手，讓今天的行程輕盈自在。接著，帶著隨身小包，輕鬆前往台場。您可以搭乘百合海鷗號，欣賞沿途的海濱風光，並在中午1點觀賞DiverCity前的獨角獸鋼彈變身秀。下午，從容地返回市區，前往東京車站，搭乘約下午4點至5點間的東海道新幹線（Shinkansen）前往大阪。這趟約2.5小時的旅程不僅快速舒適，更能讓您在列車上稍作休息，欣賞窗外飛逝的景色。抵達新大阪站後，轉乘地鐵前往您在大阪的飯店辦理入住，並享受一個悠閒的夜晚，為明日的環球影城之旅養精蓄銳。</p>
+
+    <h3>第五天：環球影城制霸日 (2025/07/18, 週五)</h3>
+    <p>經過昨晚一夜好眠，今天您將以100%的體力與精神狀態，迎接日本環球影城（USJ）的挑戰！從開園到閉園，盡情享受這個充滿驚奇與歡樂的電影世界。由於您的大件行李已於昨日寄達飯店，無需再為寄放行李而奔波。您可以從容地享用早餐，提早抵達園區門口排隊，爭取第一時間衝向「超級任天堂世界™」或任何您心儀的熱門設施。這一天，您將有充沛的精力去體驗每一個精彩的遊樂設施、觀賞每一場華麗的遊行，將USJ的門票價值發揮到極致。</p>
+
+    <h3>第六天：大阪的水族奇觀與不夜城巡禮 (2025/07/19, 週六)</h3>
+    <p>上午，我們將從飯店出發，前往大阪港區，參觀世界最大級別的水族館——海遊館。這裡不僅有震撼人心的巨大鯨鯊，還有來自環太平洋各個角落的奇妙海洋生物。結束海遊館的探索後，下午前往大阪的中心——難波。辦理新飯店的入住手續後，就此展開一場屬於南大阪的深度巡禮。從動漫電玩迷的天堂「日本橋電電城」，到美食與霓虹燈交織的「道頓堀」，再到潮流文化聚集地「心齋橋商店街」，您可以一路步行，感受大阪最真實、最熱鬧的城市脈搏。晚餐就在道頓堀解決吧，來一份道地的大阪燒或章魚燒，為這一天畫下美味的句點。</p>
+
+    <h3>第七天：古都雙城記：伏見稻荷的千本鳥居與奈良的萌鹿 (2025/07/20, 週日)</h3>
+    <p>今天將是一趟高效串連兩大古都精華的旅程。早上從大阪的飯店退房後，搭車前往京都車站。先將大件行李寄存在車站的置物櫃或直接送到今晚的京都飯店。接著，搭乘JR奈良線，僅需5分鐘，在第二站「稻荷站」下車，宏偉的伏見稻荷大社就在眼前。您將有充裕的時間，穿梭於聞名世界的朱紅色千本鳥居隧道中，感受其壯觀與神秘。參拜結束後，回到稻荷站，繼續搭乘同一條JR奈良線，直達終點站奈良。在奈良公園，與溫馴可愛的鹿群進行親密互動，並參觀宏偉的東大寺。傍晚時分，搭乘JR奈良線返回京都車站，取回行李後前往飯店辦理入住。晚上，若還有體力，可以前往祇園的花見小路，感受古都入夜後的獨特風情。</p>
+
+    <h3>第八天：漫步古都坂道，再次飛馳東行 (2025/07/21, 週一)</h3>
+    <p>上午，再次運用Takuhaibin服務，將大件行李從京都的飯店寄往明天在東京的住宿地。接著，輕裝簡行，搭乘巴士前往京都東山地區。從清水寺的宏偉舞台上俯瞰京都市景，再沿著充滿古都風情的二年坂、三年坂石階路漫步而下，沿途的特色小店與傳統建築將讓您流連忘返。您可以悠閒地探索至傍晚。晚餐後，前往京都車站，搭乘晚間的新幹線返回東京。這趟舒適的旅程將讓您在晚間10點左右抵達東京，避免了夜間巴士的疲勞，確保明天有充足的精力進行最後的旅程。</p>
+
+    <h3>第九天：上野歸營與最終巡禮 (2025/07/22, 週二)</h3>
+    <p>昨晚舒適地返回東京後，今天將是一個相對輕鬆的調整日。上午，您可以在上野周邊悠閒地享用早餐，然後前往「東京上野格子飯店及青年旅館」辦理入住。您的大件行李應該已經安然抵達。下午，您可以深度探索上野地區。無論是充滿活力的「阿美橫丁」商店街，還是商品琳瑯滿目的「唐吉訶德」，都是進行最後採購的絕佳地點。傍晚，可以到上野公園內的不忍池畔散步，或選擇參觀國立科學博物館，享受一個充滿文化氣息的午後。</p>
+
+    <h3>第十天：箱根環山纜海一日遠征 (2025/07/23, 週三)</h3>
+    <p>今天是充滿動感與自然美景的箱根一日遊。強烈建議您務必提早出發，最好在早上7點前離開上野的飯店，前往新宿站。在這裡購買「箱根周遊券」並劃位搭乘「浪漫特快」，開啟您的箱根環遊之旅。您將依序體驗登山電車、登山纜車、空中纜車，並在「大涌谷」欣賞火山地熱奇觀。接著，在蘆之湖畔搭乘仿古的「海賊觀光船」，欣賞湖光山色與遠方的富士山景。最後，參拜水上鳥居聞名的「箱根神社」。這一天行程緊湊，務必掌握好各交通工具的銜接時間，才能順利完成經典的箱根環遊路線。</p>
+
+    <h3>第十一天：最終採購與歸途 (2025/07/24, 週四)</h3>
+    <p>旅程來到尾聲。上午，您可以利用最後的時間，在阿美橫丁進行最後的補貨，或是在上野尋找特色咖啡館，回味這趟旅程的點滴。下午，根據您的班機時間，可以選擇前往上野知名的錢湯「壽湯」，以一場傳統的日式沐浴洗去旅途的疲憊，神清氣爽地準備回家。最後，從京成上野站搭乘Skyliner前往成田機場，搭機返回溫暖的家，結束這趟充實而完美的日本11日之旅。</p>
+</div>
+
+<div class="container">
+    <div class="day-block">
+        <div class="day-header">
+            <div class="day-title">D1: 抵達東京，初探上野</div>
+            <div class="day-date">2025年7月14日 (一)</div>
+        </div>
+        <div class="event">
+            <div class="event-time">15:30 - 19:55</div>
+            <div class="event-details">
+                <div class="event-title">搭乘酷航TR870</div>
+                <p class="event-description">19:55抵達東京成田機場(NRT)。</p>
+                <img src="https://uc.udn.com.tw/photo/2024/08/13/realtime/30259573.jpg" alt="酷航飛機" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Narita+International+Airport" target="_blank">地圖</a>
+                </div>
             </div>
         </div>
-
-        <main id="itinerary-accordion" class="space-y-4">
-        </main>
-    </div>
-
-    <script>
-    const itineraryData = [
-        // Day 1
-        {
-            day: "D1",
-            title: "抵達東京，初探上野",
-            date: "2025年7月14日 (一)",
-            events: [
-                {
-                    time: "15:30 - 19:55",
-                    title: "搭乘酷航TR870",
-                    description: "19:55抵達東京成田機場(NRT)。",
-                    imageUrl: "https://uc.udn.com.tw/photo/2024/08/13/realtime/30259573.jpg",
-                    alt: "酷航班機",
-                    links: [
-                        { type: "map", name: "成田機場地圖", url: "https://www.google.com/maps/search/?api=1&query=Narita+International+Airport" }
-                    ]
-                },
-                {
-                    time: "21:30 - 22:15",
-                    title: "搭乘Skyliner",
-                    description: "從成田機場搭乘列車直達京成上野站。",
-                    imageUrl: "https://www.keisei.co.jp/keisei/tetudou/skyliner/tc/assets/images/tickets/index/index_coupon.jpg",
-                    alt: "京成電鐵Skyliner",
-                    links: [
-                        { type: "map", name: "京成上野站地圖", url: "https://www.google.com/maps/search/?api=1&query=Keisei-Ueno+Station" },
-                        { type: "web", name: "京成電鐵官網", url: "https://www.keisei.co.jp/keisei/tetudou/stationmap/ueno.php" }
-                    ]
-                },
-                {
-                    time: "22:15 - 22:30",
-                    title: "飯店入住",
-                    description: "步行至「上野皇冠山丘高級酒店」辦理入住。",
-                    imageUrl: "https://imageproxy.pixnet.cc/imgproxy?url=https://pic.pimg.tw/atm0710/1700749716-4067098748-g_l.jpg",
-                    alt: "上野皇冠山丘高級酒店外觀",
-                    links: [
-                        { type: "map", name: "飯店地圖", url: "https://www.google.com/maps/search/?api=1&query=Hotel+Crown+Hills+Ueno+Premier" },
-                        { type: "web", name: "飯店官網", url: "https://breezbay-group.com/hch-ueno/" }
-                    ]
-                }
-            ]
-        },
-        // Day 2
-        {
-            day: "D2",
-            title: "哈利波特的魔法世界",
-            date: "2025年7月15日 (二)",
-            events: [
-                {
-                    time: "10:30 - 11:30",
-                    title: "前往豐島園",
-                    description: "從「上野御徒町站」搭乘都營大江戶線，直達「豐島園站」。",
-                    imageUrl: "https://d1grca2t3zpuug.cloudfront.net/2025/02/67adf9b40151d-860x500.webp",
-                    alt: "都營大江戶線電車",
-                     links: [
-                        { type: "map", name: "上野御徒町站地圖", url: "https://www.google.com/maps/search/?api=1&query=Ueno-okachimachi+Station" },
-                        { type: "map", name: "豐島園站地圖", url: "https://www.google.com/maps/search/?api=1&query=Toshimaen+Station" }
-                    ]
-                },
-                {
-                    time: "12:30 - 17:30",
-                    title: "深度遊覽哈利波特影城",
-                    description: "12:30入場，建議遊玩4小時以上。",
-                    imageUrl: "https://jw-webmagazine.com/zh-tw/wp-content/uploads/2023/08/%E5%85%A5%E5%8F%A3-min.jpg",
-                    alt: "哈利波特影城大廳",
-                    links: [
-                        { type: "map", name: "景點地圖", url: "https://www.google.com/maps/search/?api=1&query=Warner+Bros.+Studio+Tour+Tokyo" },
-                        { type: "web", name: "官方網站", url: "https://www.wbstudiotour.jp/" }
-                    ]
-                }
-            ]
-        },
-        // Day 3
-        {
-            day: "D3",
-            title: "數位藝術與雲端漫步",
-            date: "2025年7月16日 (三)",
-            events: [
-                {
-                    time: "11:00 - 13:30",
-                    title: "豐洲 teamLab Planets TOKYO",
-                    description: "赤腳沉浸於水與數位藝術的互動。從「新豐洲站」步行即達。",
-                    imageUrl: "https://cdn2.ettoday.net/images/6810/d6810043.jpg",
-                    alt: "teamLab Planets 水面倒影",
-                    links: [
-                        { type: "map", name: "景點地圖", url: "https://www.google.com/maps/search/?api=1&query=teamLab+Planets+TOKYO" },
-                        { type: "map", name: "新豐洲站地圖", url: "https://www.google.com/maps/search/?api=1&query=Shin-toyosu+Station" },
-                        { type: "web", name: "官方網站", url: "https://www.teamlab.art/jp/e/planets/" }
-                    ]
-                },
-                {
-                    time: "13:30 - 14:30",
-                    title: "豐洲LaLaport午餐",
-                    description: "於豐洲LaLaport購物中心享用午餐。",
-                    imageUrl: "https://mitsui-shopping-park.com/lalaport/toyosu/tw/image/index/pic_visual.jpg",
-                    alt: "豐洲LaLaport購物中心",
-                     links: [
-                        { type: "map", name: "LaLaport地圖", url: "https://www.google.com/maps/search/?api=1&query=LaLaport+Toyosu" }
-                    ]
-                },
-                {
-                    time: "15:30 - 18:00",
-                    title: "東京晴空塔",
-                    description: "16:00入場，從350m天望甲板到450m天望迴廊，欣賞東京從白晝到黃昏的景色。",
-                    imageUrl: "https://www.tokyo-skytree.jp/floor/ground/img/img_4f_10.png",
-                    alt: "東京晴空塔與市景",
-                    links: [
-                        { type: "map", name: "景點地圖", url: "https://www.google.com/maps/search/?api=1&query=Tokyo+Skytree" },
-                        { type: "map", name: "押上站地圖", url: "https://www.google.com/maps/search/?api=1&query=Oshiage+Station" },
-                        { type: "web", name: "官方網站", url: "https://www.tokyo-skytree.jp/cn_t/" }
-                    ]
-                },
-                {
-                    time: "18:00 - 19:30",
-                    title: "寶可夢中心晴空塔店",
-                    description: "造訪位於晴空街道4樓的寶可夢中心，與傳說寶可夢「烈空坐」模型合影。",
-                    imageUrl: "https://image1.gamme.com.tw/news2/2016/19/94/qZqXpKWXmKCeqqc.jpg",
-                    alt: "寶可夢中心晴空塔店",
-                    links: [
-                        { type: "map", name: "景點地圖", url: "https://www.google.com/maps/search/?api=1&query=Pokemon+Center+Tokyo+Skytree+Town" },
-                        { type: "web", name: "官方網站", url: "https://www.pokemon.co.jp/shop/pokecen/skytreetown/" }
-                    ]
-                }
-            ]
-        },
-        // Day 4
-        {
-            day: "D4",
-            title: "台場的巨神與星夜的旅程",
-            date: "2025年7月17日 (四)",
-            events: [
-                 {
-                    time: "10:00 - 11:00",
-                    title: "前往東京車站寄存行李",
-                    description: "於八重洲側的置物櫃寄存大行李。",
-                    imageUrl: "https://article-image.travel.navitime.jp/img/NTJhowto0078-zh-tw/11.webp",
-                    alt: "東京車站置物櫃",
-                     links: [
-                        { type: "map", name: "東京車站地圖", url: "https://www.google.com/maps/search/?api=1&query=Tokyo+Station" }
-                    ]
-                },
-                {
-                    time: "11:00 - 11:45",
-                    title: "前往台場",
-                    description: "從新橋站換乘百合海鷗號前往台場。",
-                    imageUrl: "https://wp-odai.wamazing.com/media/wp-content/uploads/sites/2/2020/02/yurikamome1daypass_free_9.jpg.webp",
-                    alt: "百合海鷗號電車",
-                     links: [
-                        { type: "map", name: "新橋站地圖", url: "https://www.google.com/maps/search/?api=1&query=Shimbashi+Station" },
-                        { type: "map", name: "台場站地圖", url: "https://www.google.com/maps/search/?api=1&query=Daiba+Station" }
-                    ]
-                },
-                {
-                    time: "12:00 - 17:00",
-                    title: "台場深度探索",
-                    description: "觀賞13:00的獨角獸鋼彈變身秀，並朝聖7樓的THE GUNDAM BASE TOKYO。",
-                    imageUrl: "https://www.bring-you.info/imgs/2019/04/Diver-City-17.jpg",
-                    alt: "台場獨角獸鋼彈立像",
-                    links: [
-                        { type: "map", name: "DiverCity Tokyo Plaza地圖", url: "https://www.google.com/maps/search/?api=1&query=DiverCity+Tokyo+Plaza" },
-                        { type: "web", name: "官方網站", url: "https://mitsui-shopping-park.com/divercity-tokyo/" }
-                    ]
-                },
-                {
-                    time: "19:30 - 20:45",
-                    title: "錢湯體驗：銀座湯",
-                    description: "在搭乘夜巴前，前往充滿昭和風情的傳統錢湯「銀座湯」，洗去一日疲憊。",
-                    imageUrl: "https://spa-tokyo.net/z-t-ginza/01-123g.jpeg",
-                    alt: "銀座湯入口暖簾",
-                    links: [
-                        { type: "map", name: "錢湯地圖", url: "https://www.google.com/maps/search/?api=1&query=Ginza-yu,+Chuo+City,+Tokyo" },
-                        { type: "web", name: "錢湯指南", url: "https://www.1010.or.jp/map/item/item-cb-317" }
-                    ]
-                },
-                {
-                    time: "21:00 - 21:20",
-                    title: "前往巴士總站",
-                    description: "前往位於東京中城八重洲B2的巴士總站。",
-                    imageUrl: "https://platinumaps.blob.core.windows.net/assets/2023/04/27/04/01/06/c3bf6afb-895b-4187-afc9-fac1281b386b.jpg",
-                    alt: "巴士總站東京八重洲",
-                     links: [
-                        { type: "map", name: "巴士總站地圖", url: "https://www.google.com/maps/search/?api=1&query=Bus+Terminal+Tokyo+Yaesu" }
-                    ]
-                }
-            ]
-        },
-        // Day 5
-        {
-            day: "D5",
-            title: "環球影城制霸日",
-            date: "2025年7月18日 (五)",
-            events: [
-                {
-                    time: "07:15",
-                    title: "抵達USJ",
-                    description: "夜間巴士抵達日本環球影城交通廣場。",
-                    imageUrl: "https://vipliner.biz/map/usj/img/usj_map.gif",
-                    alt: "USJ交通廣場",
-                     links: [
-                        { type: "map", name: "USJ巴士站地圖", url: "https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan+Bus+Stop" }
-                    ]
-                },
-                {
-                    time: "07:15 - 07:45",
-                    title: "行李寄放",
-                    description: "步行至「日本環球影城園前飯店」寄放行李。",
-                    imageUrl: "https://pic.pimg.tw/zaza1021/1520567715-1631565743.jpg",
-                    alt: "園前飯店外觀",
-                    links: [
-                        { type: "map", name: "園前飯店地圖", url: "https://www.google.com/maps/search/?api=1&query=The+Park+Front+Hotel+at+Universal+Studios+Japan" }
-                    ]
-                },
-                {
-                    time: "08:30 - 閉園",
-                    title: "日本環球影城 (USJ)",
-                    description: "從開園到閉園，完整體驗USJ的奇幻與刺激。",
-                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC9tfBWM6GH2VNLS6zxUHTC5NnvZjoPfdpYQ&s",
-                    alt: "日本環球影城地球標誌",
-                    links: [
-                        { type: "map", name: "景點地圖", url: "https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan" },
-                        { type: "web", name: "官方網站", url: "https://www.usj.co.jp/web/zh/tw" }
-                    ]
-                }
-            ]
-        },
-        // Day 6
-        {
-            day: "D6",
-            title: "大阪深度探索",
-            date: "2025年7月19日 (六)",
-            events: [
-                {
-                    time: "11:00 - 11:15",
-                    title: "搭乘船長線渡輪",
-                    description: "搭乘**船長線 (Captain Line)** 渡輪從環球港前往海遊館西碼頭。",
-                    imageUrl: "https://www.captainline.jp/images/img_gaiyo_04.jpg",
-                    alt: "船長線渡輪",
-                     links: [
-                        { type: "map", name: "環球港碼頭地圖", url: "https://www.google.com/maps/search/?api=1&query=Universal+City+Port,+Osaka" },
-                        { type: "map", name: "海遊館西碼頭地圖", url: "https://www.google.com/maps/search/?api=1&query=Kaiyukan+West+Pier" }
-                    ]
-                },
-                {
-                    time: "11:15 - 14:30",
-                    title: "大阪海遊館",
-                    description: "參觀世界最大級別的水族館，觀賞豐富的海洋生物。",
-                    imageUrl: "https://www.kaiyukan.com/images/visual_main_pc.jpg",
-                    alt: "大阪海遊館",
-                    links: [
-                        { type: "map", name: "景點地圖", url: "https://www.google.com/maps/search/?api=1&query=Osaka+Aquarium+Kaiyukan" },
-                        { type: "web", name: "官方網站", url: "https://www.kaiyukan.com/" }
-                    ]
-                },
-                {
-                    time: "15:30 - 16:00",
-                    title: "前往BON Hostel辦理入住",
-                    description: "從海遊館搭乘地鐵至難波，前往「**BON Hostel**」辦理入住。",
-                    imageUrl: "https://resources.matcha-jp.com/resize/480x2000/2018/08/17-60823.webp",
-                    alt: "大阪難波站",
-                    links: [
-                        { type: "map", name: "難波站地圖", url: "https://www.google.com/maps/search/?api=1&query=Namba+Station" },
-                        { type: "map", name: "BON Hostel 地圖", url: "https://www.google.com/maps/search/?api=1&query=BON+HOSTEL+Osaka" }
-                    ]
-                },
-                {
-                    time: "16:00 - 17:30",
-                    title: "大阪生活今昔館",
-                    description: "參觀重現江戶時代大阪街道的博物館，體驗穿越時空的樂趣。",
-                    imageUrl: "https://www.kintetsu.co.jp/foreign/assets/sightseeing/osaka/spot03/images/spot03_pic02.png",
-                    alt: "大阪生活今昔館江戶街道",
-                    links: [
-                        { type: "map", name: "景點地圖", url: "https://www.google.com/maps/search/?api=1&query=Osaka+Museum+of+Housing+and+Living" },
-                        { type: "web", name: "官方網站", url: "https://www.osaka-angenet.jp/konjyakukan/" }
-                    ]
-                },
-                {
-                    time: "17:30 - 19:00",
-                    title: "天神橋筋商店街與晚餐",
-                    description: "漫步於日本最長的商店街，感受在地活力並享用晚餐。",
-                    imageUrl: "https://www.bring-you.info/imgs/2020/01/Tenjinbashisuji_Shopping_Street-2.jpg",
-                    alt: "天神橋筋商店街拱廊",
-                    links: [
-                        { type: "map", name: "景點地圖", url: "https://www.google.com/maps/search/?api=1&query=Tenjinbashisuji+Shopping+Street" },
-                        { type: "web", name: "官方網站", url: "http://www.tenjin123.com/" }
-                    ]
-                },
-                {
-                    time: "19:00 - 20:30",
-                    title: "巡禮日本橋電電城",
-                    description: "大阪的秋葉原，動漫、電玩和電子產品愛好者的天堂。",
-                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6qipz5NtNJUfITwW4Q2ZbHmeV-jLLQK5qlw&s",
-                    alt: "日本橋電電城",
-                    links: [
-                        { type: "map", name: "景點地圖", url: "https://www.google.com/maps/search/?api=1&query=Nipponbashi+Denden+Town" }
-                    ]
-                },
-                {
-                    time: "20:30以後",
-                    title: "夜訪道頓堀",
-                    description: "欣賞固力果跑跑人等巨大霓虹招牌，品嚐大阪燒與章魚燒。",
-                    imageUrl: "https://static.gltjp.com/glt/data/article/21000/20444/20230926_164401_803da030_w1920.webp",
-                    alt: "道頓堀固力果跑跑人招牌",
-                    links: [
-                        { type: "map", name: "景點地圖", url: "https://www.google.com/maps/search/?api=1&query=Dotonbori,+Osaka" },
-                        { type: "web", name: "官方網站", url: "https://www.dotonbori.or.jp/" }
-                    ]
-                }
-            ]
-        },
-        // Day 7
-        {
-            day: "D7",
-            title: "古都奈良尋鹿，夜遊祇園",
-            date: "2025年7月20日 (日)",
-            events: [
-                {
-                    time: "11:00 - 12:00",
-                    title: "寄放行李",
-                    description: "從京都站至「東寺洛希爾酒店」寄放行李。",
-                    imageUrl: "https://www.colatour.com.tw/COLA_AppFiles/A03H_Hotel/Images/262170-01.GIF",
-                    alt: "東寺洛希爾酒店",
-                    links: [
-                        { type: "map", name: "京都站地圖", url: "https://www.google.com/maps/search/?api=1&query=Kyoto+Station" },
-                        { type: "map", name: "飯店地圖", url: "https://www.google.com/maps/search/?api=1&query=Hotel+Lotus+Toji" }
-                    ]
-                },
-                {
-                    time: "12:00 - 14:30",
-                    title: "奈良公園與東大寺",
-                    description: "搭乘JR奈良線至奈良，在奈良公園與鹿群互動，參觀東大寺。",
-                    imageUrl: "https://i.epochtimes.com/assets/uploads/2022/11/id13860843-e1204291e109623bce80d6f8e47aa6f1.jpg",
-                    alt: "奈良公園與鹿群",
-                    links: [
-                        { type: "map", name: "奈良公園地圖", url: "https://www.google.com/maps/search/?api=1&query=Nara+Park" },
-                        { type: "map", name: "東大寺地圖", url: "https://www.google.com/maps/search/?api=1&query=Todai-ji+Temple" },
-                        { type: "web", name: "官方網站", url: "https://www.pref.nara.jp/1713.htm" }
-                    ]
-                },
-                {
-                    time: "17:00以後",
-                    title: "夜遊祇園",
-                    description: "搭乘巴士前往祇園，漫步於花見小路，感受古都的夜間風情。",
-                    imageUrl: "https://image.cdn-eztravel.com.tw/HEAfEEXSUW1W7ww5uQ-yMxCefLC5rxB2EZVpwSIo_9E/g:ce/aHR0cHM6Ly92YWNhdGlvbi5jZG4tZXp0cmF2ZWwuY29tLnR3L2ltZy9WRFIvSlBfMTM0ODUyNDM1My5qcGc.jpg",
-                    alt: "夜晚的祇園花見小路",
-                    links: [
-                        { type: "map", name: "祇園地圖", url: "https://www.google.com/maps/search/?api=1&query=Gion,+Kyoto" },
-                        { type: "map", name: "花見小路地圖", url: "https://www.google.com/maps/search/?api=1&query=Hanamikoji+Street" },
-                        { type: "web", name: "旅遊資訊", url: "https://kyoto.travel/en/thingstodo/entertainment/gion.html" }
-                    ]
-                }
-            ]
-        },
-        // Day 8
-        {
-            day: "D8",
-            title: "漫步古都坂道，再次夜行",
-            date: "2025年7月21日 (一)",
-            events: [
-                {
-                    time: "09:00 - 10:00",
-                    title: "前往京都車站寄存行李",
-                    description: "前往京都車站八条口寄存大行李。",
-                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTies4RR97BpGTXpsAItI8IRywHYyeN8kDSD9hJezq5zQgBzVjF4iK8Bc_bIOY04pKZNuU&usqp=CAU",
-                    alt: "京都車站置物櫃",
-                     links: [
-                        { type: "map", name: "京都車站八条口地圖", url: "https://www.google.com/maps/search/?api=1&query=Kyoto+Station+Hachijo+Exit" }
-                    ]
-                },
-                {
-                    time: "10:00 - 18:00",
-                    title: "清水寺與東山地區漫步",
-                    description: "搭乘巴士前往清水寺，沿著二年坂、三年坂漫步。",
-                    imageUrl: "https://static.gltjp.com/glt/data/article/21000/20372/20230817_151022_fdfbc0ca_w1920.webp",
-                    alt: "清水寺與三重塔",
-                    links: [
-                        { type: "map", name: "清水寺地圖", url: "https://www.google.com/maps/search/?api=1&query=Kiyomizu-dera+Temple" },
-                        { type: "map", name: "二年坂・三年坂地圖", url: "https://www.google.com/maps/search/?api=1&query=Sannenzaka+and+Ninenzaka" },
-                        { type: "web", name: "官方網站", url: "https://www.kiyomizudera.or.jp/" }
-                    ]
-                },
-                {
-                    time: "21:00 - 22:15",
-                    title: "錢湯體驗：大正湯",
-                    description: "步行至車站附近的「大正湯」沐浴淨身。",
-                    imageUrl: "https://1010.kyoto/wp/wp-content/uploads/2018/11/taisyouMinami11.jpg",
-                    alt: "大正湯",
-                    links: [
-                        { type: "map", name: "錢湯地圖", url: "https://www.google.com/maps/search/?api=1&query=Taishoyu,+Kyoto" },
-                        { type: "web", name: "官方網站", url: "http://taishouyu.com/" }
-                    ]
-                }
-            ]
-        },
-        // Day 9
-        {
-            day: "D9",
-            title: "池袋陽光日與上野歸營",
-            date: "2025年7月22日 (二)",
-            events: [
-                {
-                    time: "05:50",
-                    title: "抵達池袋",
-                    description: "巴士抵達池袋站東口。",
-                    imageUrl: "https://i0.wp.com/roundtripjp.com/wp-content/uploads/2020/09/P1090669.jpg",
-                    alt: "池袋站東口",
-                     links: [
-                        { type: "map", name: "池袋站東口地圖", url: "https://www.google.com/maps/search/?api=1&query=Ikebukuro+Station+East+Exit" }
-                    ]
-                },
-                {
-                    time: "09:00 - 15:00",
-                    title: "池袋太陽城",
-                    description: "攻略寶可夢中心、陽光水族館及展望公園。",
-                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIvKqrSwe54_YBQk5H4bjADhACArJZNFkxNA&s",
-                    alt: "池袋太陽城建築外觀",
-                    links: [
-                        { type: "map", name: "景點地圖", url: "https://www.google.com/maps/search/?api=1&query=Sunshine+City+Ikebukuro" },
-                        { type: "web", name: "官方網站", url: "https://sunshinecity.jp/zh-tw/" }
-                    ]
-                },
-                {
-                    time: "16:00 - 17:00",
-                    title: "旅舍入住",
-                    description: "前往「東京上野格子飯店及青年旅館」辦理入住。",
-                    imageUrl: "https://res.klook.com/klook-hotel/image/upload/fl_lossy.progressive,c_fill,f_auto,w_750,q_85/s10akd/200u180000015fsth9336.jpg",
-                    alt: "Grids Tokyo Ueno",
-                     links: [
-                        { type: "map", name: "旅舍地圖", url: "https://www.google.com/maps/search/?api=1&query=Grids+Tokyo+Ueno+Hotel+%26+Hostel" }
-                    ]
-                }
-            ]
-        },
-        // Day 10
-        {
-            day: "D10",
-            title: "箱根環山纜海一日遠征",
-            date: "2025年7月23日 (三)",
-            events: [
-                {
-                    time: "07:30 - 08:30",
-                    title: "前往新宿購票",
-                    description: "從上野搭車至新宿，購買「箱根周遊券」及「浪漫特快」車票。",
-                    imageUrl: "https://www.odakyu.jp/wordpress/wp-content/themes/odakyu/common/img/support/center/img_center_03.jpg",
-                    alt: "小田急旅遊服務中心",
-                     links: [
-                        { type: "map", name: "新宿站地圖", url: "https://www.google.com/maps/search/?api=1&query=Shinjuku+Station" }
-                    ]
-                },
-                {
-                    time: "08:40 - 10:10",
-                    title: "搭乘浪漫特快",
-                    description: "搭乘浪漫特快至「箱根湯本站」。",
-                    imageUrl: "https://www.odakyu.jp/wordpress/wp-content/themes/odakyu/common/img/romancecar/lineup/img_lineup_07.jpg",
-                    alt: "小田急浪漫特快",
-                     links: [
-                        { type: "map", name: "箱根湯本站地圖", url: "https://www.google.com/maps/search/?api=1&query=Hakone-Yumoto+Station" }
-                    ]
-                },
-                {
-                    time: "11:30 - 13:30",
-                    title: "大涌谷觀光與午餐",
-                    description: "搭乘空中纜車至「大涌谷」觀光，再前往「桃源台」享用午餐。",
-                    imageUrl: "https://static.gltjp.com/glt/data/directory/12000/11793/20210804_091714_d203a2bb_w1920.webp",
-                    alt: "大涌谷火山地熱景觀",
-                    links: [
-                        { type: "map", name: "大涌谷地圖", url: "https://www.google.com/maps/search/?api=1&query=Owakudani" },
-                        { type: "map", name: "桃源台港地圖", url: "https://www.google.com/maps/search/?api=1&query=Togendai+Port" }
-                    ]
-                },
-                {
-                    time: "13:40 - 14:10",
-                    title: "蘆之湖海賊觀光船",
-                    description: "搭乘海賊船航行於蘆之湖上，從桃源台港至元箱根港。",
-                    imageUrl: "https://www.e-japannavi.com/syuyu/kanagawa/hakone_images/ashinoko_img700465_05.jpg",
-                    alt: "蘆之湖上的海賊船",
-                     links: [
-                        { type: "map", name: "元箱根港地圖", url: "https://www.google.com/maps/search/?api=1&query=Moto-Hakone+Port" }
-                    ]
-                },
-                {
-                    time: "14:10 - 15:40",
-                    title: "箱根神社",
-                    description: "參拜著名的水中鳥居「平和的鳥居」。",
-                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScA-i--u_UfT6m9fF9pb_g0S2FCffD4WYGag&s",
-                    alt: "箱根神社水中鳥居",
-                    links: [
-                        { type: "map", name: "景點地圖", url: "https://www.google.com/maps/search/?api=1&query=Hakone+Shrine" },
-                        { type: "web", name: "官方網站", url: "https://hakonejinja.or.jp/" }
-                    ]
-                }
-            ]
-        },
-        // Day 11
-        {
-            day: "D11",
-            title: "上野最終巡禮與歸途",
-            date: "2025年7月24日 (四)",
-            events: [
-                {
-                    time: "10:00 - 13:00",
-                    title: "上野最終採購",
-                    description: "深入探索「阿美橫丁」及「唐吉訶德 上野店」。",
-                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQQFV8mHKPwduT-dW4V9w3UOWiPBOvCa7jng&s",
-                    alt: "阿美橫丁商店街",
-                    links: [
-                        { type: "map", name: "阿美橫丁地圖", url: "https://www.google.com/maps/search/?api=1&query=Ameya+Yokocho" },
-                        { type: "map", name: "唐吉訶德上野店地圖", url: "https://www.google.com/maps/search/?api=1&query=Don+Quijote+Ueno" },
-                        { type: "web", name: "官方網站", url: "https://www.ameyoko.net/" }
-                    ]
-                },
-                {
-                    time: "14:00 - 16:00",
-                    title: "上野公園文化漫步",
-                    description: "可選擇參觀「國立科學博物館」或在「不忍池」散步。",
-                    imageUrl: "https://res.cloudinary.com/jnto/image/upload/w_750,h_503,fl_lossy,f_auto/v1666262315/tokyo/Tokyo_t_id195_2",
-                    alt: "國立科學博物館",
-                     links: [
-                        { type: "map", name: "上野公園地圖", url: "https://www.google.com/maps/search/?api=1&query=Ueno+Park" },
-                        { type: "map", name: "國立科學博物館地圖", url: "https://www.google.com/maps/search/?api=1&query=National+Museum+of+Nature+and+Science,+Tokyo" },
-                        { type: "map", name: "不忍池地圖", url: "https://www.google.com/maps/search/?api=1&query=Shinobazu+Pond" }
-                    ]
-                },
-                {
-                    time: "16:00 - 17:30",
-                    title: "錢湯體驗：壽湯",
-                    description: "前往上野知名的錢湯「壽湯」，以其傳統氛圍與大型露天浴池洗去旅途疲憊。",
-                    imageUrl: "https://digjapan.travel/files/topics/7409_ext_02_1.jpg",
-                    alt: "壽湯露天浴池",
-                    links: [
-                        { type: "map", name: "錢湯地圖", url: "https://www.google.com/maps/search/?api=1&query=Kotobukiyu,+Taito" },
-                        { type: "web", name: "官方網站", url: "https://www.kotobukiyu.jp/" }
-                    ]
-                }
-            ]
-        }
-    ];
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const accordionContainer = document.getElementById('itinerary-accordion');
-        itineraryData.forEach(dayData => {
-            const dayElement = document.createElement('div');
-            dayElement.className = 'bg-white rounded-xl shadow-md overflow-hidden';
-
-            let eventsHtml = '';
-            dayData.events.forEach(event => {
-                let linksHtml = '';
-                if (event.links) {
-                    linksHtml = `<div class="mt-4 flex flex-wrap gap-2">`;
-                    event.links.forEach(link => {
-                        const btnClass = link.type === 'map' ? 'btn-map' : 'btn-web';
-                        const iconHtml = link.type === 'map' ? `<svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>` : `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4.06a.718.718 0 0 0 .445.724l.02.008.002.002.002.002.001.001c.03.01.06.022.09.034a.266.266 0 0 0 .145.037l.004-.001.004-.002.001-.001c.01-.003.02-.005.029-.008a.23.23 0 0 0 .09-.068.24.24 0 0 0 .048-.1c.005-.017.01-.034.013-.051a.5.5 0 0 0-.03-.226c-.023-.05-.05-.096-.08-.14a1.04 1.04 0 0 0-.12-.19c-.04-.05-.08-.097-.12-.142a2.3 2.3 0 0 0-.24-.27C4.65 2.04 4.35 1.57 4.01 1.154a8.03 8.03 0 0 1 3.49-1.07Z"/></svg>`;
-                        linksHtml += `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="${btnClass} px-4 py-2 rounded-lg text-sm font-semibold flex items-center justify-center space-x-1"> ${iconHtml} <span>${link.name}</span></a>`;
-                    });
-                    linksHtml += `</div>`;
-                }
-
-                eventsHtml += `
-    <div class="timeline-item relative pb-8 last:pb-0">
-        <div class="timeline-dot"></div>
-        <div class="ml-12 pl-4">
-            <h3 class="font-bold text-lg text-gray-700">${event.time}：${event.title}</h3>
-            <p class="text-gray-600 mt-1">${event.description}</p>
-            <img src="${event.imageUrl}" onerror="this.onerror=null;this.src='https://placehold.co/800x400/EFEFEF/AAAAAA?text=Image+Not+Found';" class="mt-4 rounded-lg shadow-sm w-full max-h-60 object-cover" alt="${event.alt}">
-            ${linksHtml}
+        <div class="event">
+            <div class="event-time">21:30 - 22:15</div>
+            <div class="event-details">
+                <div class="event-title">搭乘Skyliner</div>
+                <p class="event-description">從成田機場搭乘列車直達京成上野站。</p>
+                <img src="https://www.keisei.co.jp/keisei/tetudou/skyliner/tc/assets/images/tickets/index/index_coupon.jpg" alt="Skyliner列車" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Keisei-Ueno+Station" target="_blank">地圖</a>
+                    <a href="https://www.keisei.co.jp/keisei/tetudou/stationmap/ueno.php" target="_blank">官網</a>
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-time">22:15 - 22:30</div>
+            <div class="event-details">
+                <div class="event-title">飯店入住</div>
+                <p class="event-description">步行至「上野皇冠山丘高級酒店」辦理入住。注意：官網已失效，請透過訂房平台確認預訂。行前可再次確認近期住客評價。</p>
+                <img src="https://imageproxy.pixnet.cc/imgproxy?url=https://pic.pimg.tw/atm0710/1700749716-4067098748-g_l.jpg" alt="飯店外觀" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Crown+Hills+Ueno+Premier" target="_blank">地圖</a>
+                    <a href="https://www.agoda.com/hotel-crown-hills-ueno-premier/hotel/tokyo-jp.html" target="_blank">訂房平台參考</a>
+                </div>
+            </div>
         </div>
     </div>
-                `;
-            });
-            
-            dayElement.innerHTML = `
-                <button class="accordion-header w-full flex justify-between items-center p-5 text-left transition duration-300 ease-in-out hover:bg-gray-50">
-                    <div class="flex items-center space-x-4">
-                        <span class="day-tag text-white font-bold w-12 h-12 flex items-center justify-center rounded-full text-lg">${dayData.day}</span>
-                        <div>
-                            <h2 class="font-bold text-xl text-gray-800">${dayData.title}</h2>
-                            <p class="text-sm text-gray-500">${dayData.date}</p>
-                        </div>
-                    </div>
-                    <svg class="w-6 h-6 text-gray-400 transition-transform duration-300 transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
-                <div class="accordion-content">
-                    <div class="p-5 border-t border-gray-200">
-                        <div class="relative timeline">
-                            ${eventsHtml}
-                        </div>
-                    </div>
+
+    <div class="day-block">
+        <div class="day-header">
+            <div class="day-title">D2: 哈利波特的魔法世界與池袋的次元脈動</div>
+            <div class="day-date">2025年7月15日 (二)</div>
+        </div>
+        <div class="event">
+            <div class="event-time">08:30 - 09:30</div>
+            <div class="event-details">
+                <div class="event-title">前往豐島園</div>
+                <p class="event-description">從「上野御徒町站」搭乘都營大江戶線，直達「豐島園站」。建議提早出發，搶在開園初期人潮較少時段入場。</p>
+                <img src="https://d1grca2t3zpuug.cloudfront.net/2025/02/67adf9b40151d-860x500.webp" alt="都營大江戶線列車" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Ueno-okachimachi+Station" target="_blank">地圖</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Toshimaen+Station" target="_blank">地圖</a>
                 </div>
-            `;
-            accordionContainer.appendChild(dayElement);
-        });
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-time">09:30 - 14:00</div>
+            <div class="event-details">
+                <div class="event-title">深度遊覽哈利波特影城</div>
+                <p class="event-description">09:30入場，建議遊玩4小時以上，享受較少人潮的魔法世界。</p>
+                <img src="https://jw-webmagazine.com/zh-tw/wp-content/uploads/2023/08/%E5%85%A5%E5%8F%A3-min.jpg" alt="哈利波特影城入口" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Warner+Bros.+Studio+Tour+Tokyo" target="_blank">地圖</a>
+                    <a href="https://www.wbstudiotour.jp/zh-tw/" target="_blank">官網</a>
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-time">15:00 - 19:00</div>
+            <div class="event-details">
+                <div class="event-title">池袋太陽城探索</div>
+                <p class="event-description">從豐島園搭乘西武池袋線至池袋。攻略太陽城的寶可夢中心、陽光水族館及展望公園。</p>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIvKqrSwe54_YBQk5H4bjADhACArJZNFkxNA&s" alt="池袋太陽城" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Sunshine+City+Ikebukuro" target="_blank">地圖</a>
+                    <a href="https://sunshinecity.jp/zh-tw/" target="_blank">官網</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        const accordionHeaders = document.querySelectorAll('.accordion-header');
-        accordionHeaders.forEach(header => {
-            header.addEventListener('click', () => {
-                const currentlyActive = document.querySelector('.accordion-header.active');
-                if (currentlyActive && currentlyActive !== header) {
-                    currentlyActive.classList.remove('active');
-                    const currentContent = currentlyActive.nextElementSibling;
-                    currentContent.style.maxHeight = '0';
-                    currentContent.style.paddingTop = '0';
-                    currentContent.style.paddingBottom = '0';
-                    currentlyActive.querySelector('svg').style.transform = 'rotate(0deg)';
-                }
+    <div class="day-block">
+        <div class="day-header">
+            <div class="day-title">D3: 數位藝術與雲端漫步</div>
+            <div class="day-date">2025年7月16日 (三)</div>
+        </div>
+        <div class="event">
+            <div class="event-time">11:00 - 13:30</div>
+            <div class="event-details">
+                <div class="event-title">豐洲 teamLab Planets TOKYO</div>
+                <p class="event-description">赤腳沉浸於水與數位藝術的互動。從「新豐洲站」步行即達。</p>
+                <img src="https://cdn2.ettoday.net/images/6810/d6810043.jpg" alt="teamLab藝術裝置" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=teamLab+Planets+TOKYO" target="_blank">地圖</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Shin-toyosu+Station" target="_blank">地圖</a>
+                    <a href="https://www.teamlab.art/zh-hant/planets/" target="_blank">官網</a>
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-time">13:30 - 14:30</div>
+            <div class="event-details">
+                <div class="event-title">豐洲LaLaport午餐</div>
+                <p class="event-description">於豐洲LaLaport購物中心享用午餐。</p>
+                <img src="https://mitsui-shopping-park.com/lalaport/toyosu/tw/image/index/pic_visual.jpg" alt="豐洲LaLaport" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=LaLaport+Toyosu" target="_blank">地圖</a>
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-time">15:30 - 18:00</div>
+            <div class="event-details">
+                <div class="event-title">東京晴空塔</div>
+                <p class="event-description">16:00入場，從350m天望甲板到450m天望迴廊，欣賞東京從白晝到黃昏的景色。</p>
+                <img src="https://www.tokyo-skytree.jp/floor/ground/img/img_4f_10.png" alt="晴空塔售票處" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Tokyo+Skytree" target="_blank">地圖</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Oshiage+Station" target="_blank">地圖</a>
+                    <a href="https://www.tokyo-skytree.jp/cn_t/" target="_blank">官網</a>
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-time">18:00 - 19:30</div>
+            <div class="event-details">
+                <div class="event-title">寶可夢中心晴空塔店</div>
+                <p class="event-description">造訪位於晴空街道4樓的寶可夢中心，與傳說寶可夢「烈空坐」模型合影。</p>
+                <img src="https://image1.gamme.com.tw/news2/2016/19/94/qZqXpKWXmKCeqqc.jpg" alt="寶可夢中心烈空坐" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Pokemon+Center+Tokyo+Skytree+Town" target="_blank">地圖</a>
+                    <a href="https://www.pokemon.co.jp/shop/pokecen/skytreetown/" target="_blank">官網</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                header.classList.toggle('active');
-                const content = header.nextElementSibling;
-                const icon = header.querySelector('svg');
-                
-                if (header.classList.contains('active')) {
-                    content.style.maxHeight = content.scrollHeight + 50 + 'px'; // Add some buffer
-                    content.style.paddingTop = '1.25rem';
-                    content.style.paddingBottom = '1.25rem';
-                    icon.style.transform = 'rotate(180deg)';
-                } else {
-                    content.style.maxHeight = '0';
-                    content.style.paddingTop = '0';
-                    content.style.paddingBottom = '0';
-                    icon.style.transform = 'rotate(0deg)';
-                }
-            });
-        });
+    <div class="day-block">
+        <div class="day-header">
+            <div class="day-title">D4: 告別東京，奔向大阪</div>
+            <div class="day-date">2025年7月17日 (四)</div>
+        </div>
+        <div class="event">
+            <div class="event-time">09:00 - 10:00</div>
+            <div class="event-details">
+                <div class="event-title">行李寄送與輕裝出發</div>
+                <p class="event-description">於飯店櫃檯辦理「宅配便(Takuhaibin)」服務，將大件行李直接寄往大阪的飯店。僅攜帶隨身小包，輕鬆開始今天的旅程。</p>
+                <img src="https://www.kuronekoyamato.co.jp/ytc/images/service/logo_l.gif" alt="宅配便標誌" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.kuronekoyamato.co.jp/ytc/en/send/services/airport/" target="_blank">服務介紹</a>
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-time">10:00 - 15:00</div>
+            <div class="event-details">
+                <div class="event-title">台場深度探索</div>
+                <p class="event-description">從新橋站換乘百合海鷗號前往台場。觀賞13:00的獨角獸鋼彈變身秀，並朝聖7樓的THE GUNDAM BASE TOKYO。</p>
+                <img src="https://www.bring-you.info/imgs/2019/04/Diver-City-17.jpg" alt="獨角獸鋼彈" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=DiverCity+Tokyo+Plaza" target="_blank">地圖</a>
+                    <a href="https://mitsui-shopping-park.com/divercity-tokyo/tw/" target="_blank">官網</a>
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-time">16:00 - 19:00</div>
+            <div class="event-details">
+                <div class="event-title">搭乘新幹線前往大阪</div>
+                <p class="event-description">從東京車站搭乘東海道新幹線，約2.5小時後抵達新大阪站。享受快速、舒適的旅程，為明日儲備體力。</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Shinkansen_N700S_J1_Tokyo_20200701.jpg/1200px-Shinkansen_N700S_J1_Tokyo_20200701.jpg" alt="新幹線列車" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Tokyo+Station" target="_blank">地圖</a>
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-time">19:30以後</div>
+            <div class="event-details">
+                <div class="event-title">大阪飯店入住</div>
+                <p class="event-description">抵達新大阪站後，轉乘地鐵前往「日本環球影城園前飯店」辦理入住，享受悠閒的夜晚。</p>
+                <img src="https://pic.pimg.tw/zaza1021/1520567715-1631565743.jpg" alt="園前飯店" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=The+Park+Front+Hotel+at+Universal+Studios+Japan" target="_blank">地圖</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        if (accordionHeaders.length > 0) {
-            accordionHeaders[0].click();
-        }
-    });
-    </script>
+    <div class="day-block">
+        <div class="day-header">
+            <div class="day-title">D5: 環球影城制霸日</div>
+            <div class="day-date">2025年7月18日 (五)</div>
+        </div>
+        <div class="event">
+            <div class="event-time">08:30 - 閉園</div>
+            <div class="event-details">
+                <div class="event-title">日本環球影城 (USJ)</div>
+                <p class="event-description">經過一夜好眠，以100%的體力從開園到閉園，完整體驗USJ的奇幻與刺激。大件行李已於昨日寄達飯店，無需為行李煩惱。</p>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC9tfBWM6GH2VNLS6zxUHTC5NnvZjoPfdpYQ&s" alt="USJ地球標誌" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan" target="_blank">地圖</a>
+                    <a href="https://www.usj.co.jp/web/zh/tw" target="_blank">官網</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="day-block">
+        <div class="day-header">
+            <div class="day-title">D6: 大阪的水族奇觀與不夜城巡禮</div>
+            <div class="day-date">2025年7月19日 (六)</div>
+        </div>
+        <div class="event">
+            <div class="event-time">10:00 - 14:30</div>
+            <div class="event-details">
+                <div class="event-title">大阪海遊館</div>
+                <p class="event-description">參觀世界最大級別的水族館，觀賞豐富的海洋生物。可從環球影城搭乘船長線渡輪直達。</p>
+                <img src="https://www.kaiyukan.com/images/visual_main_pc.jpg" alt="海遊館鯨鯊" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Osaka+Aquarium+Kaiyukan" target="_blank">地圖</a>
+                    <a href="https://www.kaiyukan.com/language/chinese_traditional/" target="_blank">官網</a>
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-time">15:30 - 16:00</div>
+            <div class="event-details">
+                <div class="event-title">前往BON Hostel辦理入住</div>
+                <p class="event-description">從海遊館搭乘地鐵至難波，前往「BON Hostel」辦理入住。</p>
+                <img src="https://resources.matcha-jp.com/resize/480x2000/2018/08/17-60823.webp" alt="BON Hostel" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Namba+Station" target="_blank">地圖</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=BON+HOSTEL+Osaka" target="_blank">地圖</a>
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-time">16:30 - 21:00</div>
+            <div class="event-details">
+                <div class="event-title">難波不夜城巡禮</div>
+                <p class="event-description">以步行為主，深度探索「日本橋電電城」（大阪秋葉原），並在「道頓堀」欣賞固力果跑跑人等巨大霓虹招牌，品嚐大阪燒與章魚燒作為晚餐。</p>
+                <img src="https://static.gltjp.com/glt/data/article/21000/20444/20230926_164401_803da030_w1920.webp" alt="道頓堀夜景" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Nipponbashi+Denden+Town" target="_blank">電電城地圖</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Dotonbori,+Osaka" target="_blank">道頓堀地圖</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="day-block">
+        <div class="day-header">
+            <div class="day-title">D7: 古都雙城記：伏見稻荷與奈良</div>
+            <div class="day-date">2025年7月20日 (日)</div>
+        </div>
+        <div class="event">
+            <div class="event-time">09:00 - 10:00</div>
+            <div class="event-details">
+                <div class="event-title">前往京都並寄存行李</div>
+                <p class="event-description">從大阪的飯店退房，搭車至京都車站。將大件行李寄存在車站置物櫃或直接送至飯店。</p>
+                <img src="https://www.westjr.co.jp/global/en/travel-information/routemap/pdf/station_kyoto.pdf" alt="京都車站地圖" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Kyoto+Station" target="_blank">地圖</a>
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-time">10:00 - 13:00</div>
+            <div class="event-details">
+                <div class="event-title">伏見稻荷大社</div>
+                <p class="event-description">從京都車站搭乘JR奈良線，在第二站「稻荷站」下車。穿梭於壯觀的千本鳥居。</p>
+                <img src="https://www.japan.travel/content/dam/jnto/photo/stills/kyoto/fushimi-inari-shrine/fushimi-inari-shrine-2-1.jpg" alt="伏見稻荷千本鳥居" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Fushimi+Inari-taisha" target="_blank">地圖</a>
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-time">13:30 - 17:00</div>
+            <div class="event-details">
+                <div class="event-title">奈良公園與東大寺</div>
+                <p class="event-description">返回稻荷站，繼續搭乘JR奈良線至奈良。在奈良公園與鹿群互動，參觀宏偉的東大寺。</p>
+                <img src="https://i.epochtimes.com/assets/uploads/2022/11/id13860843-e1204291e109623bce80d6f8e47aa6f1.jpg" alt="奈良公園的鹿" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Nara+Park" target="_blank">地圖</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Todai-ji+Temple" target="_blank">地圖</a>
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-time">18:00以後</div>
+            <div class="event-details">
+                <div class="event-title">返回京都並入住飯店</div>
+                <p class="event-description">從JR奈良站搭車返回京都車站，取回行李後前往「東寺洛希爾酒店」辦理入住。晚上可至祇園漫步。</p>
+                <img src="https://www.colatour.com.tw/COLA_AppFiles/A03H_Hotel/Images/262170-01.GIF" alt="飯店外觀" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Lotus+Toji" target="_blank">地圖</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="day-block">
+        <div class="day-header">
+            <div class="day-title">D8: 漫步古都坂道，再次飛馳東行</div>
+            <div class="day-date">2025年7月21日 (一)</div>
+        </div>
+        <div class="event">
+            <div class="event-time">09:00 - 10:00</div>
+            <div class="event-details">
+                <div class="event-title">行李寄送與輕裝出發</div>
+                <p class="event-description">於飯店櫃檯辦理「宅配便(Takuhaibin)」服務，將大件行李直接寄往東京的飯店。僅攜帶隨身小包，輕鬆開始今天的旅程。</p>
+                <img src="https://www.kuronekoyamato.co.jp/ytc/images/service/logo_l.gif" alt="宅配便標誌" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.kuronekoyamato.co.jp/ytc/en/send/services/bothways/" target="_blank">服務介紹</a>
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-time">10:00 - 17:00</div>
+            <div class="event-details">
+                <div class="event-title">清水寺與東山地區漫步</div>
+                <p class="event-description">搭乘巴士前往清水寺，沿著二年坂、三年坂漫步，感受京都的古都風情。</p>
+                <img src="https://static.gltjp.com/glt/data/article/21000/20372/20230817_151022_fdfbc0ca_w1920.webp" alt="清水寺與三年坂" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Kiyomizu-dera+Temple" target="_blank">地圖</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Sannenzaka+and+Ninenzaka" target="_blank">地圖</a>
+                    <a href="https://www.kiyomizudera.or.jp/" target="_blank">官網</a>
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-time">19:00 - 22:00</div>
+            <div class="event-details">
+                <div class="event-title">搭乘新幹線返回東京</div>
+                <p class="event-description">在京都車站享用晚餐後，搭乘晚間的新幹線返回東京。約2.5小時後抵達，避免夜車疲勞。</p>
+                <img src="https://cdn.mainichi.jp/images/galleries/20200513/20200513p2a00m0na005000p/001.jpg" alt="新幹線列車" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Kyoto+Station" target="_blank">地圖</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="day-block">
+        <div class="day-header">
+            <div class="day-title">D9: 上野歸營與最終巡禮</div>
+            <div class="day-date">2025年7月22日 (二)</div>
+        </div>
+        <div class="event">
+            <div class="event-time">10:00 - 11:00</div>
+            <div class="event-details">
+                <div class="event-title">旅舍入住</div>
+                <p class="event-description">昨晚抵達東京後充分休息，今早從容前往「東京上野格子飯店及青年旅館」辦理入住。大件行李應已送達。</p>
+                <img src="https://res.klook.com/klook-hotel/image/upload/fl_lossy.progressive,c_fill,f_auto,w_750,q_85/s10akd/200u180000015fsth9336.jpg" alt="旅舍外觀" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Grids+Tokyo+Ueno+Hotel+%26+Hostel" target="_blank">地圖</a>
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-time">11:00以後</div>
+            <div class="event-details">
+                <div class="event-title">上野最終採購與文化漫步</div>
+                <p class="event-description">深度探索「阿美橫丁」及「唐吉訶德 上野店」。下午可選擇參觀「國立科學博物館」或在「不忍池」散步，享受悠閒時光。</p>
+                <img src="https://res.cloudinary.com/jnto/image/upload/w_750,h_503,fl_lossy,f_auto/v1666262315/tokyo/Tokyo_t_id195_2" alt="上野公園" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Ameya+Yokocho" target="_blank">阿美橫丁地圖</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Ueno+Park" target="_blank">上野公園地圖</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="day-block">
+        <div class="day-header">
+            <div class="day-title">D10: 箱根環山纜海一日遠征</div>
+            <div class="day-date">2025年7月23日 (三)</div>
+        </div>
+        <div class="event">
+            <div class="event-time">07:00 - 08:30</div>
+            <div class="event-details">
+                <div class="event-title">前往新宿購票</div>
+                <p class="event-description">務必提早出發！從上野搭車至新宿，購買「箱根周遊券」及「浪漫特快」車票。建議提前網上預訂以節省時間。</p>
+                <img src="https://www.odakyu.jp/wordpress/wp-content/themes/odakyu/common/img/support/center/img_center_03.jpg" alt="小田急旅遊服務中心" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Shinjuku+Station" target="_blank">地圖</a>
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-time">08:40 - 10:10</div>
+            <div class="event-details">
+                <div class="event-title">搭乘浪漫特快</div>
+                <p class="event-description">搭乘浪漫特快至「箱根湯本站」。</p>
+                <img src="https://www.odakyu.jp/wordpress/wp-content/themes/odakyu/common/img/romancecar/lineup/img_lineup_07.jpg" alt="浪漫特快列車" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Hakone-Yumoto+Station" target="_blank">地圖</a>
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-time">11:30 - 13:30</div>
+            <div class="event-details">
+                <div class="event-title">大涌谷觀光與午餐</div>
+                <p class="event-description">搭乘空中纜車至「大涌谷」觀光，再前往「桃源台」享用午餐。</p>
+                <img src="https://static.gltjp.com/glt/data/directory/12000/11793/20210804_091714_d203a2bb_w1920.webp" alt="大涌谷" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Owakudani" target="_blank">地圖</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Togendai+Port" target="_blank">地圖</a>
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-time">13:40 - 14:10</div>
+            <div class="event-details">
+                <div class="event-title">蘆之湖海賊觀光船</div>
+                <p class="event-description">搭乘海賊船航行於蘆之湖上，從桃源台港至元箱根港。</p>
+                <img src="https://www.e-japannavi.com/syuyu/kanagawa/hakone_images/ashinoko_img700465_05.jpg" alt="箱根海賊船" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Moto-Hakone+Port" target="_blank">地圖</a>
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-time">14:10 - 15:40</div>
+            <div class="event-details">
+                <div class="event-title">箱根神社</div>
+                <p class="event-description">參拜著名的水中鳥居「平和的鳥居」。</p>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScA-i--u_UfT6m9fF9pb_g0S2FCffD4WYGag&s" alt="箱根神社水中鳥居" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Hakone+Shrine" target="_blank">地圖</a>
+                    <a href="https://hakonejinja.or.jp/" target="_blank">官網</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="day-block">
+        <div class="day-header">
+            <div class="day-title">D11: 上野最終巡禮與歸途</div>
+            <div class="day-date">2025年7月24日 (四)</div>
+        </div>
+        <div class="event">
+            <div class="event-time">10:00 - 13:00</div>
+            <div class="event-details">
+                <div class="event-title">上野最終採購</div>
+                <p class="event-description">利用最後的時間，深入探索「阿美橫丁」及「唐吉訶德 上野店」進行補貨。</p>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQQFV8mHKPwduT-dW4V9w3UOWiPBOvCa7jng&s" alt="阿美橫丁街景" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Ameya+Yokocho" target="_blank">地圖</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Don+Quijote+Ueno" target="_blank">地圖</a>
+                    <a href="https://www.ameyoko.net/" target="_blank">官網</a>
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-time">14:00 - 16:00</div>
+            <div class="event-details">
+                <div class="event-title">錢湯體驗：壽湯</div>
+                <p class="event-description">前往上野知名的錢湯「壽湯」，以其傳統氛圍與大型露天浴池洗去旅途疲憊，神清氣爽地準備回家。</p>
+                <img src="https://digjapan.travel/files/topics/7409_ext_02_1.jpg" alt="壽湯露天浴池" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Kotobukiyu,+Taito" target="_blank">地圖</a>
+                    <a href="https://www.kotobukiyu.jp/" target="_blank">官網</a>
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="event-time">16:30以後</div>
+            <div class="event-details">
+                <div class="event-title">前往機場</div>
+                <p class="event-description">從京成上野站搭乘Skyliner前往成田機場，準備搭機返家。</p>
+                <img src="https://www.keisei.co.jp/keisei/tetudou/skyliner/jp/assets/images/index/mv_sp.jpg" alt="Skyliner列車" class="event-media">
+                <div class="event-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Keisei-Ueno+Station" target="_blank">地圖</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
-
