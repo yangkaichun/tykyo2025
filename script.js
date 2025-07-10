@@ -15,20 +15,20 @@ document.addEventListener('DOMContentLoaded', () => {
     d1_img_skyliner: "https://www.keisei.co.jp/keisei/tetudou/skyliner/us/assets/images/skyliner/index/photo_skyliner.jpg", // D1: 京成Skyliner列車的圖片連結
     d1_link_skyliner_route: "https://www.google.com/maps/dir/Narita+Airport+Terminal+1%2C+Kinone%2C+Narita%2C+Chiba+286-0105%2C+Japan/Ueno+Station%2C+7+Chome+Ueno%2C+Taito+City%2C+Tokyo+110-0005%2C+Japan/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x6022f30b656c4ea7:0xbc0cd6366869370d!2m2!1d140.3860877!2d35.7642236!1m5!1m1!1s0x60188e9e93d3060b:0x6c89b36d7b4f9244!2m2!1d139.7774091!2d35.7141672!3e6?hl=en", // D1: 從成田機場到上野的Skyliner路線規劃連結
     d1_link_hotel_map: "https://www.google.com/maps/place/Hotel+Crown+Hills+Ueno+Premier/@35.7091391,139.776906,17z/data=!3m1!4b1!4m15!1m6!3m5!1s0x60188e9f5cf9ea1b:0x3467963b0df998c0!2sHotel+Crown+Hills+Ueno+Premier!8m2!3d35.7091391!4d139.776906!3m7!1s0x60188e9f5cf9ea1b:0x3467963b0df998c0!5m2!4m1!1i2!8m2!3d35.7091391!4d139.776906", // D1: 上野皇冠山丘酒店的Google Maps位置連結
-    d1_img_hotel_exterior: "https://blog.lhyeung.net/uploads/2023/11/hotelcrownhill_uenolifetree04.jpg", // D1: 飯店外觀的圖片連結
-    d1_img_hotel_room: "https://blog.lhyeung.net/uploads/2023/11/hotelcrownhill_uenolifetree33.jpg", // D1: 飯店房間的圖片連結
-    d1_img_hotel_view: "https://blog.lhyeung.net/uploads/2023/11/hotelcrownhill_uenolifetree34.jpg", // D1: 飯店窗景的圖片連結
+    d1_img_hotel_exterior: "https://q-xx.bstatic.com/xdata/images/hotel/max500/484158061.jpg", // D1: 飯店外觀的圖片連結
+    d1_img_hotel_room: "https://q-xx.bstatic.com/xdata/images/hotel/max500/509423340.jpg", // D1: 飯店房間的圖片連結
+    d1_img_hotel_view: "https://i0.wp.com/yfl-kelvin.com/wp-content/uploads/2025/04/20250302_091114466_iOS.jpg", // D1: 飯店窗景的圖片連結
 
     // --- DAY 2 ---
     d2_link_harrypotter_map: "https://www.google.com/maps/place/Warner+Bros.+Studio+Tour+Tokyo+%E2%80%93+The+Making+of+Harry+Potter/@35.7615472,139.6508083,17z/data=!3m1!4b1!4m6!3m5!1s0x6018edc87b4b9b67:0x86c8c5b15b826b35!8m2!3d35.7615472!4d139.6508083!16s%2Fg%2F11h9kd6k87", // D2: 哈利波特影城的Google Maps位置連結
     d2_link_to_harrypotter_route: "https://www.google.com/maps/dir/Ueno+Station,+Tokyo/Toshimaen+Station,+Tokyo/@35.7278676,139.6418013,12z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x60188e9e93d3060b:0x6c89b36d7b4f9244!2m2!1d139.7774091!4d35.7141672!1m5!1m1!1s0x6018ede4c0e4a751:0x3b1d8a8a8c8b8c8b!2m2!1d139.6508083!4d35.7615472!3e3", // D2: 前往哈利波特影城的路線規劃連結
-    d2_img_oedo_line: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Toei_Oedo_Line_12-000_series.jpg/1200px-Toei_Oedo_Line_12-000_series.jpg", // D2: 都營大江戶線列車的圖片連結
-    d2_img_hp_entrance: "https://www.wbstudiotour.jp/images/default-source/default-album/entrance.jpg", // D2: 哈利波特影城入口的圖片連結
-    d2_img_hp_hall: "https://www.wbstudiotour.jp/images/default-source/experience/great-hall.jpg", // D2: 霍格華茲大廳的圖片連結
-    d2_img_hp_scene: "https://www.wbstudiotour.jp/images/default-source/experience/diagon-alley.jpg", // D2: 影城內魔法場景的圖片連結
-    d2_img_sunshine_aqua: "https://sunshinecity.jp/aquarium/images/common/og_image.jpg", // D2: 池袋陽光水族館的圖片連結
-    d2_img_sunshine_show: "https://sunshinecity.jp/aquarium/images/animals/otter.jpg", // D2: 水族館表演的圖片連結
-    d2_img_sunshine_jellyfish: "https://sunshinecity.jp/aquarium/images/animals/jellyfish.jpg", // D2: 水族館水母區的圖片連結
+    d2_img_oedo_line: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKPmXaIt6njZk7lHNG84BHZMujA6__eDe1VQ&s", // D2: 都營大江戶線列車的圖片連結
+    d2_img_hp_entrance: "https://itraveling.tw/image/2017-uk-d4-eddie/DSC06780.JPG", // D2: 哈利波特影城入口的圖片連結
+    d2_img_hp_hall: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8-v4WA7cMhJkuOAF7w49g8U2puGfkRhZFuQ&s", // D2: 霍格華茲大廳的圖片連結
+    d2_img_hp_scene: "https://static.gltjp.com/glt/data/article/21000/20324/20230830_022836_e75d9fe6_w1920.webp", // D2: 影城內魔法場景的圖片連結
+    d2_img_sunshine_aqua: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkewwaqp7vi66kN1XB-lFjVH5WkGGucJMHbQ&s", // D2: 池袋陽光水族館的圖片連結
+    d2_img_sunshine_show: "https://rimage.gnst.jp/livejapan.com/public/img/spot/lj/00/00/lj0000615/lj0000615_5ef5912ed72ed_main.jpg?20250606090615&q=80&rw=684&rh=684", // D2: 水族館表演的圖片連結
+    d2_img_sunshine_jellyfish: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjRtFVc-d5Pmf0I4BOFJHOyBFVcjxRjuHXmQ&s", // D2: 水族館水母區的圖片連結
     d2_link_to_ikebukuro_route: "https://www.google.com/maps/dir/Toshimaen+Station,+Tokyo/Ikebukuro+Station,+Tokyo/@35.7410951,139.6858813,13z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x6018ede4c0e4a751:0x3b1d8a8a8c8b8c8b!2m2!1d139.6508083!4d35.7615472!1m5!1m1!1s0x60188d2ac0be3f7d:0x2b6d53cb463f9040!2m2!1d139.7106090!4d35.7295900!3e3", // D2: 前往池袋的路線規劃連結
     
     // --- DAY 3 ---
