@@ -1,6 +1,28 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+
+        <script type="text/javascript">
+        // 判斷是否為手機瀏覽器
+        function isMobile() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // 簡易判斷，可根據需求增加更多判斷條件
+            if (/android/i.test(userAgent) || /ipad|iphone|ipod/i.test(userAgent) || /windows phone/i.test(userAgent) || /blackberry/i.test(userAgent) || /mobile/i.test(userAgent)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        // 頁面載入時執行判斷
+        window.onload = function() {
+            if (isMobile()) {
+                window.location.href = 'mobile.html'; // 重新導向到 mobile.html
+            }
+        };
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2025 日本關東關西11日行程 - 終極完整攻略</title>
