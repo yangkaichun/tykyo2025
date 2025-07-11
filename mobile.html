@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 日本關東關西11日行程 - 終極完整攻略 (手機優化版)</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        body { font-family: 'Noto Sans TC', sans-serif; }
+        .day-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .timeline-line { position: relative; }
+        .timeline-line::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: #e5e7eb; }
+        .timeline-dot { position: relative; z-index: 10; }
+        .image-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+        .transport-card { transition: all 0.3s ease; }
+        .transport-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .gradient-text { background: linear-gradient(45deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .sticky-nav { position: sticky; top: 0; z-index: 50; }
+        .map-button {
+            background-color: #4CAF50; /* 按鈕背景色 */
+            color: white; /* 文字顏色 */
+            padding: 15px 30px; /* 內邊距 */
+            border: none; /* 無邊框 */
+            border-radius: 8px; /* 圓角 */
+            cursor: pointer; /* 滑鼠指標變手形 */
+            font-size: 18px; /* 字體大小 */
+            transition: background-color 0.3s ease; /* 平滑過渡效果 */
+            text-decoration: none; /* 移除可能的下劃線 (若用於<a>) */
+            display: inline-block; /* 讓其能設定寬高 */
+            text-align: center;
+        }
+
+        .map-button:hover {
+            background-color: #45a049; /* 滑鼠懸停時的背景色 */
+        }
+        
+        /* Mobile optimization for horizontal scroll nav */
+        .mobile-scroll-nav::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+        }
+        .mobile-scroll-nav {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="day-gradient text-white py-8 md:py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-3xl md:text-5xl font-bold mb-4">🇯🇵 2025 日本關東關西</h1>
+            <h2 class="text-xl md:text-3xl font-light mb-6">11日深度行程完全攻略</h2>
+            <div class="flex flex-wrap justify-center gap-4 text-sm md:text-base">
+                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full"><i class="fas fa-calendar mr-2"></i>2025.07.14 - 07.24</span>
+                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full"><i class="fas fa-users mr-2"></i>3人同行</span>
+                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full"><i class="fas fa-plane mr-2"></i>酷航TR870</span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="sticky-nav bg-white shadow-md">
+           <div class="container mx-auto px-2">
+                <div class="flex items-center justify-start sm:justify-center overflow-x-auto whitespace-nowrap py-3 mobile-scroll-nav">
+                    <a href="#day1" class="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded-full hover:bg-blue-200 mx-1 flex-shrink-0">D1 抵達</a>
+                    <a href="#day2" class="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded-full hover:bg-blue-200 mx-1 flex-shrink-0">D2 哈利波特</a>
+                    <a href="#day3" class="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded-full hover:bg-blue-200 mx-1 flex-shrink-0">D3 teamLab</a>
+                    <a href="#day4" class="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded-full hover:bg-blue-200 mx-1 flex-shrink-0">D4 移動日</a>
+                    <a href="#day5" class="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded-full hover:bg-blue-200 mx-1 flex-shrink-0">D5 USJ</a>
+                    <a href="#day6" class="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded-full hover:bg-blue-200 mx-1 flex-shrink-0">D6 大阪</a>
+                    <a href="#day7" class="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded-full hover:bg-blue-200 mx-1 flex-shrink-0">D7 雙城</a>
+                    <a href="#day8" class="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded-full hover:bg-blue-200 mx-1 flex-shrink-0">D8 京都</a>
+                    <a href="#day9" class="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded-full hover:bg-blue-200 mx-1 flex-shrink-0">D9 歸營</a>
+                    <a href="#day10" class="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded-full hover:bg-blue-200 mx-1 flex-shrink-0">D10 箱根</a>
+                    <a href="#day11" class="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded-full hover:bg-blue-200 mx-1 flex-shrink-0">D11 歸途</a>
+                </div>
+            </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+        <section class="mb-12">
+            <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold gradient-text mb-6"><i class="fas fa-route mr-3"></i>行程精華重點</h2>
+                   <div class="grid md:grid-cols-3 gap-6">
+                        <div class="text-center p-6 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg">
+                            <i class="fas fa-magic text-4xl text-purple-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">魔法世界</h3>
+                             <p class="text-gray-600">東京哈利波特影城已確認預訂</p>
+                        </div>
+                        <div class="text-center p-6 bg-gradient-to-br from-green-50 to-emerald-100 rounded-lg">
+                            <i class="fas fa-train text-4xl text-green-600 mb-4"></i>
+                             <h3 class="text-xl font-semibold mb-2">高效交通</h3>
+                            <p class="text-gray-600">雙夜間巴士體驗，節省旅費與時間</p>
+                        </div>
+                        <div class="text-center p-6 bg-gradient-to-br from-orange-50 to-red-100 rounded-lg">
+                             <i class="fas fa-camera text-4xl text-orange-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">絕美景點</h3>
+                            <p class="text-gray-600">關東關西經典必訪</p>
+                        </div>
+                   </div>
+            </div>
+        </section>
+
+        <section id="day1" class="mb-12">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="day-gradient text-white p-6">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-2"><i class="fas fa-plane-arrival mr-3"></i>D1: 抵達東京，入住上野</h2>
+                    <p class="text-base md:text-lg opacity-90">2025年7月14日 (一) - 開始您的日本冒險</p>
+                </div>
+                
+                <div class="p-4 md:p-6">
+                    <div class="timeline-line">
+                        <div class="flex items-start mb-8">
+                            <div class="timeline-dot bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                 <i class="fas fa-plane text-sm"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold mb-2">15:30 台灣桃園機場出發</h3>
+                                <p class="text-gray-600 mb-4">搭乘酷航TR870班機，飛行時間約3小時25分鐘</p>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                     <a href="https://immay.tw/wp-content/uploads/2023/12/batch_DSC00289.jpg" target="_blank"><img src="https://immay.tw/wp-content/uploads/2023/12/batch_DSC00289.jpg" alt="酷航客機" class="rounded-lg w-full h-56 sm:h-64 md:h-80 object-cover"></a>
+                                     <a href="https://marukoblog.tw/wp-content/uploads/flickr/80071169497_aa7190f14c_b.jpg" target="_blank"><img src="https://marukoblog.tw/wp-content/uploads/flickr/80071169497_aa7190f14c_b.jpg" alt="酷航內部" class="rounded-lg w-full h-56 sm:h-64 md:h-80 object-cover"></a>
+                                </div>
+                                <div class="bg-yellow-50 p-4 rounded-lg mt-4">
+                                     <p class="text-sm"><i class="fas fa-info-circle mr-2 text-yellow-600"></i>建議提前2小時抵達機場辦理登機手續</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start mb-8">
+                            <div class="timeline-dot bg-green-500 text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-plane-arrival text-sm"></i>
+                             </div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold mb-2">19:55 抵達成田機場第2航廈</h3>
+                                 <p class="text-gray-600 mb-4">辦理入境手續，建議預留1小時處理時間</p>
+                                <div class="transport-card bg-blue-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-blue-800 mb-2"><i class="fas fa-train mr-2"></i>交通方案：京成Skyliner</h4>
+                                     <div class="grid md:grid-cols-2 gap-4">
+                                         <div>
+                                             <p><strong>路線：</strong>成田機場 → 京成上野站</p>
+                                             <p><strong>時間：</strong>80分鐘</p>
+                                             <p><strong>費用：</strong>2,580日圓</p>
+                                             <p><strong>發車：</strong>每20分鐘一班</p>
+                                         </div>
+                                          <a href="https://www.keisei.co.jp/keisei/tetudou/skyliner/tc/assets/images/skyliner/index/photo_skyliner.jpg" target="_blank"><img src="https://www.keisei.co.jp/keisei/tetudou/skyliner/tc/assets/images/skyliner/index/photo_skyliner.jpg" alt="Skyliner列車" class="rounded-lg w-full h-56 sm:h-64 md:h-80 object-cover"></a>
+                                    <a href="https://goo.gl/maps/3mFeZ4HvWnhaWAxA9" target="_blank">
+                                      <img src="https://www.keisei.co.jp/keisei/tetudou/skyliner/tc/assets/images/top/routemap_skyliner.jpg" alt="Skyliner Route Map" class="w-full h-auto">
+                                    </a>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="timeline-dot bg-purple-500 text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-bed text-sm"></i>
+                             </div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold mb-2">22:15 上野皇冠山丘高級酒店入住</h3>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.694324314409!2d139.7743257121017!3d35.70913907246385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188e9f5cf9ea1b%3A0x3467963b0df998c0!2sHotel%20Crown%20Hills%20Ueno%20Premier!5e0!3m2!1szh-TW!2stw!4v1752197056584!5m2!1szh-TW!2stw" title="Map to Ueno Hotel Area 1" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="my-4 rounded-lg"></iframe>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d481.5767098788756!2d139.7745555583573!3d35.710253417561844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e3!4m5!1s0x60188e9e1063ced1%3A0xbdadd8e08cb00807!2z5pel5pys5p2x5Lqs6YO95Y-w5p2x5Y2AIFVlbm9rb2VuLCAxLCDkuqzmiJDkuIrph44!3m2!1d35.7111705!2d139.7738941!4m5!1s0x60188e9f5cf9ea1b%3A0x3467963b0df998c0!2sHotel%20Crown%20Hills%20Ueno%20Premier%2C%202%20Chome-16-1%20Higashiueno%2C%20Taito%20City%2C%20Tokyo%20110-0015%E6%97%A5%E6%9C%AC!3m2!1d35.7091391!2d139.776906!5e0!3m2!1szh-TW!2stw!4v1752211637945!5m2!1szh-TW!2stw" title="Map to Ueno Hotel Area 2" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="my-4 rounded-lg"></iframe>
+
+                                <button class="map-button w-full sm:w-auto my-4" onclick="goToMap()">地圖連結</button>
+
+                                <script>
+                                    function goToMap() {
+                                        window.location.href = "https://maps.app.goo.gl/3v2SMHYfJen9uJkW6";
+                                    }
+                                </script> 
+                                <p class="text-gray-600 mb-4">高級東京城市景觀單人房（禁菸），完美開始您的旅程</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                                     <a href="https://natasha-traveler.tw/wp-content/uploads/2023/02/hotel-crown-hills-ueno-premier.jpg" target="_blank"><img src="https://natasha-traveler.tw/wp-content/uploads/2023/02/hotel-crown-hills-ueno-premier.jpg" alt="酒店外觀" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                     <a href="https://natasha-traveler.tw/wp-content/uploads/2023/02/Hotel-Crown-Hills-Ueno-Premier-18.jpg" target="_blank"><img src="https://natasha-traveler.tw/wp-content/uploads/2023/02/Hotel-Crown-Hills-Ueno-Premier-18.jpg" alt="客房內部" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                    <a href="https://gogojp.tw/wp-content/uploads/2023/02/20230218023627_0.jpg" target="_blank"><img src="https://gogojp.tw/wp-content/uploads/2023/02/20230218023627_0.jpg" alt="城市景觀" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                    <a href="https://blog.lhyeung.net/uploads/2023/11/hotelcrownhill_uenolifetree04.jpg" target="_blank"><img src="https://blog.lhyeung.net/uploads/2023/11/hotelcrownhill_uenolifetree04.jpg" alt="入口" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg mt-4">
+                                     <p class="text-sm"><i class="fas fa-map-marker-alt mr-2 text-green-600"></i>地址：東京都台東區東上野2-18-5</p>
+                                     <p class="text-sm"><i class="fas fa-walking mr-2 text-green-600"></i>步行至上野站：約3分鐘</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="day2" class="mb-12">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="day-gradient text-white p-6">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-2"><i class="fas fa-magic mr-3"></i>D2: 哈利波特魔法世界與池袋探索</h2>
+                    <p class="text-base md:text-lg opacity-90">2025年7月15日 (二) - 魔法與動漫的雙重體驗</p>
+                </div>
+           
+                <div class="p-4 md:p-6">
+                    <div class="bg-purple-100 border-l-4 border-purple-500 p-4 mb-6">
+                        <h3 class="font-bold text-purple-800 mb-2"><i class="fas fa-ticket-alt mr-2"></i>已確認預訂資訊</h3>
+                         <p class="text-purple-700">東京華納兄弟哈利波特影城電子票已預訂完成</p>
+                        <p class="text-sm text-purple-600 mt-1">地圖連結：<a href="https://maps.app.goo.gl/Fv9CF2cK68CShMjt6" class="underline" target="_blank">https://maps.app.goo.gl/Fv9CF2cK68CShMjt6</a></p>
+                    </div>
+
+                    <div class="timeline-line">
+                        <div class="flex items-start mb-8">
+                            <div class="timeline-dot bg-purple-500 text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-subway text-sm"></i>
+                             </div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold mb-2">08:30~10:00 在飯店享用早餐</h3>
+                                <h3 class="text-xl font-semibold mb-2">10:00 前往豐島園逛逛及用餐</h3>
+                                 <p class="text-gray-600 mb-4">從上野御徒町站搭乘都營大江戶線直達豐島園站</p>
+                                <div class="transport-card bg-purple-50 p-4 rounded-lg">
+                                    <div class="grid md:grid-cols-2 gap-4">
+                                         <div>
+                                             <p><strong>路線：</strong>上野御徒町 → 豐島園</p>
+                                             <p><strong>時間：</strong>約30分鐘</p>
+                                             <p><strong>費用：</strong>280日圓</p>
+                                         </div>
+                                         <a href="https://d1grca2t3zpuug.cloudfront.net/2023/02/67adf9b40151d-860x500.webp" target="_blank"><img src="https://d1grca2t3zpuug.cloudfront.net/2023/02/67adf9b40151d-860x500.webp" alt="都營大江戶線" class="rounded-lg w-full h-56 sm:h-64 md:h-80 object-cover"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="https://www.gotokyo.org/book/wp-content/uploads/2023/06/2306_toshimaenaruki_TC.jpg" target="_blank"><img src="https://www.gotokyo.org/book/wp-content/uploads/2023/06/2306_toshimaenaruki_TC.jpg" alt="豐洲旅遊手冊" class="rounded-lg w-full h-auto object-cover my-4"></a>
+                        
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d809.9305771460184!2d139.77449847855524!3d35.708450548279025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e3!4m5!1s0x60188e9f5cf9ea1b%3A0x3467963b0df998c0!2sHotel%20Crown%20Hills%20Ueno%20Premier%2C%202%20Chome-16-1%20Higashiueno%2C%20Taito%20City%2C%20Tokyo%20110-0015%E6%97%A5%E6%9C%AC!3m2!1d35.7091391!2d139.776906!4m5!1s0x60188ea0317c6201%3A0x9e57b31f12ad78e4!2z5LiK6YeO5b6h5b6S55S66LuK56uZIOaXpeacrOOAkjExMC0wMDA1IFRva3lvLCBUYWl0byBDaXR5LCBVZW5vLCA1IENob21l4oiSMjbiiJI2!3m2!1d35.7079667!2d139.7733811!5e0!3m2!1szh-TW!2stw!4v1752211840362!5m2!1szh-TW!2stw" title="Toshimaen Area Map 1" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="my-4 rounded-lg"></iframe>
+                       
+                        <button class="map-button w-full sm:w-auto my-4" onclick="goToMap2()">旅遊手冊下載</button>
+
+                        <script>
+                            function goToMap2() {
+                                window.location.href = "https://www.gotokyo.org/book/wp-content/uploads/2023/06/2306_toshimaenaruki_TC.pdf";
+                            }
+                        </script> 
+                        
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d103661.53610753834!2d139.6399946345929!3d35.71581404888989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e3!4m5!1s0x60188e9f5cf9ea1b%3A0x3467963b0df998c0!2z44Ob44OG44Or44Kv44Op44Km44Oz44OS44Or44K6IOS4iumHjuODl-ODrOODn-OCoihCQkjigKY!3m2!1d35.7091391!2d139.776906!4m5!1s0x6018edf292d73867%3A0x85ceba2d7e05669b!2z5pel5pys5p2x5Lqs6YO957e06aas5Y2AIEthc3VnYWNobywgMSBDaG9tZeKIkjEg5p2x5Lqs6I-v57SN5YWE5byf5ZOI5Yip5rOi54m55b2x5Z-O!3m2!1d35.745183!2d139.6460909!5e0!3m2!1szh-TW!2stw!4v1752203231854!5m2!1szh-TW!2stw" title="Toshimaen Area Map 2" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="my-4 rounded-lg"></iframe>
+
+                         <div class="flex items-start mb-8">
+                            <div class="timeline-dot bg-yellow-500 text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                 <i class="fas fa-magic text-sm"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold mb-2">12:30-17:00 華納兄弟哈利波特影城</h3>
+                                 <p class="text-gray-600 mb-4">深度探索霍格華茲魔法世界，推薦遊玩4-5小時</p>
+                                <div class="image-gallery mb-4">
+                                     <a href="https://jw-webmagazine.com/zh-tw/wp-content/uploads/2023/08/%E5%85%A5%E5%8F%A3-min.jpg" target="_blank"><img src="https://jw-webmagazine.com/zh-tw/wp-content/uploads/2023/08/%E5%85%A5%E5%8F%A3-min.jpg" alt="影城入口" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                     <a href="https://blog-static.kkday.com/zh-tw/blog/wp-content/uploads/2022/09/%E6%9D%B1%E4%BA%AC%E5%93%88%E5%88%A9%E6%B3%A2%E7%89%B9%E5%BD%B1%E5%9F%8E-1.png" target="_blank"><img src="https://blog-static.kkday.com/zh-tw/blog/wp-content/uploads/2022/09/%E6%9D%B1%E4%BA%AC%E5%93%88%E5%88%A9%E6%B3%A2%E7%89%B9%E5%BD%B1%E5%9F%8E-1.png" alt="大廳場景" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                     <a href="https://lovetogo.tw/202301-tokyo/harry-potter/photo/20230204-1280-7557.jpg" target="_blank"><img src="https://lovetogo.tw/202301-tokyo/harry-potter/photo/20230204-1280-7557.jpg" alt="魔法場景" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                </div>
+                                <div class="bg-yellow-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-yellow-800 mb-2">推薦拍照重點</h4>
+                                     <ul class="text-sm text-yellow-700 space-y-1">
+                                         <li>• 霍格華茲大廳 - 早上人少時段最佳</li>
+                                         <li>• 對角巷商店街 - 必拍經典場景</li>
+                                         <li>• 9¾月台 - 與霍格華茲快車合影</li>
+                                         <li>• 魁地奇球場 - 體驗飛行樂趣</li>
+                                     </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                             <div class="timeline-dot bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-building text-sm"></i>
+                             </div>
+                             <div class="flex-1">
+                                <h3 class="text-xl font-semibold mb-2">17:00-21:00 池袋太陽城</h3>
+                                <p class="text-gray-600 mb-4">動漫聖地巡禮：寶可夢中心、陽光水族館、展望公園</p>
+                                 <div class="image-gallery mb-4">
+                                     <a href="https://www.bring-you.info/imgs/2019/06/sunshine_city-1.jpg" target="_blank"><img src="https://www.bring-you.info/imgs/2019/06/sunshine_city-1.jpg" alt="池袋太陽城" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                    <a href="https://gogojp.tw/wp-content/uploads/2023/03/20230321124932_79.jpg" target="_blank"><img src="https://gogojp.tw/wp-content/uploads/2023/03/20230321124932_79.jpg" alt="池袋寶克夢中心" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                     <a href="https://upssmile.com/wp-content/uploads/2023/12/20231111-IMG_2802-1.jpg" target="_blank"><img src="https://upssmile.com/wp-content/uploads/2023/12/20231111-IMG_2802-1.jpg" alt="水族館展示" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                    <a href="https://www.lovejapantrip.tw/Userfiles/images/main(5).jpg" target="_blank"><img src="https://www.lovejapantrip.tw/Userfiles/images/main(5).jpg" alt="海月空感" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                </div>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d18321.45336335273!2d139.68494598654956!3d35.730989926660186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e3!4m5!1s0x6018edf292d73867%3A0x85ceba2d7e05669b!2z5pel5pys5p2x5Lqs6YO957e06aas5Y2AIEthc3VnYWNobywgMSBDaG9tZeKIkjEg5p2x5Lqs6I-v57SN5YWE5byf5ZOI5Yip5rOi54m55b2x5Z-O!3m2!1d35.745183!2d139.6460909!4m5!1s0x60188d6f41f03f85%3A0xe25bfe624782e3c9!2z6Zm95YWJ5rC05peP6aSoIOaXpeacrOOAkjE3MC04NjMwIFRva3lvLCBUb3NoaW1hIENpdHksIEhpZ2FzaGlpa2VidWt1cm8sIDMgQ2hvbWXiiJIxIOOCteODs-OCt-ODo-OCpOODs-OCt-ODhuOCo-ODr-ODvOODq-ODieOCpOODs-ODneODvOODiOODnuODvOODiOODk-ODqyDlsYvkuIo!3m2!1d35.7289254!2d139.72015729999998!5e0!3m2!1szh-TW!2stw!4v1752212457472!5m2!1szh-TW!2stw" title="Sunshine City Aquarium Map 1" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="my-4 rounded-lg"></iframe>
+                                <button class="map-button w-full sm:w-auto my-4" onclick="goToMap3()">地圖連結 To 陽光水族館</button>
+
+                                <script>
+                                    function goToMap3() {
+                                        window.location.href = "https://maps.app.goo.gl/4Xhe9R5woFDNUSJ77";
+                                    }
+                                </script> 
+                                 <div class="transport-card bg-blue-50 p-4 rounded-lg">
+                                     <p><strong>交通：</strong>豐島園 → 池袋，西武池袋線約15分鐘</p>
+                                     <p><strong>費用：</strong>陽光水族館成人票 2,600日圓</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     </div>
+            </div>
+        </section>
+
+        <section id="day3" class="mb-12">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="day-gradient text-white p-6">
+                     <h2 class="text-2xl md:text-3xl font-bold mb-2"><i class="fas fa-paint-brush mr-3"></i>D3: 數位藝術與雲端漫步</h2>
+                    <p class="text-base md:text-lg opacity-90">2025年7月16日 (三) - 科技與傳統的完美融合</p>
+                </div>
+                
+                <div class="p-4 md:p-6">
+                     <div class="timeline-line">
+                        <div class="flex items-start mb-8">
+                            <div class="timeline-dot bg-pink-500 text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                 <i class="fas fa-palette text-sm"></i>
+                            </div>
+                            <div class="flex-1">
+                                 <h3 class="text-xl font-semibold mb-2">11:00-13:30 teamLab Planets TOKYO</h3>
+                                <p class="text-gray-600 mb-4">沉浸式數位藝術體驗，赤腳踏入奇幻世界</p>
+                                <div class="image-gallery mb-4">
+                                     <a href="https://cdn.shopify.com/s/files/1/1083/2612/files/tl1_480x480.jpg?v=1717767777" target="_blank"><img src="https://cdn.shopify.com/s/files/1/1083/2612/files/tl1_480x480.jpg?v=1717767777" alt="teamLab入口" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                     <a href="https://media.vogue.com.tw/photos/6582e5a5aa618fe7c6f3556d/2:3/w_2560%2Cc_limit/Floating%2520Flower%2520Garden_%2520Flowers%2520and%2520I%2520are%2520of%2520the%2520Same%2520Root%2C%2520the%2520Garden%2520and%2520I%2520are%2520One_planets_00%2520(1).jpg" target="_blank"><img src="https://media.vogue.com.tw/photos/6582e5a5aa618fe7c6f3556d/2:3/w_2560%2Cc_limit/Floating%2520Flower%2520Garden_%2520Flowers%2520and%2520I%2520are%2520of%2520the%2520Same%2520Root%2C%2520the%2520Garden%2520and%2520I%2520are%2520One_planets_00%2520(1).jpg" alt="花園展區" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                     <a href="https://yunique.cc/wp-content/uploads/IMG_1194.jpg" target="_blank"><img src="https://yunique.cc/wp-content/uploads/IMG_1194.jpg" alt="水晶世界" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                </div>
+                                <div class="bg-pink-50 p-4 rounded-lg">
+                                     <h4 class="font-semibold text-pink-800 mb-2">體驗須知</h4>
+                                     <ul class="text-sm text-pink-700 space-y-1">
+                                         <li>• 需要脫鞋赤腳進入</li>
+                                         <li>• 建議穿著及膝短褲或長褲</li>
+                                         <li>• 部分展區會弄濕衣物</li>
+                                         <li>• 建議遊玩時間2-3小時</li>
+                                     </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                            <button class="map-button w-full sm:w-auto my-4" onclick="goToTeamLabMap()">地圖連結 To TeamLab Planets TOKYO</button>
+                            <script>
+                                function goToTeamLabMap() {
+                                    window.location.href = "https://maps.app.goo.gl/N8Fn4K73nwjWW1wVA";
+                                }
+                            </script> 
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d103726.88553108065!2d139.694530979107!3d35.66554645445599!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e3!4m5!1s0x60188e9f5cf9ea1b%3A0x3467963b0df998c0!2zSG90ZWwgQ3Jvd24gSGlsbHMgVWVubyBQcmVtaWVyLCAyIENob21lLTE2IOadseS4iumHjuWPsOadseWNgOadseS6rOmDveaXpeacrA!3m2!1d35.7091391!2d139.776906!4m5!1s0x60188908e728e749%3A0x6de450c94bd3d622!2steamLab%20Planets%20TOKYO%20DMM%2C%206%20Chome-1-16%20Toyosu%2C%20Koto%20City%2C%20Tokyo%20135-0061%E6%97%A5%E6%9C%AC!3m2!1d35.649074!2d139.7898213!5e0!3m2!1szh-TW!2stw!4v1752216071572!5m2!1szh-TW!2stw" title="teamLab Planets TOKYO Map" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="my-4 rounded-lg"></iframe>
+                         
+                        <div class="flex items-start mb-8">
+                            <div class="timeline-dot bg-orange-500 text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-utensils text-sm"></i>
+                             </div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold mb-2">13:30-14:30 豐洲LaLaport午餐</h3>
+                                 <p class="text-gray-600 mb-4">超過210間店鋪的大型購物中心，美食選擇豐富</p>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d6484.016079074685!2d139.78748263462657!3d35.65217355836064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e3!4m5!1s0x60188908e728e749%3A0x6de450c94bd3d622!2steamLab%20Planets%20TOKYO%20DMM%2C%206%20Chome-1-16%20Toyosu%2C%20Koto%20City%2C%20Tokyo%20135-0061%E6%97%A5%E6%9C%AC!3m2!1d35.649074!2d139.7898213!4m5!1s0x60188998aa839b45%3A0xc215a94747b4bd09!2zVXJiYW4gRG9jayBMYWxhcG9ydOixkOa0siDml6XmnKzjgJIxMzUtMDA2MSBUb2t5bywgS290byBDaXR5LCBUb3lvc3UsIDIgQ2hvbWXiiJI04oiSOQ!3m2!1d35.6555823!2d139.79266339999998!5e0!3m2!1szh-TW!2stw!4v1752216237066!5m2!1szh-TW!2stw" title="LaLaport Toyosu Map 1" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="my-4 rounded-lg"></iframe>
+                                
+                                <button class="map-button w-full sm:w-auto my-4" onclick="goToMap4()">地圖連結 To 豐洲LaLaport午餐</button>
+
+                                <script>
+                                    function goToMap4() {
+                                        window.location.href = "https://maps.app.goo.gl/YvdnfRcDGpu5EyfNA";
+                                    }
+                                </script>                            
+                                
+                                <div class="image-gallery mb-4">
+                                     <a href="https://mitsui-shopping-park.com/lalaport/toyosu/tw/image/index/pic_visual.jpg" target="_blank"><img src="https://mitsui-shopping-park.com/lalaport/toyosu/tw/image/index/pic_visual.jpg" alt="LaLaport外觀" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                     <a href="https://mitsui-shopping-park.com/lalaport/msp-info/cms/wp-content/uploads/lala_toyosu_01.jpg" target="_blank"><img src="https://mitsui-shopping-park.com/lalaport/msp-info/cms/wp-content/uploads/lala_toyosu_01.jpg" alt="內部環境" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                     <a href="https://mitsui-shopping-park.com/lalaport/msp-info/cms/wp-content/uploads/lala_toyosu__05.jpg" target="_blank"><img src="https://mitsui-shopping-park.com/lalaport/msp-info/cms/wp-content/uploads/lala_toyosu__05.jpg" alt="餐廳區域" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                             <div class="timeline-dot bg-sky-500 text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-tower-observation text-sm"></i>
+                             </div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold mb-2">15:30-19:30 東京晴空塔</h3>
+                                <p class="text-gray-600 mb-4">登上日本最高塔，360度俯瞰東京全景</p>
+
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d51852.92002745839!2d139.74647277987953!3d35.68174160204387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e3!4m5!1s0x60188998aa839b45%3A0xc215a94747b4bd09!2zVXJiYW4gRG9jayBMYWxhcG9ydOixkOa0siDml6XmnKzjgJIxMzUtMDA2MSBUb2t5bywgS290byBDaXR5LCBUb3lvc3UsIDIgQ2hvbWXiiJI04oiSOQ!3m2!1d35.6555823!2d139.79266339999998!4m5!1s0x60188ed0d12f9adf%3A0x7d1d4fb31f43f72a!2z5p2x5Lqs5pm056m65aGUIOaXpeacrOOAkjEzMS0wMDQ1IFRva3lvLCBTdW1pZGEgQ2l0eSwgT3NoaWFnZSwgMSBDaG9tZeKIkjHiiJIy!3m2!1d35.7100627!2d139.8107004!5e0!3m2!1szh-TW!2stw!4v1752216672844!5m2!1szh-TW!2stw" title="Tokyo Skytree Map" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="my-4 rounded-lg"></iframe>
+                                
+                                <div class="image-gallery mb-4">
+                                     <a href="https://www.tokyo-skytree.jp/cn_t/floor/img/img_floor_map_450-445.png" target="_blank"><img src="https://www.tokyo-skytree.jp/cn_t/floor/img/img_floor_map_450-445.png" alt="天望迴廊" class="rounded-lg w-full h-auto object-cover"></a>
+                                     <a href="https://thumb.photo-ac.com/14/14f02d1a36c2d529ebaa136704998703_t.jpeg" target="_blank"><img src="https://thumb.photo-ac.com/14/14f02d1a36c2d529ebaa136704998703_t.jpeg" alt="觀景台" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                     <a href="https://2bunny.tw/wp-content/uploads/2023/11/2023-1023-%E6%99%B4%E7%A9%BA%E5%A1%94%E5%B1%95%E6%9C%9B%E5%8F%B0-38.jpg" target="_blank"><img src="https://2bunny.tw/wp-content/uploads/2023/11/2023-1023-%E6%99%B4%E7%A9%BA%E5%A1%94%E5%B1%95%E6%9C%9B%E5%8F%B0-38.jpg" alt="夜景" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                </div>
+                                 <div class="grid md:grid-cols-2 gap-4">
+                                    <div class="transport-card bg-sky-50 p-4 rounded-lg">
+                                         <h4 class="font-semibold text-sky-800 mb-2">票價資訊</h4>
+                                        <p class="text-sm">天望甲板(350m): 2,100日圓</p>
+                                        <p class="text-sm">天望迴廊(450m): +1,000日圓</p>
+                                    </div>
+                                    <div class="bg-yellow-50 p-4 rounded-lg">
+                                         <h4 class="font-semibold text-yellow-800 mb-2">最佳時間</h4>
+                                         <p class="text-sm">16:00入場可看到白天→黃昏→夜景三個時段</p>
+                                    </div>
+                                 </div>
+                                
+                                <div class="mt-6 bg-red-50 p-4 rounded-lg">
+                                     <h4 class="font-semibold text-red-800 mb-2"><i class="fas fa-star mr-2"></i>加碼景點：寶可夢中心晴空塔店</h4>
+                                     <div class="grid md:grid-cols-2 gap-4">
+                                         <div>
+                                             <p class="text-sm text-red-700 mb-2">位於晴空街道4樓，烈空坐主題店鋪</p>
+                                             <p class="text-sm text-red-700">限定商品與拍照點不容錯過</p>
+                                         </div>
+                                         <a href="https://yukigo.tw/wp-content/uploads/2023/02/%E6%99%B4%E7%A9%BA%E5%A1%94%E5%AF%B6%E5%8F%AF%E5%A4%A2%E4%B8%AD%E5%BF%83Pokemon-Center-SKYTREE-TOWN28.jpg" target="_blank"><img src="https://yukigo.tw/wp-content/uploads/2023/02/%E6%99%B4%E7%A9%BA%E5%A1%94%E5%AF%B6%E5%8F%AF%E5%A4%A2%E4%B8%AD%E5%BF%83Pokemon-Center-SKYTREE-TOWN28.jpg" alt="寶可夢中心" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     </div>
+            </div>
+        </section>
+
+        <section id="day11" class="mb-12">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                 <div class="day-gradient text-white p-6">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-2"><i class="fas fa-plane-departure mr-3"></i>D11: 最終巡禮與歸途</h2>
+                    <p class="text-base md:text-lg opacity-90">2025年7月24日 (四) - 圓滿結束日本之旅</p>
+                </div>
+                
+                 <div class="p-4 md:p-6">
+                    <div class="timeline-line">
+                        <div class="flex items-start mb-8">
+                             <div class="timeline-dot bg-green-500 text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-shopping-cart text-sm"></i>
+                             </div>
+                             <div class="flex-1">
+                                <h3 class="text-xl font-semibold mb-2">10:00-14:00 上野最終採購與午餐</h3>
+                                <p class="text-gray-600 mb-4">在阿美橫丁和唐吉訶德進行最後補貨，並享用午餐</p>
+                                 <div class="image-gallery mb-4">
+                                     <a href="https://www.bring-you.info/imgs/2019/05/ameyoko_2019-12.jpg" target="_blank"><img src="https://www.bring-you.info/imgs/2019/05/ameyoko_2019-12.jpg" alt="阿美橫丁購物" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                     <a href="https://en.pimg.jp/110/080/862/1/110080862.jpg" target="_blank"><img src="https://en.pimg.jp/110/080/862/1/110080862.jpg" alt="商店街商品" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                     <a href="https://thumb.photo-ac.com/9b/9bf7776e9e4a6bb2a5d0d0fcd1d1cfde_t.jpeg" target="_blank"><img src="https://thumb.photo-ac.com/9b/9bf7776e9e4a6bb2a5d0d0fcd1d1cfde_t.jpeg" alt="購物街景" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start mb-8">
+                             <div class="timeline-dot bg-cyan-500 text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-bath text-sm"></i>
+                             </div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold mb-2">14:30-16:30 RAKU SPA 1010 神田</h3>
+                                <p class="text-gray-600 mb-4">前往機場前，再次到錢湯洗去旅途疲憊，神清氣爽準備回家。</p>
+                                <div class="image-gallery mb-4">
+                                     <a href="https://rakuspa.com/kanda/assets/img/facilities/spa/index.jpg" target="_blank"><img src="https://rakuspa.com/kanda/assets/img/facilities/spa/index.jpg" alt="RAKU SPA 浴池" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                     <a href="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/6f/bc/44/raku-spa-1010.jpg" target="_blank"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/6f/bc/44/raku-spa-1010.jpg" alt="RAKU SPA 外觀" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                     <a href="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/b7/67/56/raku-spa-1010.jpg" target="_blank"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/b7/67/56/raku-spa-1010.jpg" alt="RAKU SPA 休息區" class="rounded-lg w-full h-56 sm:h-64 object-cover"></a>
+                                </div>
+                                <div class="transport-card bg-cyan-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-cyan-800 mb-2"><i class="fas fa-route mr-2"></i>交通規劃</h4>
+                                     <p class="text-sm text-cyan-700 mb-2"><i class="fas fa-map-marker-alt mr-2 text-cyan-600"></i>地圖連結: <a href="https://maps.app.goo.gl/cVU9393Hdyd4hZF99" target="_blank" class="underline">點此開啟地圖</a></p>
+                                     <p class="text-sm text-cyan-700 mb-2"><i class="fas fa-globe mr-2 text-cyan-600"></i>官方網站: <a href="https://rakuspa.com/kanda/access/" target="_blank" class="underline">點此前往</a></p>
+                                     <ul class="text-sm text-cyan-700 space-y-1">
+                                         <li>• <strong>交通(去程):</strong> 從「上野」站搭乘JR山手線或銀座線至「神田」站，步行約10分鐘。</li>
+                                         <li>• <strong>體驗:</strong> 享受2小時的泡湯與放鬆時光。</li>
+                                         <li>• <strong>交通(回程):</strong> 從SPA步行至JR「神田」站，搭乘JR山手線返回「上野」站，準備前往機場。</li>
+                                     </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="timeline-dot bg-orange-500 text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-plane text-sm"></i>
+                             </div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold mb-2">17:00以後 前往成田機場</h3>
+                                 <p class="text-gray-600 mb-4">搭乘Skyliner前往機場，準備搭乘 21:10 的酷航TR871班機。</p>
+                                
+                                <div class="transport-card bg-orange-50 p-4 rounded-lg mb-4">
+                                    <h4 class="font-semibold text-orange-800 mb-2"><i class="fas fa-clock mr-2"></i>Skyliner建議時刻表 (京成上野 → 成田機場)</h4>
+                                    <p class="text-sm text-gray-600 mb-3">酷航(Scoot)位於 **成田機場第一航廈**。Skyliner會先停靠第二航廈，請在終點站第一航廈下車。建議至少提前2小時抵達機場。</p>
+                                    <div class="space-y-2">
+                                         <div class="flex justify-between items-center p-2 bg-white rounded">
+                                             <span><strong>出發</strong> 17:40</span>
+                                             <i class="fas fa-arrow-right text-gray-400"></i>
+                                             <span><strong>抵達(T1)</strong> 18:27</span>
+                                         </div>
+                                         <div class="flex justify-between items-center p-2 bg-white rounded ring-2 ring-blue-400">
+                                             <span><strong>出發</strong> 18:00</span>
+                                             <i class="fas fa-arrow-right text-gray-400"></i>
+                                             <span><strong>抵達(T1)</strong> 18:47</span>
+                                             <span class="text-xs bg-blue-500 text-white font-bold py-1 px-2 rounded-full">推薦</span>
+                                         </div>
+                                         <div class="flex justify-between items-center p-2 bg-white rounded">
+                                             <span><strong>出發</strong> 18:20</span>
+                                             <i class="fas fa-arrow-right text-gray-400"></i>
+                                             <span><strong>抵達(T1)</strong> 19:09</span>
+                                         </div>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-2">※ 時刻表僅供參考，請以當日官方公告為準。</p>
+                                </div>
+
+                                 <div class="bg-green-50 p-4 rounded-lg mt-4">
+                                     <h4 class="font-semibold text-green-800 mb-2"><i class="fas fa-heart mr-2"></i>旅程圓滿結束</h4>
+                                     <p class="text-green-700">帶著滿滿的回憶和戰利品，期待下次的日本再訪！</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           </section>
+
+        <footer class="day-gradient text-white py-8 mt-12">
+            <div class="container mx-auto px-4 text-center">
+                <h3 class="text-2xl font-bold mb-4">🌸 祝您旅途愉快 🌸</h3>
+                 <p class="text-lg opacity-90 mb-4">2025年日本關東關西11日行程攻略</p>
+                <div class="flex justify-center space-x-6 text-sm">
+                    <span><i class="fas fa-map-marked-alt mr-2"></i>11個城市</span>
+                    <span><i class="fas fa-camera mr-2"></i>無數美景</span>
+                    <span><i class="fas fa-heart mr-2"></i>難忘回憶</span>
+                </div>
+                 <div class="mt-6 text-sm opacity-75">
+                    <p>© 2025 日本旅遊攻略 | 專為您的完美旅程量身打造</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                 if (target) {
+                    // Adjust for sticky header height
+                    const headerOffset = 60; // Height of the sticky nav
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                 }
+            });
+        });
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('error', function() {
+                // Hides the image and its parent link if it fails to load.
+                this.style.display = 'none';
+                if(this.parentElement.tagName === 'A') {
+                   this.parentElement.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
