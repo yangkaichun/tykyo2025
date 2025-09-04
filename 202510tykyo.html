@@ -1,327 +1,638 @@
+
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>東京郊區三日遊 (2025/10/24 - 10/26)</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', 'Microsoft JhengHei', sans-serif;
-            line-height: 1.8;
-            margin: 0;
-            padding: 20px;
-            background-color: #f8f9fa;
-            color: #343a40;
+            font-family: 'Noto Sans TC', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
         }
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-        h1, h2, h3 {
-            color: #0056b3;
-            border-bottom: 3px solid #007bff;
-            padding-bottom: 10px;
-            margin-top: 40px;
-        }
-        h1 {
-            text-align: center;
-            font-size: 2.8em;
-            color: #333;
-            border: none;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 25px;
-        }
-        th, td {
-            padding: 15px;
-            border: 1px solid #dee2e6;
-            text-align: left;
-            vertical-align: top;
-        }
-        th {
-            background-color: #007bff;
-            color: white;
-            font-size: 1.1em;
-        }
-        tr:nth-child(even) {
-            background-color: #f8f9fa;
-        }
-        .info-box {
-            background-color: #e9f7ff;
-            border-left: 6px solid #007bff;
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 8px;
-        }
-        .info-box h3 {
-            margin-top: 0;
-            border-bottom: none;
-            color: #0056b3;
-        }
-        .map-link {
-            display: inline-block;
-            margin-top: 10px;
-            color: #007bff;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 5px 10px;
-            border: 1px solid #007bff;
-            border-radius: 5px;
+        .card-hover {
             transition: all 0.3s ease;
         }
-        .map-link:hover {
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
-        ul {
-            list-style-type: none;
-            padding: 0;
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
         }
-        li {
-            margin-bottom: 12px;
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
         }
-        .location-card {
-            margin-bottom: 20px;
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 1.2rem;
+            width: 2px;
+            height: calc(100% - 1rem);
+            background: linear-gradient(to bottom, #667eea, transparent);
         }
-        .location-card img {
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        .image-card {
+            overflow: hidden;
+            border-radius: 12px;
+            position: relative;
+        }
+        .image-card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-radius: 8px;
-            background-color: #e9ecef;
-            border: 1px solid #dee2e6;
+            transition: transform 0.3s ease;
         }
-        .location-card p {
-            font-weight: bold;
-            font-size: 1.1em;
-            margin: 10px 0 5px 0;
+        .image-card:hover img {
+            transform: scale(1.05);
         }
-        .location-card:last-child {
-            margin-bottom: 0;
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        .image-card:hover .image-overlay {
+            transform: translateY(0);
+        }
+         {
+            .no-print { display: none !important; }
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
     </style>
 </head>
-<body>
-
-    <div class="container">
-        <h1>東京郊區三日遊</h1>
-        <p style="text-align:center; font-size: 1.2em; color: #6c757d;">2025年10月24日 - 2025年10月26日</p>
-
-        <div class="info-box">
-            <h3>行程總覽</h3>
-            <ul>
-                [cite_start]<li><strong>旅客:</strong> YANG/KAICHUN 先生, WEN/CHIACHI 女士, YANG/POHAN 先生, YANG/POSHENG 先生 [cite: 92, 1989, 2060, 2135]</li>
-                [cite_start]<li><strong>航班資訊:</strong> 國泰航空 (訂位代號: FM4KNL [cite: 100, 1993, 2067, 2141])</li>
-                <li>
-                    [cite_start]<strong>去程 (10/23-10/24):</strong> 桃園(TPE) 19:15 → 香港(HKG) 21:15 (CX565) [cite: 102] [cite_start]→ 香港(HKG) 01:20 → 成田(NRT) 06:40 (CX524) [cite: 108]
-                </li>
-                <li>
-                    [cite_start]<strong>回程 (10/26):</strong> 成田(NRT) 15:20 → 桃園(TPE) 18:40 (CX451) [cite: 113, 118]
-                </li>
-                [cite_start]<li><strong>住宿資訊:</strong> Grids Tokyo Ueno Hotel&Hostel (上野格子飯店及青年旅館) [cite: 32]</li>
-                [cite_start]<li><strong>地址:</strong> 7-10-4, Ueno, Taito-ku, 東京, 日本, 1100005 [cite: 38, 55]</li>
-                 [cite_start]<li><strong>預訂編號:</strong> 1644628483 [cite: 16]</li>
-            </ul>
+<body class="bg-gray-50">
+    <!-- Header Section -->
+    <header class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl font-bold mb-4">
+                <i class="fas fa-torii-gate mr-4"></i>
+                東京郊區三日遊
+            </h1>
+            <p class="text-xl opacity-90 mb-8">2025年10月24日 - 2025年10月26日</p>
+            <div class="flex justify-center space-x-8 text-sm">
+                <div class="flex items-center">
+                    <i class="fas fa-users mr-2"></i>
+                    <span>4位旅客</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-plane mr-2"></i>
+                    <span>國泰航空</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-hotel mr-2"></i>
+                    <span>上野格子飯店</span>
+                </div>
+            </div>
         </div>
+    </header>
 
-        <h2>詳細行程</h2>
+    <!-- Trip Overview -->
+    <section class="container mx-auto px-6 py-12">
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 flex items-center">
+                <i class="fas fa-info-circle text-blue-500 mr-3"></i>
+                行程總覽
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-700">旅客資訊</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-user text-blue-500 w-5 mr-3"></i>
+                            <span>YANG/KAICHUN 先生</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-user text-pink-500 w-5 mr-3"></i>
+                            <span>WEN/CHIACHI 女士</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-user text-blue-500 w-5 mr-3"></i>
+                            <span>YANG/POHAN 先生</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-user text-blue-500 w-5 mr-3"></i>
+                            <span>YANG/POSHENG 先生</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-700">航班資訊</h3>
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <p class="font-semibold text-blue-800">國泰航空 (訂位代號: FM4KNL)</p>
+                        <div class="mt-3 space-y-2 text-sm">
+                            <p><i class="fas fa-plane-departure text-green-500 mr-2"></i>去程: TPE 19:15 → HKG 21:15 (CX565)</p>
+                            <p class="ml-6">HKG 01:20 → NRT 06:40 (CX524)</p>
+                            <p><i class="fas fa-plane-arrival text-red-500 mr-2"></i>回程: NRT 15:20 → TPE 18:40 (CX451)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 bg-gray-50 p-6 rounded-lg">
+                <h3 class="text-xl font-semibold mb-4 text-gray-700">住宿資訊</h3>
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-hotel text-purple-500 text-2xl"></i>
+                    <div>
+                        <p class="font-semibold">Grids Tokyo Ueno Hotel&Hostel</p>
+                        <p class="text-gray-600">7-10-4, Ueno, Taito-ku, 東京, 日本, 1100005</p>
+                        <p class="text-sm text-gray-500">預訂編號: 1644628483</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <h3>第一天：10月24日 (週五) | 直達川越・行李寄放與古街探險</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th style="width:18%;">時間</th>
-                    <th style="width:45%;">行程規劃</th>
-                    <th>交通與備註</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>06:40-08:30</td>
-                    <td>
-                        <div class="location-card">
-                            <p>抵達東京，辦理入境</p>
-                            <img src="https://img.gototravel.tw/2019/tokyo/transport/narita-terminal-3/narita-terminal-2-45.jpg" alt="成田機場第二航廈示意圖">
-                            <a href="https://www.google.com/maps/place/Narita+International+Airport+Terminal+2,+1-1+Furugome,+Narita,+Chiba+282-0004,+Japan" target="_blank" class="map-link">成田機場第二航廈地圖</a>
+    <!-- Day 1: Kawagoe -->
+    <section class="container mx-auto px-6 py-12">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-12">
+            <div class="bg-gradient-to-r from-orange-400 to-red-500 text-white p-6">
+                <h2 class="text-3xl font-bold flex items-center">
+                    <i class="fas fa-calendar-day mr-3"></i>
+                    第一天：10月24日 (週五)
+                </h2>
+                <p class="text-lg opacity-90 mt-2">直達川越・行李寄放與古街探險</p>
+            </div>
+            
+            <!-- Day 1 Image Gallery -->
+            <div class="p-6">
+                <div class="image-gallery mb-8">
+                    <div class="image-card">
+                        <img src="https://img.gototravel.tw/2019/tokyo/transport/narita/narita3.jpg" alt="成田機場第二航廈">
+                        <div class="image-overlay">
+                            <h4 class="font-semibold">成田機場第二航廈</h4>
+                            <p class="text-sm">旅程的起點，辦理入境手續</p>
                         </div>
-                    </td>
-                    [cite_start]<td>抵達成田機場第二航廈 [cite: 108]，辦理入境手續、領取行李。</td>
-                </tr>
-                <tr>
-                    <td>08:30-10:30</td>
-                    <td><strong>搭乘利木津巴士直達川越</strong></td>
-                    <td>至機場一樓的「利木津巴士」售票櫃台，購買前往「川越站西口」的車票。這是直達川越最輕鬆的方式，無需拖著行李轉車。</td>
-                </tr>
-                <tr>
-                    <td>10:30-11:00</td>
-                    <td><strong>寄放行李</strong></td>
-                    <td>抵達 <a href="https://www.google.com/maps/place/Kawagoe+Station,+Wakitamachi,+Kawagoe,+Saitama,+Japan" target="_blank" class="map-link">川越站</a> 後，在車站內尋找大型寄物櫃（Coin Locker），將您的大件行李鎖上。</td>
-                </tr>
-                <tr>
-                    <td>11:00-17:30</td>
-                    <td>
-                        <div class="location-card">
-                            <p>川越古街深度漫步與午餐</p>
-                            <img src="https://d28dpoj42hxr8c.cloudfront.net/files/user/201611151614_5.jpg?v=1479194087" alt="川越藏造之街示意圖">
-                             <a href="https://www.google.com/maps/place/Kurazukuri+no+Machinami+(Old+Warehouse+District)/@35.9221161,139.4842525,17z" target="_blank" class="map-link">川越藏造之街地圖</a>
+                    </div>
+                    <div class="image-card">
+                        <img src="https://saitama-supportdesk.com/wp-content/uploads/2024/10/dcd4d3eb83b749139b778735ac54f887-scaled.jpg" alt="川越藏造老街">
+                        <div class="image-overlay">
+                            <h4 class="font-semibold">川越藏造老街</h4>
+                            <p class="text-sm">江戶時代的歷史建築群</p>
                         </div>
-                    </td>
-                    <td>
-                        <p>午餐品嚐川越特色鰻魚飯。</p>
-                        <p>搭乘「小江戶巡迴巴士」輕鬆遊覽各景點：<br>
-                        - <a href="https://www.google.com/maps/place/Kitain+Temple,+1-20-1+Kosenbamachi,+Kawagoe,+Saitama+350-0036,+Japan" target="_blank" class="map-link">喜多院</a><br>
-                        - <a href="https://www.google.com/maps/place/Bell+of+Time+(Toki+no+Kane),+15-7+Saiwaicho,+Kawagoe,+Saitama+350-0063,+Japan" target="_blank" class="map-link">時之鐘</a><br>
-                        - <a href="https://www.google.com/maps/place/Penny+Candy+Lane+Yokocho,+2-ch%C5%8Dme-7+Motomachi,+Kawagoe,+Saitama+350-0062,+Japan" target="_blank" class="map-link">菓子屋橫丁</a><br>
-                        - <a href="https://www.google.com/maps/place/Kawagoe+Hikawa+Shrine,+2-ch%C5%8Dme-11-3+Miyashitamachi,+Kawagoe,+Saitama+350-0052,+Japan" target="_blank" class="map-link">冰川神社</a></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>17:30-19:00</td>
-                    <td><strong>返回市區，前往上野</strong></td>
-                    <td>回到川越站取回寄物櫃的行李。搭乘 **東武東上線** 至「池袋站」，轉乘 **JR山手線** 至「上野站」。</td>
-                </tr>
-                <tr>
-                    <td>19:00-19:30</td>
-                    <td><strong>飯店 Check-in</strong></td>
-                    <td>抵達上野後，前往 <a href="https://www.google.com/maps/place/Grids+Tokyo+Ueno+Hotel%26Hostel,+7-ch%C5%8Dme-10-4+Ueno,+Taito+City,+Tokyo+110-0005,+Japan" target="_blank" class="map-link">Grids Tokyo Ueno Hotel&Hostel</a> 辦理入住手續。</td>
-                </tr>
-                <tr>
-                    <td>19:30-22:00</td>
-                    <td>
-                         <div class="location-card">
-                            <p>上野居酒屋晚餐</p>
-                            <img src="https://www.bring-you.info/imgs/2019/05/ameyoko_2019-12.jpg" alt="阿美橫丁夜晚示意圖">
-                            <a href="https://www.google.com/maps/place/Ameyoko+Shopping+District,+Ueno,+Taito+City,+Tokyo,+Japan" target="_blank" class="map-link">阿美橫丁地圖</a>
+                    </div>
+                    <div class="image-card">
+                        <img src="https://koedo.or.jp/wp-content/uploads/b96f167dd98cecc6e36e40d3c66b3174-scaled.jpg" alt="川越時之鐘">
+                        <div class="image-overlay">
+                            <h4 class="font-semibold">時之鐘</h4>
+                            <p class="text-sm">川越的象徵性地標</p>
                         </div>
-                    </td>
-                    <td>前往飯店附近熱鬧的「阿美橫丁」周邊區域，探索JR高架鐵路下方的店家，如知名的「大統領」或「文樂」。</td>
-                </tr>
-            </tbody>
-        </table>
+                    </div>
+                </div>
 
-        <h3>第二天：10月25日 (週六) | 古都鎌倉 & 江之島海岸一日遊</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>時間</th>
-                    <th>行程規劃</th>
-                    <th>交通與備註</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>08:30-10:00</td>
-                    <td><strong>前往古都鎌倉</strong></td>
-                    <td>從「上野站」搭乘 **JR上野東京線**，可直達「<a href="https://www.google.com/maps/place/Kamakura+Station,+1-ch%C5%8Dme-1+Onarimachi,+Kamakura,+Kanagawa+248-0012,+Japan" target="_blank" class="map-link">鎌倉站</a>」，車程約1小時。</td>
-                </tr>
-                <tr>
-                    <td>10:00-12:30</td>
-                    <td>
-                        <div class="location-card">
-                            <p>長谷地區深度探訪</p>
-                            <img src="" alt="鎌倉大佛示意圖">
-                            <a href="https://www.google.com/maps/place/K%C5%8Dtoku-in,+4-ch%C5%8Dme-2-28+Hase,+Kamakura,+Kanagawa+248-0016,+Japan" target="_blank" class="map-link">高德院(鎌倉大佛)地圖</a>
+                <!-- Day 1 Timeline -->
+                <div class="space-y-6">
+                    <div class="timeline-item">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-semibold text-lg">抵達東京，辦理入境</h4>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">06:40-08:30</span>
+                            </div>
+                            <p class="text-gray-600 mb-3">抵達成田機場第二航廈，辦理入境手續、領取行李</p>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fas fa-plane-arrival mr-2"></i>
+                                <span>國泰航空 CX524 班機抵達</span>
+                            </div>
                         </div>
-                    </td>
-                    <td>抵達鎌倉站後，轉乘可愛的「**江之電**」電車至「長谷站」。<br>- 參拜「高德院」的戶外「鎌倉大佛」。<br>- 參觀「<a href="https://www.google.com/maps/place/Hasedera,+3-ch%C5%8Dme-11-2+Hase,+Kamakura,+Kanagawa+248-0016,+Japan" target="_blank" class="map-link">長谷寺</a>」，俯瞰鎌倉的海街景色。</td>
-                </tr>
-                <tr>
-                    <td>12:30-17:30</td>
-                     <td>
-                        <div class="location-card">
-                            <p>午餐 & 江之島全島探索</p>
-                            <img src="https://i0.wp.com/journey.tw/wp-content/uploads/2025/02/20250223155325_0_1ed8a1.jpg?resize=1100%2C734&quality=99&ssl=1" alt="江之島與富士山遠景示意圖">
-                            <a href="https://www.google.com/maps/place/Enoshima,+Fujisawa,+Kanagawa,+Japan" target="_blank" class="map-link">江之島地圖</a>
-                        </div>
-                    </td>
-                    <td>在長谷站周邊享用午餐，推薦「吻仔魚丼飯」。<br>餐後繼續搭乘「江之電」前往「<a href="https://www.google.com/maps/place/Enoshima+Station,+1-ch%C5%8Dme-4-7+Katasekaigan,+Fujisawa,+Kanagawa+251-0035,+Japan" target="_blank" class="map-link">江之島站</a>」探索全島。</td>
-                </tr>
-                <tr>
-                    <td>17:30-19:30</td>
-                    <td><strong>日落美景 & 返回上野</strong></td>
-                    <td>從江之島返回，天氣好時可在海岸邊欣賞夕陽美景。從「江之島站」搭乘江之電返回「鎌倉站」，再轉乘 **JR上野東京線** 返回上野。</td>
-                </tr>
-                <tr>
-                    <td>19:30-21:00</td>
-                    <td><strong>上野晚餐</strong></td>
-                    <td>回到上野後，可選擇不同於前一晚的晚餐類型，例如品嚐「とんかつ山家」的美味炸豬排。</td>
-                </tr>
-                <tr>
-                    <td>21:00-22:30</td>
-                    <td>
-                        <div class="location-card">
-                            <p>唐吉軻德購物</p>
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY1yQn0eU0IFaUGUqEiUmUXuZ3uwPiwP19BQ&s" alt="唐吉軻德店面示意圖">
-                            <a href="https://www.google.com/maps/place/Don+Quijote+Ueno,+3-ch%C5%8Dme-38-10+Yushima,+Bunkyo+City,+Tokyo+113-0034,+Japan" target="_blank" class="map-link">唐吉軻德(上野店)地圖</a>
-                        </div>
-                    </td>
-                    <td>前往「唐吉軻德 上野店」享受購物的樂趣。</td>
-                </tr>
-            </tbody>
-        </table>
+                    </div>
 
-        <h3>第三天：10月26日 (日) | 築地市場美食巡禮 & 歸途</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>時間</th>
-                    <th>行程規劃</th>
-                    <th>交通與備註</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>08:30-09:00</td>
-                    <td><strong>退房與寄放行李</strong></td>
-                    <td>在飯店辦理退房手續，並將大件行李寄放在櫃台。</td>
-                </tr>
-                <tr>
-                    <td>09:00-09:30</td>
-                    <td><strong>前往築地市場</strong></td>
-                    <td>從「上野站」搭乘 **東京Metro日比谷線** 直達「<a href="https://www.google.com/maps/place/Tsukiji+Station,+3-ch%C5%8Dme-9-5+Tsukiji,+Chuo+City,+Tokyo+104-0045,+Japan" target="_blank" class="map-link">築地站</a>」，車程約15分鐘。</td>
-                </tr>
-                <tr>
-                    <td>09:30-12:15</td>
-                    <td>
-                        <div class="location-card">
-                            <p>築地場外市場美食巡禮</p>
-                            <img src="https://resources.matcha-jp.com/resize/720x2000/2019/06/18-79790.webp" alt="築地場外市場熱鬧街景示意圖">
-                            <a href="https://www.google.com/maps/place/Tsukiji+Outer+Market,+4-ch%C5%8Dme-16-2+Tsukiji,+Chuo+City,+Tokyo+104-0045,+Japan" target="_blank" class="map-link">築地場外市場地圖</a>
+                    <div class="timeline-item">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-semibold text-lg">搭乘利木津巴士直達川越</h4>
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">08:30-10:30</span>
+                            </div>
+                            <p class="text-gray-600 mb-3">至機場一樓的「利木津巴士」售票櫃台，購買前往「川越站西口」的車票</p>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fas fa-bus mr-2"></i>
+                                <span>最輕鬆的方式，無需拖著行李轉車</span>
+                            </div>
                         </div>
-                    </td>
-                    <td><strong>活力早餐</strong>：在市場內的壽司店品嚐最新鮮的壽司或海鮮丼。<br><strong>人氣小吃</strong>：邊走邊逛，品嚐「丸武」的玉子燒、「狐狸屋」的牛丼、「齊藤水產」的現烤海鮮等。</td>
-                </tr>
-                <tr>
-                    <td>12:15-12:45</td>
-                    <td><strong>返回上野 & 領取行李</strong></td>
-                    <td>從「築地站」搭乘日比谷線返回「上野站」，至飯店領取行李。</td>
-                </tr>
-                <tr>
-                    <td>13:00-13:50</td>
-                    <td><strong>前往成田機場</strong></td>
-                    <td>從「<a href="https://www.google.com/maps/place/Keisei-Ueno+Station,+1-ch%C5%8Dme-60+Uenok%C5%8Den,+Taito+City,+Tokyo+110-0007,+Japan" target="_blank" class="map-link">京成上野站</a>」搭乘 **Keisei Skyliner** 直達「成田機場第二航廈」。</td>
-                </tr>
-                <tr>
-                    <td>13:50-15:20</td>
-                    <td><strong>辦理登機手續</strong></td>
-                    <td>辦理國泰航空 CX451 航班的登機手續，進行最後的伴手禮採購。</td>
-                </tr>
-                <tr>
-                    <td>15:20</td>
-                    <td><strong>快樂返航</strong></td>
-                    <td>班機起飛，結束充實的東京深度郊區之旅。</td>
-                </tr>
-            </tbody>
-        </table>
+                    </div>
 
-    </div>
+                    <div class="timeline-item">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-semibold text-lg">川越古街深度漫步與午餐</h4>
+                                <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">11:00-17:30</span>
+                            </div>
+                            <p class="text-gray-600 mb-3">品嚐川越特色鰻魚飯，搭乘小江戶巡迴巴士遊覽各景點</p>
+                            <div class="grid md:grid-cols-2 gap-4 mt-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-temple-chinese text-red-500 mr-2"></i>
+                                    <span class="text-sm">喜多院</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-bell text-yellow-500 mr-2"></i>
+                                    <span class="text-sm">時之鐘</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-candy-cane text-pink-500 mr-2"></i>
+                                    <span class="text-sm">菓子屋橫丁</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-torii-gate text-orange-500 mr-2"></i>
+                                    <span class="text-sm">冰川神社</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="timeline-item">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-semibold text-lg">上野居酒屋晚餐</h4>
+                                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">19:30-22:00</span>
+                            </div>
+                            <p class="text-gray-600 mb-3">前往阿美橫丁周邊區域，探索JR高架鐵路下方的店家</p>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fas fa-utensils mr-2"></i>
+                                <span>推薦：「大統領」或「文樂」居酒屋</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 2: Kamakura & Enoshima -->
+    <section class="container mx-auto px-6 py-12">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-12">
+            <div class="bg-gradient-to-r from-blue-400 to-teal-500 text-white p-6">
+                <h2 class="text-3xl font-bold flex items-center">
+                    <i class="fas fa-calendar-day mr-3"></i>
+                    第二天：10月25日 (週六)
+                </h2>
+                <p class="text-lg opacity-90 mt-2">古都鎌倉 & 江之島海岸一日遊</p>
+            </div>
+            
+            <!-- Day 2 Image Gallery -->
+            <div class="p-6">
+                <div class="image-gallery mb-8">
+                    <div class="image-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/230128_Kamakura_Daibutsu_Japan04s3.jpg" alt="鎌倉大佛">
+                        <div class="image-overlay">
+                            <h4 class="font-semibold">鎌倉大佛</h4>
+                            <p class="text-sm">高德院的戶外大佛像</p>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="https://www.japan-guide.com/g18/3101_01.jpg" alt="長谷寺">
+                        <div class="image-overlay">
+                            <h4 class="font-semibold">長谷寺</h4>
+                            <p class="text-sm">俯瞰鎌倉海街景色</p>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="https://trip.pref.kanagawa.jp/img/itinerary/photos/Ibwj6uYgXvPAz1aTf3icOQ83W9ie8JHSYVV6Fvmi.png" alt="江之島">
+                        <div class="image-overlay">
+                            <h4 class="font-semibold">江之島</h4>
+                            <p class="text-sm">離東京不遠的休閒小島</p>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="https://www.enoden.co.jp/tc/common/images/train/mainvisual-image-03.png" alt="江之電">
+                        <div class="image-overlay">
+                            <h4 class="font-semibold">江之電</h4>
+                            <p class="text-sm">連接鎌倉與江之島的可愛電車</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Day 2 Timeline -->
+                <div class="space-y-6">
+                    <div class="timeline-item">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-semibold text-lg">前往古都鎌倉</h4>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">08:30-10:00</span>
+                            </div>
+                            <p class="text-gray-600 mb-3">從上野站搭乘JR上野東京線，直達鎌倉站</p>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fas fa-train mr-2"></i>
+                                <span>車程約1小時，免轉車直達</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-semibold text-lg">長谷地區深度探訪</h4>
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">10:00-12:30</span>
+                            </div>
+                            <p class="text-gray-600 mb-3">搭乘江之電至長谷站，參觀鎌倉大佛與長谷寺</p>
+                            <div class="grid md:grid-cols-2 gap-4 mt-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-user-friends text-orange-500 mr-2"></i>
+                                    <span class="text-sm">高德院鎌倉大佛</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-temple-chinese text-red-500 mr-2"></i>
+                                    <span class="text-sm">長谷寺觀景台</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-semibold text-lg">午餐 & 江之島全島探索</h4>
+                                <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">12:30-17:30</span>
+                            </div>
+                            <p class="text-gray-600 mb-3">品嚐吻仔魚丼飯，搭乘江之電前往江之島站探索全島</p>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fas fa-fish mr-2"></i>
+                                <span>推薦特色：吻仔魚丼飯</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-semibold text-lg">唐吉軻德購物</h4>
+                                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">21:00-22:30</span>
+                            </div>
+                            <p class="text-gray-600 mb-3">返回上野後前往唐吉軻德上野店享受購物樂趣</p>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fas fa-shopping-cart mr-2"></i>
+                                <span>24小時營業的綜合購物店</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 3: Tsukiji & Departure -->
+    <section class="container mx-auto px-6 py-12">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-12">
+            <div class="bg-gradient-to-r from-red-400 to-pink-500 text-white p-6">
+                <h2 class="text-3xl font-bold flex items-center">
+                    <i class="fas fa-calendar-day mr-3"></i>
+                    第三天：10月26日 (日)
+                </h2>
+                <p class="text-lg opacity-90 mt-2">築地市場美食巡禮 & 歸途</p>
+            </div>
+            
+            <!-- Day 3 Image Gallery -->
+            <div class="p-6">
+                <div class="image-gallery mb-8">
+                    <div class="image-card">
+                        <img src="https://www.tsukiji.or.jp/assets/images/english/top/slide06.jpg" alt="築地場外市場">
+                        <div class="image-overlay">
+                            <h4 class="font-semibold">築地場外市場</h4>
+                            <p class="text-sm">東京最著名的海鮮市場</p>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="https://www.japan-guide.com/g18/3021_11.jpg" alt="築地市場美食">
+                        <div class="image-overlay">
+                            <h4 class="font-semibold">築地美食</h4>
+                            <p class="text-sm">新鮮壽司與海鮮料理</p>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="https://grids-hostel.com/hostels/ueno/img/index/private_img2.jpg" alt="上野格子飯店">
+                        <div class="image-overlay">
+                            <h4 class="font-semibold">Grids Tokyo Ueno</h4>
+                            <p class="text-sm">現代化的青年旅館</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Day 3 Timeline -->
+                <div class="space-y-6">
+                    <div class="timeline-item">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-semibold text-lg">築地場外市場美食巡禮</h4>
+                                <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">09:30-12:15</span>
+                            </div>
+                            <p class="text-gray-600 mb-3">在市場內品嚐最新鮮的壽司、海鮮丼，以及各種人氣小吃</p>
+                            <div class="grid md:grid-cols-3 gap-4 mt-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-fish text-blue-500 mr-2"></i>
+                                    <span class="text-sm">新鮮壽司</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-egg text-yellow-500 mr-2"></i>
+                                    <span class="text-sm">丸武玉子燒</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-fire text-red-500 mr-2"></i>
+                                    <span class="text-sm">現烤海鮮</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-semibold text-lg">前往成田機場</h4>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">13:00-13:50</span>
+                            </div>
+                            <p class="text-gray-600 mb-3">從京成上野站搭乘Keisei Skyliner直達成田機場第二航廈</p>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fas fa-rocket mr-2"></i>
+                                <span>最快速的機場連接方式</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-semibold text-lg">快樂返航</h4>
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">15:20</span>
+                            </div>
+                            <p class="text-gray-600 mb-3">國泰航空 CX451 班機起飛，結束充實的東京深度郊區之旅</p>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fas fa-plane-departure mr-2"></i>
+                                <span>直飛桃園機場，18:40抵達</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transportation Tips -->
+    <section class="container mx-auto px-6 py-12">
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 flex items-center">
+                <i class="fas fa-subway text-blue-500 mr-3"></i>
+                交通建議
+            </h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="card-hover bg-blue-50 p-6 rounded-lg">
+                    <div class="text-blue-500 text-3xl mb-4">
+                        <i class="fas fa-train"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">JR Pass</h3>
+                    <p class="text-gray-600 text-sm">考慮購買JR東日本通票，涵蓋上野-鎌倉路線</p>
+                </div>
+                <div class="card-hover bg-green-50 p-6 rounded-lg">
+                    <div class="text-green-500 text-3xl mb-4">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">江之電一日券</h3>
+                    <p class="text-gray-600 text-sm">購買江之電一日券，無限次搭乘鎌倉-江之島</p>
+                </div>
+                <div class="card-hover bg-purple-50 p-6 rounded-lg">
+                    <div class="text-purple-500 text-3xl mb-4">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">交通APP</h3>
+                    <p class="text-gray-600 text-sm">下載Google Maps或Hyperdia查詢即時交通資訊</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weather & Packing Tips -->
+    <section class="container mx-auto px-6 py-12">
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 flex items-center">
+                <i class="fas fa-cloud-sun text-yellow-500 mr-3"></i>
+                天氣與攜帶物品建議
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-700">10月底天氣預期</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-thermometer-half text-orange-500 w-6 mr-3"></i>
+                            <span>氣溫：15-22°C，早晚較涼</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-tint text-blue-500 w-6 mr-3"></i>
+                            <span>降雨機率低，但建議攜帶雨具</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-wind text-gray-500 w-6 mr-3"></i>
+                            <span>海邊風較大，注意保暖</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-700">建議攜帶物品</h3>
+                    <div class="grid grid-cols-2 gap-2 text-sm">
+                        <div class="flex items-center">
+                            <i class="fas fa-tshirt text-blue-500 w-4 mr-2"></i>
+                            <span>輕薄外套</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-walking text-brown-500 w-4 mr-2"></i>
+                            <span>舒適步行鞋</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-umbrella text-gray-500 w-4 mr-2"></i>
+                            <span>折疊雨傘</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-camera text-purple-500 w-4 mr-2"></i>
+                            <span>相機/充電器</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-credit-card text-green-500 w-4 mr-2"></i>
+                            <span>現金/IC卡</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-first-aid text-red-500 w-4 mr-2"></i>
+                            <span>常備藥品</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <i class="fas fa-map-marked-alt text-2xl"></i>
+                <i class="fas fa-camera text-2xl"></i>
+                <i class="fas fa-heart text-2xl"></i>
+            </div>
+            <p class="opacity-90 mb-2">祝您東京郊區三日遊愉快！</p>
+            <p class="text-sm opacity-75">記得在每個景點留下美好回憶 📸</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling and interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add fade-in animation for cards
+            const cards = document.querySelectorAll('.card-hover');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s, transform 0.6s';
+                observer.observe(card);
+            });
+
+            // Add click effect to timeline items
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.style.transform = 'scale(1.02)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 150);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDl11UBVUVC1v1AsGvhXNzrPCltv04YprqVXoMfMbs1pwaSyRZ9Q3lf9aHplXyga4%2BAzRRg2xRXEVF0dz4u1EDFYpbK10XdWX3KbD%2B6UBZkYmXR7QVnE6N6f%2BhOWWhNIUQG79ZO9InOvQwiEwbTgU6ny3uwUmboRkPc1ny%2BOHVqcjs88rAs1lEUCel9WDrhFaP89QqYTYijf3J3rOpKRdCAxQFdSQWQJeYjdxkgZuCTEFdx3RpFelfKfkBypGGZG8Q9upcsldrUlmtw52aH%2BKtT25LYKYHasglkpWP%2FKREIF7wYrwDNkbOLPj%2FFuqKkLIkRk17%2FFfI9rDqLeWEf1pQHssBqrQOOPSZkZAyYrGwqpfI38qGhA52AP%2FlLeF8gFfFUOyolEm2usR34EWoQWJA%2F91MggUwmmXgTnbAqz21QD%2BvuMt5GIcYBgrLFT5I0oK35Zd6rDTwuGdR479DhTADOFTX6tXBJotvh%2FkNUNTeJ2GPWl3BHLikLkd5bDZ%2BA6K0DxwVwmfeGO0FPurMkKt3No%3D";
+        window.__genspark_locale = "zh-TW";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDl11UBVUVC1v1AsGvhXNzrPCltv04YprqVXoMfMbs1pwaSyRZ9Q3lf9aHplXyga4+AzRRg2xRXEVF0dz4u1EDFYpbK10XdWX3KbD+6UBZkYmXR7QVnE6N6f+hOWWhNIUQG79ZO9InOvQwiEwbTgU6ny3uwUmboRkPc1ny+OHVqcjs88rAs1lEUCel9WDrhFaP89QqYTYijf3J3rOpKRdCAxQFdSQWQJeYjdxkgZuCTEFdx3RpFelfKfkBypGGZG8Q9upcsldrUlmtw52aH+KtT25LYKYHasglkpWP/KREIF7wYrwDNkbOLPj/FuqKkLIkRk17/FfI9rDqLeWEf1pQHssBqrQOOPSZkZAyYrGwqpfI38qGhA52AP/lLeF8gFfFUOyolEm2usR34EWoQWJA/91MggUwmmXgTnbAqz21QD+vuMt5GIcYBgrLFT5I0oK35Zd6rDTwuGdR479DhTADOFTX6tXBJotvh/kNUNTeJ2GPWl3BHLikLkd5bDZ+A6K0DxwVwmfeGO0FPurMkKt3No=";
+    </script>
+    
+        <script id="html_badge_script2" src="https://www.genspark.ai/html_badge.js"></script>
+        
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
