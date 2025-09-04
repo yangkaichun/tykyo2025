@@ -3,728 +3,325 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>東京郊區三日遊詳細行程 - 圖文並茂版</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>東京郊區三日遊 (2025/10/24 - 10/26)</title>
     <style>
-        * {
-            font-family: 'Noto Sans TC', sans-serif;
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', 'Microsoft JhengHei', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #343a40;
         }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
-        
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        h1, h2, h3 {
+            color: #0056b3;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+            margin-top: 40px;
         }
-        
-        .animate-fade-in-up {
-            animation: fadeInUp 0.8s ease-out;
+        h1 {
+            text-align: center;
+            font-size: 2.8em;
+            color: #333;
+            border: none;
         }
-        
-        .animate-slide-in-left {
-            animation: slideInLeft 0.6s ease-out;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
         }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        th, td {
+            padding: 15px;
+            border: 1px solid #dee2e6;
+            text-align: left;
+            vertical-align: top;
         }
-        
-        .card-shadow {
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        th {
+            background-color: #007bff;
+            color: white;
+            font-size: 1.1em;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .info-box {
+            background-color: #e9f7ff;
+            border-left: 6px solid #007bff;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+        .info-box h3 {
+            margin-top: 0;
+            border-bottom: none;
+            color: #0056b3;
+        }
+        .map-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            border: 1px solid #007bff;
+            border-radius: 5px;
             transition: all 0.3s ease;
         }
-        
-        .card-shadow:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-        
-        .image-overlay {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .image-overlay::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
-            z-index: 1;
-        }
-        
-        .image-overlay img {
-            transition: transform 0.3s ease;
-        }
-        
-        .image-overlay:hover img {
-            transform: scale(1.05);
-        }
-        
-        .timeline-dot {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-        }
-        
-        .info-highlight {
-            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
-            border-left: 4px solid #2196f3;
-        }
-        
-        .day-header {
-            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 12px 12px 0 0;
-        }
-        
-        .time-badge {
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 0.5rem;
-        }
-        
-        .location-link {
-            color: #2196f3;
+        .map-link:hover {
+            background-color: #007bff;
+            color: #fff;
             text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
         }
-        
-        .location-link:hover {
-            color: #1976d2;
-            text-decoration: underline;
+        ul {
+            list-style-type: none;
+            padding: 0;
         }
-        
-        @media print {
-            .animate-fade-in-up,
-            .animate-slide-in-left {
-                animation: none;
-            }
-            .card-shadow {
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            }
+        li {
+            margin-bottom: 12px;
         }
-        
-        .scenic-image {
+        .location-card {
+            margin-bottom: 20px;
+        }
+        .location-card img {
             width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 1rem;
-        }
-        
-        .mini-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-        
-        .mini-gallery img {
-            width: 100%;
-            height: 150px;
+            height: 200px;
             object-fit: cover;
             border-radius: 8px;
-            transition: transform 0.3s ease;
+            background-color: #e9ecef;
+            border: 1px solid #dee2e6;
         }
-        
-        .mini-gallery img:hover {
-            transform: scale(1.02);
+        .location-card p {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin: 10px 0 5px 0;
+        }
+        .location-card:last-child {
+            margin-bottom: 0;
         }
     </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Header Section -->
-    <header class="gradient-bg text-white py-16">
-        <div class="container mx-auto px-6 text-center">
-            <h1 class="text-5xl font-bold mb-6 animate-fade-in-up">東京郊區三日遊</h1>
-            <p class="text-xl mb-8 animate-fade-in-up" style="animation-delay: 0.2s;">2025年10月24日 - 10月26日</p>
-            <div class="flex justify-center items-center space-x-8 animate-fade-in-up" style="animation-delay: 0.4s;">
-                <div class="flex items-center">
-                    <i class="fas fa-calendar-alt mr-2"></i>
-                    <span>3天2夜</span>
-                </div>
-                <div class="flex items-center">
-                    <i class="fas fa-users mr-2"></i>
-                    <span>4位旅客</span>
-                </div>
-                <div class="flex items-center">
-                    <i class="fas fa-map-marker-alt mr-2"></i>
-                    <span>川越・橫濱・吉祥寺</span>
-                </div>
-            </div>
-        </div>
-    </header>
+<body>
 
-    <!-- Trip Overview -->
-    <section class="container mx-auto px-6 py-12">
-        <div class="bg-white rounded-lg card-shadow p-8 animate-slide-in-left">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 flex items-center">
-                <i class="fas fa-info-circle text-blue-500 mr-3"></i>
-                行程總覽
-            </h2>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="info-highlight rounded-lg p-6">
-                    <h3 class="text-xl font-semibold mb-4 text-gray-800">
-                        <i class="fas fa-plane mr-2 text-blue-500"></i>
-                        航班資訊
-                    </h3>
-                    <div class="space-y-3">
-                        <div class="flex items-center">
-                            <i class="fas fa-plane-departure text-green-500 mr-2"></i>
-                            <span><strong>去程:</strong> 10/23 桃園19:15 → 10/24 成田06:40</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-plane-arrival text-red-500 mr-2"></i>
-                            <span><strong>回程:</strong> 10/26 成田15:20 → 桃園18:40</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-ticket-alt text-purple-500 mr-2"></i>
-                            <span><strong>航空公司:</strong> 國泰航空 (訂位代號: FM4KNL)</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="info-highlight rounded-lg p-6">
-                    <h3 class="text-xl font-semibold mb-4 text-gray-800">
-                        <i class="fas fa-hotel mr-2 text-blue-500"></i>
-                        住宿資訊
-                    </h3>
-                    <div class="space-y-3">
-                        <div class="flex items-center">
-                            <i class="fas fa-building text-indigo-500 mr-2"></i>
-                            <span><strong>飯店:</strong> Grids Tokyo Ueno Hotel&Hostel</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-map-marker-alt text-red-500 mr-2"></i>
-                            <span><strong>地址:</strong> 7-10-4, Ueno, Taito-ku, 東京, 日本</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-confirmation-number text-green-500 mr-2"></i>
-                            <span><strong>預訂編號:</strong> 1644628483</span>
-                        </div>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Grids+Tokyo+Ueno+Hotel&Hostel" target="_blank" class="location-link flex items-center mt-2">
-                            <i class="fas fa-external-link-alt mr-2"></i>
-                            查看地圖位置
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-8">
-                <h3 class="text-xl font-semibold mb-4 text-gray-800">
-                    <i class="fas fa-users mr-2 text-blue-500"></i>
-                    旅客資訊
-                </h3>
-                <div class="grid md:grid-cols-2 gap-4">
-                    <div class="bg-gray-50 rounded-lg p-4">
-                        <div class="flex items-center justify-between">
-                            <span>YANG/KAICHUN 先生</span>
-                            <i class="fas fa-user-tie text-blue-500"></i>
-                        </div>
-                    </div>
-                    <div class="bg-gray-50 rounded-lg p-4">
-                        <div class="flex items-center justify-between">
-                            <span>WEN/CHIACHI 女士</span>
-                            <i class="fas fa-user text-pink-500"></i>
-                        </div>
-                    </div>
-                    <div class="bg-gray-50 rounded-lg p-4">
-                        <div class="flex items-center justify-between">
-                            <span>YANG/POHAN 先生</span>
-                            <i class="fas fa-user-tie text-blue-500"></i>
-                        </div>
-                    </div>
-                    <div class="bg-gray-50 rounded-lg p-4">
-                        <div class="flex items-center justify-between">
-                            <span>YANG/POSHENG 先生</span>
-                            <i class="fas fa-user-tie text-blue-500"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="container">
+        <h1>東京郊區三日遊</h1>
+        <p style="text-align:center; font-size: 1.2em; color: #6c757d;">2025年10月24日 - 2025年10月26日</p>
 
-    <!-- Day 1 -->
-    <section class="container mx-auto px-6 py-8">
-        <div class="bg-white rounded-lg card-shadow overflow-hidden animate-fade-in-up">
-            <div class="day-header">
-                <h2 class="text-3xl font-bold flex items-center">
-                    <i class="fas fa-calendar-day mr-3"></i>
-                    第一天：10月24日 (週五)
-                </h2>
-                <p class="text-lg mt-2 opacity-90">直達川越・行李寄放與古街探險</p>
-            </div>
-            
-            <div class="p-8">
-                <!-- 川越古街圖片 -->
-                <div class="image-overlay rounded-lg mb-6">
-                    <img src="https://www.japan-travel.cn/assets_c/2020/01/Saitama1275_7-thumb-2064x1300-12677.jpg" alt="川越藏造老屋街道" class="scenic-image">
-                </div>
-                
-                <div class="mini-gallery mb-8">
-                    <img src="https://koedo.or.jp/wp-content/uploads/b96f167dd98cecc6e36e40d3c66b3174-2080x1773.jpg" alt="川越時之鐘">
-                    <img src="https://marukoblog.tw/wp-content/uploads/2024/02/%E5%B7%9D%E8%B6%8A%E5%86%B0%E5%B7%9D%E7%A5%9E%E7%A4%BE_1-1-scaled.jpg" alt="川越冰川神社鯛魚籤">
-                    <img src="https://s3-ap-northeast-1.amazonaws.com/thegate/2020/12/04/16/28/49/Ameyoko%20street.jpg" alt="上野阿美橫丁">
-                </div>
-                
-                <div class="space-y-6">
-                    <div class="flex border-l-4 border-blue-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-plane"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">06:40-08:30</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">抵達東京，辦理入境</h3>
-                            <p class="text-gray-600">抵達 <a href="https://www.google.com/maps/search/?api=1&query=Narita+Airport+Terminal+2" target="_blank" class="location-link">成田機場第二航廈</a>，辦理入境手續、領取行李。</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex border-l-4 border-green-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-bus"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">08:30-10:30</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">搭乘利木津巴士直達川越</h3>
-                            <p class="text-gray-600">至機場一樓的「利木津巴士」售票櫃台，購買前往「川越站西口」的車票。這是直達川越最輕鬆的方式，無需拖著行李轉車。</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex border-l-4 border-yellow-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-suitcase"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">10:30-11:00</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">寄放行李</h3>
-                            <p class="text-gray-600">抵達 <a href="https://www.google.com/maps/search/?api=1&query=Kawagoe+Station" target="_blank" class="location-link">川越站</a> 後，在車站內尋找大型寄物櫃（Coin Locker），將您的大件行李鎖上。</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex border-l-4 border-purple-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-torii-gate"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">11:00-13:00</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">喜多院 & 川越午餐</h3>
-                            <p class="text-gray-600">從車站步行或搭乘巴士前往 <a href="https://www.google.com/maps/search/?api=1&query=Kita-in+Temple,+Kawagoe" target="_blank" class="location-link">喜多院</a>，參觀這座與德川家有深厚淵源的古老寺廟。之後在附近品嚐川越特色午餐，如鰻魚飯。</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex border-l-4 border-red-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-walking"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">13:00-17:30</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">川越古街深度漫步</h3>
-                            <div class="bg-gray-50 rounded-lg p-4 mt-3">
-                                <ul class="space-y-2">
-                                    <li class="flex items-center">
-                                        <i class="fas fa-bus text-blue-500 mr-2"></i>
-                                        <span>搭乘「小江戶巡迴巴士」輕鬆遊覽各景點</span>
-                                    </li>
-                                    <li class="flex items-center">
-                                        <i class="fas fa-building text-brown-500 mr-2"></i>
-                                        <span><a href="https://www.google.com/maps/search/?api=1&query=Kurazukuri+Street,+Kawagoe" target="_blank" class="location-link">藏造之街</a>：欣賞江戶時代的倉庫建築</span>
-                                    </li>
-                                    <li class="flex items-center">
-                                        <i class="fas fa-clock text-indigo-500 mr-2"></i>
-                                        <span><a href="https://www.google.com/maps/search/?api=1&query=Toki+no+Kane,+Kawagoe" target="_blank" class="location-link">時之鐘</a>：聆聽古城的報時鐘聲</span>
-                                    </li>
-                                    <li class="flex items-center">
-                                        <i class="fas fa-candy-cane text-pink-500 mr-2"></i>
-                                        <span><a href="https://www.google.com/maps/search/?api=1&query=Kashiya+Yokocho,+Kawagoe" target="_blank" class="location-link">菓子屋橫丁</a>：在懷舊的零食街尋寶</span>
-                                    </li>
-                                    <li class="flex items-center">
-                                        <i class="fas fa-fish text-red-500 mr-2"></i>
-                                        <span><a href="https://www.google.com/maps/search/?api=1&query=Hikawa+Shrine,+Kawagoe" target="_blank" class="location-link">冰川神社</a>：參拜以結緣聞名的神社，體驗釣「鯛魚詩籤」</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="flex border-l-4 border-indigo-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-train"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">17:30-19:00</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">返回市區，前往上野</h3>
-                            <p class="text-gray-600">回到川越站取回寄物櫃的行李。搭乘 <strong>東武東上線</strong> 至「池袋站」，轉乘 <strong>JR山手線</strong> 至「上野站」。</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex border-l-4 border-green-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-hotel"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">19:00-19:30</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">飯店 Check-in</h3>
-                            <p class="text-gray-600">抵達上野後，前往 Grids Tokyo Ueno Hotel&Hostel 辦理入住手續。</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex border-l-4 border-orange-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-utensils"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">19:30-22:00</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">上野居酒屋晚餐</h3>
-                            <p class="text-gray-600">前往飯店附近熱鬧的 <a href="https://www.google.com/maps/search/?api=1&query=Ameya+Yokocho" target="_blank" class="location-link">阿美橫丁</a> 周邊區域，探索JR高架鐵路下方的店家，如知名的「大統領」或「文樂」。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="info-box">
+            <h3>行程總覽</h3>
+            <ul>
+                [cite_start]<li><strong>旅客:</strong> YANG/KAICHUN 先生, WEN/CHIACHI 女士, YANG/POHAN 先生, YANG/POSHENG 先生 [cite: 92, 1989, 2060, 2135]</li>
+                [cite_start]<li><strong>航班資訊:</strong> 國泰航空 (訂位代號: FM4KNL [cite: 100, 1993, 2067, 2141])</li>
+                <li>
+                    [cite_start]<strong>去程 (10/23-10/24):</strong> 桃園(TPE) 19:15 → 香港(HKG) 21:15 (CX565) [cite: 102] [cite_start]→ 香港(HKG) 01:20 → 成田(NRT) 06:40 (CX524) [cite: 108]
+                </li>
+                <li>
+                    [cite_start]<strong>回程 (10/26):</strong> 成田(NRT) 15:20 → 桃園(TPE) 18:40 (CX451) [cite: 113, 118]
+                </li>
+                [cite_start]<li><strong>住宿資訊:</strong> Grids Tokyo Ueno Hotel&Hostel (上野格子飯店及青年旅館) [cite: 32]</li>
+                [cite_start]<li><strong>地址:</strong> 7-10-4, Ueno, Taito-ku, 東京, 日本, 1100005 [cite: 38, 55]</li>
+                 [cite_start]<li><strong>預訂編號:</strong> 1644628483 [cite: 16]</li>
+            </ul>
         </div>
-    </section>
 
-    <!-- Day 2 -->
-    <section class="container mx-auto px-6 py-8">
-        <div class="bg-white rounded-lg card-shadow overflow-hidden animate-fade-in-up">
-            <div class="day-header" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
-                <h2 class="text-3xl font-bold flex items-center">
-                    <i class="fas fa-calendar-day mr-3"></i>
-                    第二天：10月25日 (週六)
-                </h2>
-                <p class="text-lg mt-2 opacity-90">橫濱港灣風情超詳細一日遊</p>
-            </div>
-            
-            <div class="p-8">
-                <!-- 橫濱港未來圖片 -->
-                <div class="image-overlay rounded-lg mb-6">
-                    <img src="https://hk.wamazing.com/media/wp-content/uploads/sites/5/2020/07/yokohamanightview_eyecatch-854x569.jpg.webp" alt="橫濱港未來21夜景" class="scenic-image">
-                </div>
-                
-                <div class="mini-gallery mb-8">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Yokohama_Red_Brick_Warehouse_2012.JPG" alt="橫濱紅磚倉庫">
-                    <img src="https://tluxe-aws.hmgcdn.com/public/article/2017/atl_20230202123853_161.jpg" alt="橫濱中華街牌樓">
-                    <img src="https://trip.pref.kanagawa.jp/img/spots/photos/og-image/QdIh1d7PVvw5YF0SOFZYAgzuUHBZh8d9QQfEsH9z-1200x630.jpg" alt="橫濱杯麵博物館">
-                    <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1295,h_863/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/nxhw31d94e5zvd0t3lu3/%E6%A9%AB%E6%BF%B1%E9%8B%BC%E5%BD%88%E5%B7%A5%E5%BB%A0%E5%A5%97%E7%A5%A8.jpg" alt="橫濱鋼彈工廠">
-                </div>
-                
-                <div class="space-y-6">
-                    <div class="flex border-l-4 border-blue-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-train"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">09:00-10:00</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">前往橫濱港未來</h3>
-                            <p class="text-gray-600">從「上野站」搭乘 <strong>JR上野東京線</strong>，直達「<a href="https://www.google.com/maps/search/?api=1&query=Sakuragicho+Station" target="_blank" class="location-link">櫻木町站</a>」，車程約40分鐘。</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex border-l-4 border-green-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-ship"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">10:00-11:00</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">日本丸紀念公園 & 港灣散步</h3>
-                            <p class="text-gray-600">一出櫻木町站，即可看到宏偉的「<a href="https://www.google.com/maps/search/?api=1&query=Nippon+Maru+Memorial+Park" target="_blank" class="location-link">日本丸帆船</a>」。接著沿著「汽車道」散步，欣賞港未來21景觀。</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex border-l-4 border-yellow-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-utensils"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">11:00-13:00</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">合味道紀念館</h3>
-                            <p class="text-gray-600">步行至 <a href="https://www.google.com/maps/search/?api=1&query=CupNoodles+Museum+Yokohama" target="_blank" class="location-link">CupNoodles Museum</a>。製作自己的泡麵杯，並在頂樓的「NOODLES BAZAAR-麵條街-」享用午餐。</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex border-l-4 border-purple-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-building"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">13:00-15:00</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">紅磚倉庫 & 海上遊船</h3>
-                            <p class="text-gray-600">步行至「<a href="https://www.google.com/maps/search/?api=1&query=Yokohama+Red+Brick+Warehouse" target="_blank" class="location-link">橫濱紅磚倉庫</a>」，逛逛特色文創小店。可選擇從碼頭搭乘「SEA BASS」海上巴士前往山下公園。</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex border-l-4 border-red-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-robot"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">15:00-17:00</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">GUNDAM FACTORY</h3>
-                            <p class="text-gray-600">前往「山下碼頭」，觀賞會走動的巨型鋼彈 <a href="https://www.google.com/maps/search/?api=1&query=Gundam+Factory+Yokohama" target="_blank" class="location-link">GUNDAM FACTORY</a>。（請務必先上官網確認2025年10月是否仍在展出並預約門票）。</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex border-l-4 border-indigo-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-tree"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">17:00-18:00</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">山下公園 & 冰川丸</h3>
-                            <p class="text-gray-600">在橫濱最具代表性的臨海 <a href="https://www.google.com/maps/search/?api=1&query=Yamashita+Park" target="_blank" class="location-link">山下公園</a> 散步，可外觀停泊在一旁的歷史郵輪「冰川丸」。</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex border-l-4 border-orange-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-utensils"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">18:00-20:00</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">橫濱中華街晚餐</h3>
-                            <p class="text-gray-600">從山下公園步行即可抵達 <a href="https://www.google.com/maps/search/?api=1&query=Yokohama+Chinatown" target="_blank" class="location-link">橫濱中華街</a>。推薦品嚐特色小吃，如：世界冠軍的肉包、炸芝麻球、鐵板小籠包。</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex border-l-4 border-gray-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-train"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">20:00-21:00</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">返回上野</h3>
-                            <p class="text-gray-600">從最近的「元町・中華街站」搭乘港未來線至「橫濱站」，轉乘 <strong>JR上野東京線</strong> 返回上野。</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex border-l-4 border-pink-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">21:00-22:30</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">唐吉軻德購物</h3>
-                            <p class="text-gray-600">回到上野後，前往「<a href="https://www.google.com/maps/search/?api=1&query=Don+Quijote+Ueno" target="_blank" class="location-link">唐吉軻德 上野店</a>」享受購物的樂趣。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <h2>詳細行程</h2>
 
-    <!-- Day 3 -->
-    <section class="container mx-auto px-6 py-8">
-        <div class="bg-white rounded-lg card-shadow overflow-hidden animate-fade-in-up">
-            <div class="day-header" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
-                <h2 class="text-3xl font-bold flex items-center text-gray-800">
-                    <i class="fas fa-calendar-day mr-3"></i>
-                    第三天：10月26日 (日)
-                </h2>
-                <p class="text-lg mt-2 opacity-90 text-gray-700">吉祥寺的悠閒時光 & 歸途</p>
-            </div>
-            
-            <div class="p-8">
-                <!-- 吉祥寺井之頭公園圖片 -->
-                <div class="image-overlay rounded-lg mb-6">
-                    <img src="https://wp-odai.wamazing.com/media/wp-content/uploads/sites/2/2024/03/inogashiraoark_pixta_83622672_M.jpg.webp" alt="吉祥寺井之頭公園" class="scenic-image">
-                </div>
-                
-                <div class="space-y-6">
-                    <div class="flex border-l-4 border-blue-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-suitcase"></i>
-                            </div>
+        <h3>第一天：10月24日 (週五) | 直達川越・行李寄放與古街探險</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:18%;">時間</th>
+                    <th style="width:45%;">行程規劃</th>
+                    <th>交通與備註</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>06:40-08:30</td>
+                    <td>
+                        <div class="location-card">
+                            <p>抵達東京，辦理入境</p>
+                            <img src="https://img.gototravel.tw/2019/tokyo/transport/narita-terminal-3/narita-terminal-2-45.jpg" alt="成田機場第二航廈示意圖">
+                            <a href="https://www.google.com/maps/place/Narita+International+Airport+Terminal+2,+1-1+Furugome,+Narita,+Chiba+282-0004,+Japan" target="_blank" class="map-link">成田機場第二航廈地圖</a>
                         </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">08:30-09:00</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">退房與寄放行李</h3>
-                            <p class="text-gray-600">在飯店辦理退房手續，並將大件行李寄放在櫃台。</p>
+                    </td>
+                    [cite_start]<td>抵達成田機場第二航廈 [cite: 108]，辦理入境手續、領取行李。</td>
+                </tr>
+                <tr>
+                    <td>08:30-10:30</td>
+                    <td><strong>搭乘利木津巴士直達川越</strong></td>
+                    <td>至機場一樓的「利木津巴士」售票櫃台，購買前往「川越站西口」的車票。這是直達川越最輕鬆的方式，無需拖著行李轉車。</td>
+                </tr>
+                <tr>
+                    <td>10:30-11:00</td>
+                    <td><strong>寄放行李</strong></td>
+                    <td>抵達 <a href="https://www.google.com/maps/place/Kawagoe+Station,+Wakitamachi,+Kawagoe,+Saitama,+Japan" target="_blank" class="map-link">川越站</a> 後，在車站內尋找大型寄物櫃（Coin Locker），將您的大件行李鎖上。</td>
+                </tr>
+                <tr>
+                    <td>11:00-17:30</td>
+                    <td>
+                        <div class="location-card">
+                            <p>川越古街深度漫步與午餐</p>
+                            <img src="https://d28dpoj42hxr8c.cloudfront.net/files/user/201611151614_5.jpg?v=1479194087" alt="川越藏造之街示意圖">
+                             <a href="https://www.google.com/maps/place/Kurazukuri+no+Machinami+(Old+Warehouse+District)/@35.9221161,139.4842525,17z" target="_blank" class="map-link">川越藏造之街地圖</a>
                         </div>
-                    </div>
-                    
-                    <div class="flex border-l-4 border-green-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-train"></i>
-                            </div>
+                    </td>
+                    <td>
+                        <p>午餐品嚐川越特色鰻魚飯。</p>
+                        <p>搭乘「小江戶巡迴巴士」輕鬆遊覽各景點：<br>
+                        - <a href="https://www.google.com/maps/place/Kitain+Temple,+1-20-1+Kosenbamachi,+Kawagoe,+Saitama+350-0036,+Japan" target="_blank" class="map-link">喜多院</a><br>
+                        - <a href="https://www.google.com/maps/place/Bell+of+Time+(Toki+no+Kane),+15-7+Saiwaicho,+Kawagoe,+Saitama+350-0063,+Japan" target="_blank" class="map-link">時之鐘</a><br>
+                        - <a href="https://www.google.com/maps/place/Penny+Candy+Lane+Yokocho,+2-ch%C5%8Dme-7+Motomachi,+Kawagoe,+Saitama+350-0062,+Japan" target="_blank" class="map-link">菓子屋橫丁</a><br>
+                        - <a href="https://www.google.com/maps/place/Kawagoe+Hikawa+Shrine,+2-ch%C5%8Dme-11-3+Miyashitamachi,+Kawagoe,+Saitama+350-0052,+Japan" target="_blank" class="map-link">冰川神社</a></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>17:30-19:00</td>
+                    <td><strong>返回市區，前往上野</strong></td>
+                    <td>回到川越站取回寄物櫃的行李。搭乘 **東武東上線** 至「池袋站」，轉乘 **JR山手線** 至「上野站」。</td>
+                </tr>
+                <tr>
+                    <td>19:00-19:30</td>
+                    <td><strong>飯店 Check-in</strong></td>
+                    <td>抵達上野後，前往 <a href="https://www.google.com/maps/place/Grids+Tokyo+Ueno+Hotel%26Hostel,+7-ch%C5%8Dme-10-4+Ueno,+Taito+City,+Tokyo+110-0005,+Japan" target="_blank" class="map-link">Grids Tokyo Ueno Hotel&Hostel</a> 辦理入住手續。</td>
+                </tr>
+                <tr>
+                    <td>19:30-22:00</td>
+                    <td>
+                         <div class="location-card">
+                            <p>上野居酒屋晚餐</p>
+                            <img src="https://www.bring-you.info/imgs/2019/05/ameyoko_2019-12.jpg" alt="阿美橫丁夜晚示意圖">
+                            <a href="https://www.google.com/maps/place/Ameyoko+Shopping+District,+Ueno,+Taito+City,+Tokyo,+Japan" target="_blank" class="map-link">阿美橫丁地圖</a>
                         </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">09:00-10:00</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">前往吉祥寺</h3>
-                            <p class="text-gray-600">從「上野站」搭乘 <strong>JR山手線</strong> 至「神田站」，轉乘 <strong>JR中央線</strong> 快速列車至「<a href="https://www.google.com/maps/search/?api=1&query=Kichijoji+Station" target="_blank" class="location-link">吉祥寺站</a>」。</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex border-l-4 border-yellow-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-tree"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">10:00-12:00</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">井之頭公園 & 吉祥寺美食</h3>
-                            <div class="bg-gray-50 rounded-lg p-4 mt-3">
-                                <ul class="space-y-2">
-                                    <li class="flex items-center">
-                                        <i class="fas fa-swimmer text-blue-500 mr-2"></i>
-                                        <span><a href="https://www.google.com/maps/search/?api=1&query=Inokashira+Park" target="_blank" class="location-link">井之頭恩賜公園</a>：在都會中的綠洲悠閒散步，可以在湖上踩天鵝船</span>
-                                    </li>
-                                    <li class="flex items-center">
-                                        <i class="fas fa-utensils text-red-500 mr-2"></i>
-                                        <span><a href="https://www.google.com/maps/search/?api=1&query=Satou+Steak+House+Kichijoji" target="_blank" class="location-link">SATOU牛肉丸</a>：品嚐吉祥寺最有名的排隊美食炸牛肉丸</span>
-                                    </li>
-                                    <li class="flex items-center">
-                                        <i class="fas fa-shopping-bag text-purple-500 mr-2"></i>
-                                        <span><a href="https://www.google.com/maps/search/?api=1&query=Kichijoji+Sunroad" target="_blank" class="location-link">Sunroad商店街 & 口琴橫丁</a>：探索藥妝店、服飾店與充滿昭和風情的小巷弄</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="flex border-l-4 border-purple-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-train"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">12:00-13:00</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">返回上野 & 領取行李</h3>
-                            <p class="text-gray-600">在吉祥寺快速用餐後，循原路搭乘JR返回上野，至飯店領取行李。</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex border-l-4 border-red-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-plane"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">13:00-13:50</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">前往成田機場</h3>
-                            <p class="text-gray-600">從「<a href="https://www.google.com/maps/search/?api=1&query=Keisei-Ueno+Station" target="_blank" class="location-link">京成上野站</a>」搭乘 <strong>Keisei Skyliner</strong> 直達「成田機場第二航廈」。</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex border-l-4 border-indigo-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-passport"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">13:50-15:20</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">辦理登機手續</h3>
-                            <p class="text-gray-600">辦理國泰航空 CX451 航班的登機手續，進行最後的伴手禮採購。</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex border-l-4 border-green-500 pl-4">
-                        <div class="flex-shrink-0">
-                            <div class="timeline-dot w-12 h-12 rounded-full flex items-center justify-center text-white font-bold">
-                                <i class="fas fa-home"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-grow">
-                            <div class="time-badge">15:20</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">快樂返航</h3>
-                            <p class="text-gray-600">班機起飛，結束充實的東京深度郊區之旅。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    </td>
+                    <td>前往飯店附近熱鬧的「阿美橫丁」周邊區域，探索JR高架鐵路下方的店家，如知名的「大統領」或「文樂」。</td>
+                </tr>
+            </tbody>
+        </table>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8 mt-12">
-        <div class="container mx-auto px-6 text-center">
-            <div class="mb-4">
-                <h3 class="text-xl font-semibold mb-2">旅遊小提醒</h3>
-                <div class="flex justify-center space-x-8 text-sm">
-                    <div class="flex items-center">
-                        <i class="fas fa-clock mr-2"></i>
-                        <span>注意電車時刻表</span>
-                    </div>
-                    <div class="flex items-center">
-                        <i class="fas fa-yen-sign mr-2"></i>
-                        <span>準備現金支付</span>
-                    </div>
-                    <div class="flex items-center">
-                        <i class="fas fa-mobile-alt mr-2"></i>
-                        <span>下載翻譯App</span>
-                    </div>
-                    <div class="flex items-center">
-                        <i class="fas fa-umbrella mr-2"></i>
-                        <span>注意天氣變化</span>
-                    </div>
-                </div>
-            </div>
-            <p class="text-gray-400">祝您旅途愉快！ 🗾 ✈️ 🎌</p>
-        </div>
-    </footer>
+        <h3>第二天：10月25日 (週六) | 古都鎌倉 & 江之島海岸一日遊</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>時間</th>
+                    <th>行程規劃</th>
+                    <th>交通與備註</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>08:30-10:00</td>
+                    <td><strong>前往古都鎌倉</strong></td>
+                    <td>從「上野站」搭乘 **JR上野東京線**，可直達「<a href="https://www.google.com/maps/place/Kamakura+Station,+1-ch%C5%8Dme-1+Onarimachi,+Kamakura,+Kanagawa+248-0012,+Japan" target="_blank" class="map-link">鎌倉站</a>」，車程約1小時。</td>
+                </tr>
+                <tr>
+                    <td>10:00-12:30</td>
+                    <td>
+                        <div class="location-card">
+                            <p>長谷地區深度探訪</p>
+                            <img src="" alt="鎌倉大佛示意圖">
+                            <a href="https://www.google.com/maps/place/K%C5%8Dtoku-in,+4-ch%C5%8Dme-2-28+Hase,+Kamakura,+Kanagawa+248-0016,+Japan" target="_blank" class="map-link">高德院(鎌倉大佛)地圖</a>
+                        </div>
+                    </td>
+                    <td>抵達鎌倉站後，轉乘可愛的「**江之電**」電車至「長谷站」。<br>- 參拜「高德院」的戶外「鎌倉大佛」。<br>- 參觀「<a href="https://www.google.com/maps/place/Hasedera,+3-ch%C5%8Dme-11-2+Hase,+Kamakura,+Kanagawa+248-0016,+Japan" target="_blank" class="map-link">長谷寺</a>」，俯瞰鎌倉的海街景色。</td>
+                </tr>
+                <tr>
+                    <td>12:30-17:30</td>
+                     <td>
+                        <div class="location-card">
+                            <p>午餐 & 江之島全島探索</p>
+                            <img src="https://i0.wp.com/journey.tw/wp-content/uploads/2025/02/20250223155325_0_1ed8a1.jpg?resize=1100%2C734&quality=99&ssl=1" alt="江之島與富士山遠景示意圖">
+                            <a href="https://www.google.com/maps/place/Enoshima,+Fujisawa,+Kanagawa,+Japan" target="_blank" class="map-link">江之島地圖</a>
+                        </div>
+                    </td>
+                    <td>在長谷站周邊享用午餐，推薦「吻仔魚丼飯」。<br>餐後繼續搭乘「江之電」前往「<a href="https://www.google.com/maps/place/Enoshima+Station,+1-ch%C5%8Dme-4-7+Katasekaigan,+Fujisawa,+Kanagawa+251-0035,+Japan" target="_blank" class="map-link">江之島站</a>」探索全島。</td>
+                </tr>
+                <tr>
+                    <td>17:30-19:30</td>
+                    <td><strong>日落美景 & 返回上野</strong></td>
+                    <td>從江之島返回，天氣好時可在海岸邊欣賞夕陽美景。從「江之島站」搭乘江之電返回「鎌倉站」，再轉乘 **JR上野東京線** 返回上野。</td>
+                </tr>
+                <tr>
+                    <td>19:30-21:00</td>
+                    <td><strong>上野晚餐</strong></td>
+                    <td>回到上野後，可選擇不同於前一晚的晚餐類型，例如品嚐「とんかつ山家」的美味炸豬排。</td>
+                </tr>
+                <tr>
+                    <td>21:00-22:30</td>
+                    <td>
+                        <div class="location-card">
+                            <p>唐吉軻德購物</p>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY1yQn0eU0IFaUGUqEiUmUXuZ3uwPiwP19BQ&s" alt="唐吉軻德店面示意圖">
+                            <a href="https://www.google.com/maps/place/Don+Quijote+Ueno,+3-ch%C5%8Dme-38-10+Yushima,+Bunkyo+City,+Tokyo+113-0034,+Japan" target="_blank" class="map-link">唐吉軻德(上野店)地圖</a>
+                        </div>
+                    </td>
+                    <td>前往「唐吉軻德 上野店」享受購物的樂趣。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>第三天：10月26日 (日) | 築地市場美食巡禮 & 歸途</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>時間</th>
+                    <th>行程規劃</th>
+                    <th>交通與備註</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>08:30-09:00</td>
+                    <td><strong>退房與寄放行李</strong></td>
+                    <td>在飯店辦理退房手續，並將大件行李寄放在櫃台。</td>
+                </tr>
+                <tr>
+                    <td>09:00-09:30</td>
+                    <td><strong>前往築地市場</strong></td>
+                    <td>從「上野站」搭乘 **東京Metro日比谷線** 直達「<a href="https://www.google.com/maps/place/Tsukiji+Station,+3-ch%C5%8Dme-9-5+Tsukiji,+Chuo+City,+Tokyo+104-0045,+Japan" target="_blank" class="map-link">築地站</a>」，車程約15分鐘。</td>
+                </tr>
+                <tr>
+                    <td>09:30-12:15</td>
+                    <td>
+                        <div class="location-card">
+                            <p>築地場外市場美食巡禮</p>
+                            <img src="https://resources.matcha-jp.com/resize/720x2000/2019/06/18-79790.webp" alt="築地場外市場熱鬧街景示意圖">
+                            <a href="https://www.google.com/maps/place/Tsukiji+Outer+Market,+4-ch%C5%8Dme-16-2+Tsukiji,+Chuo+City,+Tokyo+104-0045,+Japan" target="_blank" class="map-link">築地場外市場地圖</a>
+                        </div>
+                    </td>
+                    <td><strong>活力早餐</strong>：在市場內的壽司店品嚐最新鮮的壽司或海鮮丼。<br><strong>人氣小吃</strong>：邊走邊逛，品嚐「丸武」的玉子燒、「狐狸屋」的牛丼、「齊藤水產」的現烤海鮮等。</td>
+                </tr>
+                <tr>
+                    <td>12:15-12:45</td>
+                    <td><strong>返回上野 & 領取行李</strong></td>
+                    <td>從「築地站」搭乘日比谷線返回「上野站」，至飯店領取行李。</td>
+                </tr>
+                <tr>
+                    <td>13:00-13:50</td>
+                    <td><strong>前往成田機場</strong></td>
+                    <td>從「<a href="https://www.google.com/maps/place/Keisei-Ueno+Station,+1-ch%C5%8Dme-60+Uenok%C5%8Den,+Taito+City,+Tokyo+110-0007,+Japan" target="_blank" class="map-link">京成上野站</a>」搭乘 **Keisei Skyliner** 直達「成田機場第二航廈」。</td>
+                </tr>
+                <tr>
+                    <td>13:50-15:20</td>
+                    <td><strong>辦理登機手續</strong></td>
+                    <td>辦理國泰航空 CX451 航班的登機手續，進行最後的伴手禮採購。</td>
+                </tr>
+                <tr>
+                    <td>15:20</td>
+                    <td><strong>快樂返航</strong></td>
+                    <td>班機起飛，結束充實的東京深度郊區之旅。</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
 </body>
 </html>
